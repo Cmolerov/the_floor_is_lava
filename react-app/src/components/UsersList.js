@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from 'react-redux'
 import { NavLink } from "react-router-dom";
+
+import * as routesAction from '../store/routes'
 
 function UsersList() {
   const [users, setUsers] = useState([]);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     async function fetchData() {
@@ -12,6 +16,11 @@ function UsersList() {
     }
     fetchData();
   }, []);
+
+  useEffect(() => {
+    dispatch(routesAction.routesSearch(1))
+      .then(() => console.log("THE STORE IS UP AND RUNNING"))
+  }, [dispatch])
 
   const userComponents = users.map((user) => {
     return (

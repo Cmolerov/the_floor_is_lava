@@ -11,73 +11,73 @@ const findRoutes = (routes) => {
   }
 }
 
-const addTestimony = (testify) => {
-  return {
-    type: ADD_TESTIMONY,
-    testify,
-  }
-}
+// const addTestimony = (testify) => {
+//   return {
+//     type: ADD_TESTIMONY,
+//     testify,
+//   }
+// }
 
-const updateTestimony = (id, upComment) => {
-  return {
-    type: UPDATE_TESTIMONY,
-    id,
-    'comment': upComment
-  }
-}
+// const updateTestimony = (id, upComment) => {
+//   return {
+//     type: UPDATE_TESTIMONY,
+//     id,
+//     'comment': upComment
+//   }
+// }
 
-const deleteTestimony = (primaryKey) => {
-  return {
-    type: DELETE_TESTIMONY,
-    primaryKey
-  }
-}
+// const deleteTestimony = (primaryKey) => {
+//   return {
+//     type: DELETE_TESTIMONY,
+//     primaryKey
+//   }
+// }
 
 export const routesSearch = (id) => async (dispatch) => {
-  const {userId} = id
-  const res = await fetch(`/api/users/${userId}/routes`, {
+  const res = await fetch(`/api/users/${id}/routes`, {
     method: 'GET',
   })
-  dispatch(findRoutes(res.data.routes));
+  let response = await res.json();
+  dispatch(findRoutes(response));
   return res
 }
 
-export const testimonyUpdate = (test) => async (dispatch) => {
-  const { primaryKey, comment } = test
-  const res = await fetch(`/api/testimony/`, {
-    method: 'PATCH',
-    body: JSON.stringify({
-      primaryKey,
-      comment
-    }),
-  })
-  dispatch(updateTestimony(res.data.id, res.data.upComment));
-  return res
-}
+// export const testimonyUpdate = (test) => async (dispatch) => {
+//   const { primaryKey, comment } = test
+//   const res = await fetch(`/api/testimony/`, {
+//     method: 'PATCH',
+//     body: JSON.stringify({
+//       primaryKey,
+//       comment
+//     }),
+//   })
+//   dispatch(updateTestimony(res.data.id, res.data.upComment));
+//   return res
+// }
 
-export const testimonyDelete = (id) => async (dispatch) => {
-  const res = await fetch(`/api/testimony/${id}`, {
-    method: 'DELETE',
-  })
-  dispatch(deleteTestimony(res.data.primaryKey));
-  return res
-}
+// export const testimonyDelete = (id) => async (dispatch) => {
+//   const res = await fetch(`/api/testimony/${id}`, {
+//     method: 'DELETE',
+//   })
+//   dispatch(deleteTestimony(res.data.primaryKey));
+//   return res
+// }
 
-export const testimonyAdd = (test) => async (dispatch) => {
-  const { userId, commenterId, comment } = test;
-  const res = await fetch(`/api/testimony/`, {
-    method: 'POST',
-    body: JSON.stringify({
-      userId,
-      commenterId,
-      comment
-    }),
-  })
-  dispatch(addTestimony(res.data.testimony));
-  return res
-}
+// export const testimonyAdd = (test) => async (dispatch) => {
+//   const { userId, commenterId, comment } = test;
+//   const res = await fetch(`/api/testimony/`, {
+//     method: 'POST',
+//     body: JSON.stringify({
+//       userId,
+//       commenterId,
+//       comment
+//     }),
+//   })
+//   dispatch(addTestimony(res.data.testimony));
+//   return res
+// }
 
-const initialState = { testimony: null }
+const initialState = { routes: null }
 
 const routesReducer = (state = initialState, action) => {
   let newState;
@@ -86,25 +86,25 @@ const routesReducer = (state = initialState, action) => {
       newState = Object.assign({}, state)
       newState.routes = action.routes;
       return newState;
-    case ADD_TESTIMONY:
-      newState = Object.assign({}, state)
-      newState.testimony[newState.testimony.length] = action.testify;
-      return newState;
-    case UPDATE_TESTIMONY:
-      newState = Object.assign({}, state)
-      for (let i = 0; i < newState.testimony.length; i++){
-        let test = newState.testimony[i]
-        if (test.id === action.id) {
-          test.comment = action.comment
-        };
-      }
-      return newState;
-    case DELETE_TESTIMONY:
-      newState = Object.assign({}, state)
-      const testimony = newState.testimony.filter(person => person.id !== parseInt(action.primaryKey));
-      console.log(testimony)
-      newState.testimony = testimony
-      return newState
+    // case ADD_TESTIMONY:
+    //   newState = Object.assign({}, state)
+    //   newState.testimony[newState.testimony.length] = action.testify;
+    //   return newState;
+    // case UPDATE_TESTIMONY:
+    //   newState = Object.assign({}, state)
+    //   for (let i = 0; i < newState.testimony.length; i++){
+    //     let test = newState.testimony[i]
+    //     if (test.id === action.id) {
+    //       test.comment = action.comment
+    //     };
+    //   }
+    //   return newState;
+    // case DELETE_TESTIMONY:
+    //   newState = Object.assign({}, state)
+    //   const testimony = newState.testimony.filter(person => person.id !== parseInt(action.primaryKey));
+    //   console.log(testimony)
+    //   newState.testimony = testimony
+    //   return newState
     default:
       return state;
   }

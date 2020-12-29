@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.models import User, Route
 
 user_routes = Blueprint('users', __name__)
 
@@ -17,3 +17,13 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+# ****************** ROUTES SEARCH *********************
+
+@user_routes.route('/<int:id>/routes')
+def routes(id):
+    print("THIS IS THE ID FOR BACKEND ROUTES", id)
+    routes = Route.query.filter_by(userId=id).all()
+    print("THESE ARE THE ROUTES FOR BACKEND", routes)
+    return {route.id:route.to_dict() for route in routes}
