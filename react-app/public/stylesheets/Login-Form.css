@@ -1,0 +1,75 @@
+.wrapper__login {
+  width: 1200px;
+  height: 800px;
+  background-image: url("https://cbsnews1.cbsistatic.com/hub/i/2012/09/07/e7d5cf61-a644-11e2-a3f0-029118418759/CATERS_Lava_Lovers_Amazing_Images_22.jpg");
+  background-repeat: no-repeat;
+  background-size: 1200px 800px;
+}
+
+.form__login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 350px;
+  padding: 80px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+  border-radius: 10px;
+}
+
+.form__login h2 {
+  margin: 0;
+  padding: 0;
+  color: black;
+  text-align: center;
+}
+
+.wrapper__login .form__login {
+  position: relative;
+}
+
+.wrapper__login .form__login input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.wrapper__login .form__login label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.wrapper__login .form__login input:focus ~ label,
+.wrapper__login .form__login input:focus ~ label {
+  top: -20px;
+  left: 0;
+  color: #03a9f4;
+  font-size: 12px;
+}
+
+.form__login input[type="submit"] {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #03a9f4;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
