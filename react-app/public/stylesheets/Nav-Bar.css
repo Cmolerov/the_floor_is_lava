@@ -1,0 +1,11 @@
+.Button__Logout {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+nav > div {
+  display: inline-flex;
+}
