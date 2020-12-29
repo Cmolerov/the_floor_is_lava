@@ -4,24 +4,108 @@ from datetime import datetime
 # Adds a demo user, you can add other users here if you want
 def seed_routes():
 
-    routes = Route(name='Boston Harbor Run',
-                description='Running pleasantly along the Boston harbor.  Explore the birthplace of America.',
+    routes = [
+        Route(name='Boston Harbor Run',
+                description='Run pleasantly along the Boston harbor.  Explore the birthplace of America as you avoid being turned to soup',
                 userId=1,
                 startLat=42.35796768090105,
                 startLong=-71.07336678423798,
                 endLat=42.369803176648205,
                 endLong=-71.06982626829688,
                 createdAt=datetime.now(),
-                updatedAt=datetime.now())
+                updatedAt=datetime.now()),
+        Route(name='Mount Bonnel Stroll',
+                description='Stroll along the Colorado River as you make your way toward the outskirts of Austin.  Only there will you find safety from the lava.',
+                userId=1,
+                startLat=30.314501765600614, 
+                startLong=-97.76923985630593,
+                endLat=30.331875472385377, 
+                endLong=-97.77662129559666,
+                createdAt=datetime.now(),
+                updatedAt=datetime.now()),
+        Route(name='Downtown Austin Walk',
+                description='Explore downtown Austin as you avoid exploding volcanoes around you!',
+                userId=1,
+                startLat=30.268589245342792,  
+                startLong=-97.74628014730185,
+                endLat=30.281301642008884,  
+                endLong=-97.74040074546116,
+                createdAt=datetime.now(),
+                updatedAt=datetime.now()),
+        Route(name='McKinney Falls State Park',
+                description='Take a lovely stroll around you in a national park.  Don\'t worry there\'s not a supervolcano underneath you',
+                userId=1,
+                startLat=30.19462327209362,  
+                startLong=-97.71676942263025, 
+                endLat=30.201646920340135,  
+                endLong=-97.76958625647508,
+                createdAt=datetime.now(),
+                updatedAt=datetime.now()),
+        Route(name='Mount Diablo',
+                description='Yeah, it may be beautiful, but it\'s called Mount Diablo for a reason',
+                userId=1,
+                startLat=37.83584869884866,  
+                startLong=-121.97174523353314, 
+                endLat=37.83906849308996,   
+                endLong=-121.99496243433634,
+                createdAt=datetime.now(),
+                updatedAt=datetime.now()),
+        Route(name='Walnut Creek Shopping Mall',
+                description='If you don\'t get run over by the crazed shoppers, you will get pummelled by the wall of lava.  Don\'t worry though, you\'re ending at a hospital',
+                userId=1,
+                startLat=37.9037525705202,   
+                startLong=-122.06314604260986,
+                endLat=37.89191681909042,    
+                endLong=-122.05949823843834,
+                createdAt=datetime.now(),
+                updatedAt=datetime.now()),
+        Route(name='Antioch Delta Walk',
+                description='Yes, it is low ground.  Yes, it is filled with water.  But isn\'t that just a pathway to funnel hot lava?',
+                userId=1,
+                startLat=38.02166866736312,    
+                startLong=-121.87303309195913,
+                endLat=38.03869847004751,     
+                endLong=-121.88587581888181,
+                createdAt=datetime.now(),
+                updatedAt=datetime.now()),
+        Route(name='Miami Beach Waterfront',
+                description='The sun won\'t be the only thing burning you today',
+                userId=1,
+                startLat=26.010041969198515,     
+                startLong=-80.13016889489651,
+                endLat=26.0236559512287,    
+                endLong=-80.11527727098533,
+                createdAt=datetime.now(),
+                updatedAt=datetime.now()),
+        Route(name='Miami Lakefront Homes',
+                description='What will it be: death by alligator or death by hot lava?',
+                userId=1,
+                startLat=25.96150673256875,      
+                startLong=-80.39468729802157,
+                endLat=25.98997878428499,     
+                endLong=-80.3831001557078,
+                createdAt=datetime.now(),
+                updatedAt=datetime.now()),
+        Route(name='A Miami Island Extravaganza',
+                description='Where will you go when the lava comes rolling in?',
+                userId=1,
+                startLat=25.772289026703344,       
+                startLong=-80.13765497573155,
+                endLat=25.784964407655572, 
+                endLong=-80.13984365793036,
+                createdAt=datetime.now(),
+                updatedAt=datetime.now()),
+    ]
 
-    db.session.add(routes)
+    for i in routes:
+        db.session.add(i)
 
-    db.session.commit()
+        db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE the users table.
 # SQLAlchemy doesn't have a built in function to do this
 # TRUNCATE Removes all the data from the table, and resets
 # the auto incrementing primary key
 def undo_routes():
-    db.session.execute('TRUNCATE routes;')
+    db.session.execute("DROP TABLE routes;")
     db.session.commit()
