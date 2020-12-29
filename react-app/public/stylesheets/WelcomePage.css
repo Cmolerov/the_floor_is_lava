@@ -1,0 +1,21 @@
+.welcomePage {
+    background-image: url("../images/running-lady.png");
+    background-size: cover;
+    width: 100%;
+    height: 1080px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+}
+.welcomePage_form {
+    display: flex;
+    justify-content: center;
+    height: 450px;
+    width: 350px;
+    margin-right: 25px;
+    margin-top: 50px;
+    background-color: #f7f7fa;
+    border-radius: 3px;
+}
+
+
