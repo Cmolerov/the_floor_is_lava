@@ -13,3 +13,15 @@ class Route(db.Model):
   userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   createdAt = db.Column(db.DateTime, nullable=False)
   updatedAt = db.Column(db.DateTime, nullable=False)
+
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "name": self.name,
+      "startLong": self.startLong,
+      "endLong": self.endLong,
+      "startLat": self.startLat,
+      "endLat": self.endLat,
+      "description": self.description,
+      "userId": self.userId,
+    }
