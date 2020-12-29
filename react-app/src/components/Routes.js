@@ -15,10 +15,30 @@ function Routes(props) {
       .then(() => console.log("THE STORE IS UP AND RUNNING"))
       .then(() => setIsLoaded(true))
   }, [dispatch])
+  let userRoutes;
+  
+  if (routes) {
+    userRoutes =
+      Object.values(routes).map((route, idx) => {
+      return (
+        <div key={idx} className='results-container__body__local'>
+            <NavLink className='navlinks' to={`/routes/${route.id}`}>
+              <div className='results-local-header'>
+                {/* <img className='results-local-header__image' src={person.avatar /> */}
+              <h1 className='results-local-username'>{route.name}</h1>
+              </div>
+            </NavLink>
+            <div className='results-local-user__bio'><p>{route.description}</p></div>
+        </div>
+      )
+    })
+  } else {
+    userRoutes = <div className='no-results-found'> No Results Found </div>
+  }
 
   return isLoaded && (
-    <div>Here's a route: {routes[1].name}
-      <div>with a description: {routes[1].description}</div>
+    <div>
+      {userRoutes}
     </div>
   )
 }
