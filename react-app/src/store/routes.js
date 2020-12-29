@@ -1,7 +1,7 @@
 
 const FIND_ROUTES = 'routes/findRoutes'
 const FIND_ROUTE = 'routes/findRoute'
-const ADD_ROUTES = 'routes/addRoutes'
+const ADD_ROUTE = 'routes/addRoute'
 const UPDATE_TESTIMONY = 'testimony/updateTestimony'
 const DELETE_TESTIMONY = 'testimony/deleteTestimony'
 
@@ -19,12 +19,12 @@ const findRoute = (route) => {
   }
 }
 
-// const addTestimony = (testify) => {
-//   return {
-//     type: ADD_TESTIMONY,
-//     testify,
-//   }
-// }
+const addRoute = (route) => {
+  return {
+    type: ADD_ROUTE,
+    route,
+  }
+}
 
 // const updateTestimony = (id, upComment) => {
 //   return {
@@ -47,7 +47,7 @@ export const routesSearch = (id) => async (dispatch) => {
   })
   let response = await res.json();
   dispatch(findRoutes(response));
-  return res
+  return response
 }
 
 export const routeSearch = (id) => async (dispatch) => {
@@ -56,7 +56,26 @@ export const routeSearch = (id) => async (dispatch) => {
   })
   let response = await res.json();
   dispatch(findRoute(response));
-  return res
+  return response
+}
+
+export const routeAdd = (route) => async (dispatch) => {
+  const { name, startLong, endLong, startLat, endLat, description, userId} = route;
+  const res = await fetch(`/api/routes/`, {
+    method: 'POST',
+    body: JSON.stringify({
+      name,
+      startLong,
+      endLong,
+      startLat,
+      endLat,
+      description,
+      userId
+    }),
+  })
+  let response = await res.json()
+  dispatch(addRoute(response));
+  return response
 }
 
 // export const testimonyUpdate = (test) => async (dispatch) => {
@@ -80,20 +99,6 @@ export const routeSearch = (id) => async (dispatch) => {
 //   return res
 // }
 
-// export const testimonyAdd = (test) => async (dispatch) => {
-//   const { userId, commenterId, comment } = test;
-//   const res = await fetch(`/api/testimony/`, {
-//     method: 'POST',
-//     body: JSON.stringify({
-//       userId,
-//       commenterId,
-//       comment
-//     }),
-//   })
-//   dispatch(addTestimony(res.data.testimony));
-//   return res
-// }
-
 const initialState = { routes: null }
 
 const routesReducer = (state = initialState, action) => {
@@ -107,10 +112,10 @@ const routesReducer = (state = initialState, action) => {
       newState = Object.assign({}, state)
       newState.route = action.route;
       return newState;
-    // case ADD_TESTIMONY:
-    //   newState = Object.assign({}, state)
-    //   newState.testimony[newState.testimony.length] = action.testify;
-    //   return newState;
+    case ADD_ROUTE:
+      newState = Object.assign({}, state)
+      newState.routes[newState.routes.length] = action.route;
+      return newState;
     // case UPDATE_TESTIMONY:
     //   newState = Object.assign({}, state)
     //   for (let i = 0; i < newState.testimony.length; i++){
