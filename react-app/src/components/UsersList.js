@@ -22,6 +22,10 @@ function UsersList() {
       .then(() => console.log("THE STORE IS UP AND RUNNING"))
   }, [dispatch])
 
+  useEffect(() => {
+    dispatch(routesAction.routeSearch(8))
+  }, [dispatch])
+
   const userComponents = users.map((user) => {
     return (
       <li key={user.id}>

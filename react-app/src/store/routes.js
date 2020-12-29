@@ -1,5 +1,6 @@
 
 const FIND_ROUTES = 'routes/findRoutes'
+const FIND_ROUTE = 'routes/findRoute'
 const ADD_ROUTES = 'routes/addRoutes'
 const UPDATE_TESTIMONY = 'testimony/updateTestimony'
 const DELETE_TESTIMONY = 'testimony/deleteTestimony'
@@ -8,6 +9,13 @@ const findRoutes = (routes) => {
   return {
     type: FIND_ROUTES,
     routes
+  }
+}
+
+const findRoute = (route) => {
+  return {
+    type: FIND_ROUTE,
+    route
   }
 }
 
@@ -39,6 +47,15 @@ export const routesSearch = (id) => async (dispatch) => {
   })
   let response = await res.json();
   dispatch(findRoutes(response));
+  return res
+}
+
+export const routeSearch = (id) => async (dispatch) => {
+  const res = await fetch(`/api/routes/${id}`, {
+    method: 'GET',
+  })
+  let response = await res.json();
+  dispatch(findRoute(response));
   return res
 }
 
@@ -85,6 +102,10 @@ const routesReducer = (state = initialState, action) => {
     case FIND_ROUTES:
       newState = Object.assign({}, state)
       newState.routes = action.routes;
+      return newState;
+    case FIND_ROUTE:
+      newState = Object.assign({}, state)
+      newState.route = action.route;
       return newState;
     // case ADD_TESTIMONY:
     //   newState = Object.assign({}, state)
