@@ -8,6 +8,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
 import Routes from "./components/Routes";
+import WelcomePage from "./components/WelcomePage";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -32,6 +33,9 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar setAuthenticated={setAuthenticated} />
+      <Route>
+        <WelcomePage/>
+      </Route>
       <Route path="/login" exact={true}>
         <LoginForm
           authenticated={authenticated}
