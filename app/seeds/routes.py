@@ -4,7 +4,7 @@ from datetime import datetime
 # Adds a demo user, you can add other users here if you want
 def seed_routes():
 
-    routes = Route(name='Boston Harbor Run', email='demo_user@aa.com',
+    routes = Route(name='Boston Harbor Run',
                 description='Running pleasantly along the Boston harbor.  Explore the birthplace of America.',
                 userId=1,
                 startLat=42.35796768090105,
