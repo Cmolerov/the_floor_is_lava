@@ -40,7 +40,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         </div>
         <h2>Login</h2>
         <div>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email"></label>
           <input
             name="email"
             type="text"
@@ -50,7 +50,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           />
         </div>
         <div>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password"></label>
           <input
             name="password"
             type="password"
