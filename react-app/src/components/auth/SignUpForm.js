@@ -41,7 +41,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
 
   return (
     <div className="wrapper__signup">
-      <img src={process.env.PUBLIC_URL + './images/lava-field.jpg'} alt="running"  /> 
+      <img className="img__signup" src={process.env.PUBLIC_URL + './images/lava-field.jpg'} alt="lava"  /> 
       <form className="form__signup" onSubmit={onSignUp}>
         <h2>Signup</h2>
         <div>
