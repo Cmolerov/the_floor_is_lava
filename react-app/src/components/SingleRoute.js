@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Component } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
-import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer, useLoadScript, } from '@react-google-maps/api';
 
 import * as routesAction from '../store/routes'
 
@@ -12,9 +12,16 @@ function SingleRoute() {
   const origin = useSelector(state => `${state.routes.route.startLat},${state.routes.route.startLong}`);
   const destination = useSelector(state => `${state.routes.route.endLat},${state.routes.route.endLong}`)
   const apiKey = useSelector(state => state.routes.apiKey)
+    const center = useSelector( state =>
+  {
+    return {
+      lat: state.routes.route.startLat,
+      lng: state.routes.route.startLong,
+    }
+  })
   const { routeId } = useParams();
   const dispatch = useDispatch();
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded2, setIsLoaded2] = useState(false);
   const [response, setResponse] = useState(null);
   // const [origin, setOrigin] = useState("");
   // const [destination, setDestination] = useState("");
@@ -28,10 +35,10 @@ function SingleRoute() {
     height: '400px'
   };
   
-  const center = {
-    lat: -3.745,
-    lng: -38.523
-  };
+  // const center = {
+  //   lat: -3.745,
+  //   lng: -38.523
+  // };
   
   function directionsCallback(response) {
     // console.log(response)
@@ -44,71 +51,70 @@ function SingleRoute() {
       }
     }
   }
+
   
   useEffect(() => {
     dispatch(routesAction.routeSearch(routeId))
       // .then(() => setOrigin(`${route.startLat},${route.startLong}`))
       // .then(() => setDestination(`${route.endLat},${route.endLong}`))
-      .then(() => setIsLoaded(true))
+      .then(() => setIsLoaded2(true))
   }, [dispatch])
   // let destination;
   // let origin;
 
-
-  return isLoaded &&(
-    <div>
-    {/* { origin = `${route.startLat}, ${route.startLong}`}
-    { destination = `${route.endLat }, ${ route.endLong }` } */}
-    {/* {console.log('return route', route.startLat)} */}
-      <LoadScript
-        googleMapsApiKey={apiKey}
-      >
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={center}
-          zoom={10}
+    return(
+      <div>
+      {/* { origin = `${route.startLat}, ${route.startLong}`}
+      { destination = `${route.endLat }, ${ route.endLong }` } */}
+      {/* {console.log('return route', route.startLat)} */}
+        <LoadScript
+          googleMapsApiKey={apiKey}
         >
-          {
-              (
-                destination !== '' &&
-                origin !== ''
-              ) && (
-                <DirectionsService
-                  // required
-                  options={{ 
-                    destination: destination,
-                    origin: origin,
-                    travelMode: travelMode
-                  }}
-                  // required
-                  callback={directionsCallback}
-                  // optional
-                  onLoad={directionsService => {
-                    console.log('DirectionsService onLoad directionsService: ', directionsService)
-                  }}
-                />
-              )
-            }
-
+          <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={center}
+            zoom={10}
+          >
             {
-              response !== null && (
-                <DirectionsRenderer
-                  // required
-                  options={{
-                    directions: response
-                  }}
-                  // optional
-                  onLoad={directionsRenderer => {
-                    console.log('DirectionsRenderer onLoad directionsRenderer: ', directionsRenderer)
-                  }}
-                />
-              )
-            }
-        </GoogleMap>
-      </LoadScript>
-    </div>
-  )
-  // return isLoadedMap ? renderMap() : null;
+                (
+                  destination !== '' &&
+                  origin !== ''
+                ) && (
+                  <DirectionsService
+                    // required
+                    options={{ 
+                      destination: destination,
+                      origin: origin,
+                      travelMode: travelMode
+                    }}
+                    // required
+                    callback={directionsCallback}
+                    // optional
+                    onLoad={directionsService => {
+                      console.log('DirectionsService onLoad directionsService: ', directionsService)
+                    }}
+                  />
+                )
+              }
+  
+              {
+                response !== null && (
+                  <DirectionsRenderer
+                    // required
+                    options={{
+                      directions: response
+                    }}
+                    // optional
+                    onLoad={directionsRenderer => {
+                      console.log('DirectionsRenderer onLoad directionsRenderer: ', directionsRenderer)
+                    }}
+                  />
+                )
+              }
+          </GoogleMap>
+        </LoadScript>
+      </div>
+    )
 }
 
 export default SingleRoute;
