@@ -1,8 +1,10 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import Route
+import os
 
 routes_routes = Blueprint('routes', __name__)
+apiKey = os.environ.get('GOOGLE_API')
 
 # ****************** ROUTE SEARCH *********************
 
