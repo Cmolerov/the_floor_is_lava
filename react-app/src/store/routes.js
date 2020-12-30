@@ -20,10 +20,11 @@ const findRoute = (route) => {
   }
 }
 
-const addRoute = (route) => {
+const addRoute = (route, apiKey) => {
   return {
     type: ADD_ROUTE,
     route,
+    apiKey
   }
 }
 
@@ -57,7 +58,7 @@ export const routeSearch = (id) => async (dispatch) => {
     method: 'GET',
   })
   let response = await res.json();
-  dispatch(findRoute(response));
+  dispatch(findRoute(response.route, response.apiKey));
   return response
 }
 
@@ -114,6 +115,7 @@ const routesReducer = (state = initialState, action) => {
     case FIND_ROUTE:
       newState = Object.assign({}, state)
       newState.route = action.route;
+      newState.apiKey = action.apiKey;
       return newState;
     case ADD_ROUTE:
       newState = Object.assign({}, state)

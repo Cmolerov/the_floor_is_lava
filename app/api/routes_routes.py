@@ -12,9 +12,10 @@ apiKey = os.environ.get('GOOGLE_API')
 @login_required
 def route(id):
     # print("THIS IS THE ID FOR BACKEND ROUTE", id)
-    route = Route.query.filter_by(id=id).one()
+    returnRoute = Route.query.filter_by(id=id).one()
     # print("THIS IS THE ROUTE FOR BACKEND", route)
-    return route.to_dict()
+    route = returnRoute.to_dict()
+    return {'route': route, 'apiKey': apiKey}
 
 # ****************** ROUTE ADD *********************
 
