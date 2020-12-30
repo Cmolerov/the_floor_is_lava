@@ -46,12 +46,15 @@ origin=${route.startLat},${route.startLong}&destination=${route.endLat},${route.
               <h1 className='results-local-username'>{route.name}</h1>
               </div>
             </NavLink>
-            <div className='results-local-user__bio'><p>{route.description}</p></div>
+              <h3 className='routes__name'>{route.name}</h3>
+          <div className='routes__description'><p>{route.description}</p></div>
+          <p><h3>{ route.startLat }</h3>Distance</p>
+          <p>{`${route.startLong}`}</p>
         </div>
       )
     })
   } else {
-    userRoutes = <div className='no-results-found'> No Results Found </div>
+    userRoutes = <div className='routes__no-results-found'> No Results Found </div>
   }
 
   return isLoaded && (
