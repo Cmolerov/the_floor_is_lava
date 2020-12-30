@@ -1,9 +1,11 @@
 .wrapper__login {
+  display: flex;
   width: 1200px;
   height: 800px;
   background-image: url("https://cbsnews1.cbsistatic.com/hub/i/2012/09/07/e7d5cf61-a644-11e2-a3f0-029118418759/CATERS_Lava_Lovers_Amazing_Images_22.jpg");
   background-repeat: no-repeat;
   background-size: 1200px 800px;
+  margin-right: 0px;
 }
 
 .form__login {
