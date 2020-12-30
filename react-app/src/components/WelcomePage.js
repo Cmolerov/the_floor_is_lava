@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../services/auth";
+
 export default function WelcomePage({ authenticated, setAuthenticated }) {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
+    const [errors, setErrors] = useState([]);
 
     const onSignUp = async (e) => {
         e.preventDefault();
@@ -36,6 +38,19 @@ export default function WelcomePage({ authenticated, setAuthenticated }) {
     if (authenticated) {
         return <Redirect to="/" />;
     }
+    // finish adding csrf and errors find in services 
+    // const logInDemo = (e) => {
+    //     e.preventDefault();
+    //     setErrors([]);
+    //     return dispatch(
+    //         sessionActions.login({
+    //             credential: "set demo email",
+    //             password: " set demo password",
+    //         })
+    //     ).catch((res) => {
+    //         if (res.data && res.data.errors) setErrors(res.data.errors);
+    //     });
+    // };
 
     return (
         <div className="welcomePage">
@@ -80,7 +95,11 @@ export default function WelcomePage({ authenticated, setAuthenticated }) {
                         value={repeatPassword}
                         required={true}
                     ></input>
-                    <button type="submit">Sign Up</button>
+                    <div className="welcomePage_form-buttons">
+                        <button type="submit">Sign Up</button>
+                        {/* onClick={logInDemo} */}
+                        <button className="form_demo">Login as Gusteau</button>
+                    </div>
                 </form>
             </div>
         </div>
