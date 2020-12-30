@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/home/davidleegriffin/week20/the_floor_is_lava/.venv/bin/python3.8",
+    "python.pythonPath": "/System/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python",
     "python.linting.pylintEnabled": false,
     "python.linting.enabled": true,
     "python.linting.pycodestyleEnabled": true

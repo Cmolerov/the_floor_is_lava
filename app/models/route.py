@@ -8,7 +8,7 @@ class Route(db.Model):
   endLong = db.Column(db.Float, nullable=False)
   startLat = db.Column(db.Float, nullable=False)
   endLat = db.Column(db.Float, nullable=False)
-  distance = db.Column(db.Float)
+  distance = db.Column(db.String(100))
   description = db.Column(db.String(255))
   userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   createdAt = db.Column(db.DateTime, nullable=False)
