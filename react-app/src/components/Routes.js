@@ -1,14 +1,14 @@
 import React, { useEffect, useState, Component } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 
 import * as routesAction from '../store/routes'
 
 
 const containerStyle = {
-  width: '400px',
-  height: '400px'
+  width: '200px',
+  height: '200px'
 };
 
 const center = {
@@ -22,45 +22,54 @@ function Routes(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const routes = useSelector(state => state.routes.routes);
   const apiKey = useSelector(state => state.routes.apiKey)
-  console.log("THIS IS API KEY!!!!", apiKey)
+  const [response, setResponse] = useState(null)
+  let travelMode = 'WALKING'
+  let origin = '42.35796768090105,-71.07336678423798'
+  let destination = '42.369803176648205,-71.06982626829688'
+  
+  function directionsCallback (response) {
+    console.log(response)
+  
+    if (response !== null) {
+      if (response.status === 'OK') {
+        setResponse(response)
+      } else {
+        console.log('response: ', response)
+      }
+    }
+  }
+  
+  //END MAP
   
   useEffect(() => {
     dispatch(routesAction.routesSearch(id))
-      .then(() => console.log("THE STORE IS UP AND RUNNING"))
       .then(() => setIsLoaded(true))
   }, [dispatch])
-  let userRoutes;
 
-  if (routes) {
-    userRoutes =
-      Object.values(routes).map((route, idx) => {
-      return (
-        <div key={idx} className='results-container__body__local'>
-            <NavLink className='navlinks' to={`/routes/${route.id}`}>
-            <div className='results-local-header'>
-              <div className='testCSS'>
-              {/* <img className='results-local-header__image' src={`https://maps.googleapis.com/maps/api/directions/json?
+  return isLoaded &&(
+    <>
+      <div>
+        {
+          Object.values(routes).map((route, idx) => {
+            // origin = `${route.startLat},${route.startLong}`
+            // destination = `${route.endLat},${route.startLong}`
+            return (
+              <div key={idx} className='results-container__body__local'>
+                <NavLink className='navlinks' to={`/routes/${route.id}`}>
+                  <div className='results-local-header'>
+                    <div className='map'>
+                      {/* <img className='results-local-header__image' src={`https://maps.googleapis.com/maps/api/directions/json?
 origin=${route.startLat},${route.startLong}&destination=${route.endLat},${route.endLong}
 &key=${apiKey}`} /> */}
+                    </div>
+                    <h1 className='results-local-username'>{route.name}</h1>
+                  </div>
+                </NavLink>
+                <div className='results-local-user__bio'><p>{route.description}</p></div>
               </div>
-              <h1 className='results-local-username'>{route.name}</h1>
-              </div>
-            </NavLink>
-              <h3 className='routes__name'>{route.name}</h3>
-          <div className='routes__description'><p>{route.description}</p></div>
-          <p><h3>{ route.startLat }</h3>Distance</p>
-          <p>{`${route.startLong}`}</p>
-        </div>
-      )
-    })
-  } else {
-    userRoutes = <div className='routes__no-results-found'> No Results Found </div>
-  }
-
-  return isLoaded && (
-    <>
-    <div>
-      {userRoutes}
+            )
+          })
+        }
     </div>
       <LoadScript
         googleMapsApiKey={apiKey}
@@ -70,8 +79,42 @@ origin=${route.startLat},${route.startLong}&destination=${route.endLat},${route.
           center={center}
           zoom={10}
         >
-          { /* Child components, such as markers, info windows, etc. */ }
-          <></>
+          {
+              (
+                destination !== '' &&
+                origin !== ''
+              ) && (
+                <DirectionsService
+                  // required
+                  options={{ 
+                    destination: destination,
+                    origin: origin,
+                    travelMode: travelMode
+                  }}
+                  // required
+                  callback={directionsCallback}
+                  // optional
+                  onLoad={directionsService => {
+                    console.log('DirectionsService onLoad directionsService: ', directionsService)
+                  }}
+                />
+              )
+            }
+
+            {
+              response !== null && (
+                <DirectionsRenderer
+                  // required
+                  options={{
+                    directions: response
+                  }}
+                  // optional
+                  onLoad={directionsRenderer => {
+                    console.log('DirectionsRenderer onLoad directionsRenderer: ', directionsRenderer)
+                  }}
+                />
+              )
+            }
         </GoogleMap>
       </LoadScript>
       </>
