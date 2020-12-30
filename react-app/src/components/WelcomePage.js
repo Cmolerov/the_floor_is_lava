@@ -38,7 +38,7 @@ export default function WelcomePage({ authenticated, setAuthenticated }) {
     if (authenticated) {
         return <Redirect to="/" />;
     }
-    // finish adding csrf and errors find in services 
+    // finish adding csrf and errors find in services
     // const logInDemo = (e) => {
     //     e.preventDefault();
     //     setErrors([]);
@@ -98,7 +98,7 @@ export default function WelcomePage({ authenticated, setAuthenticated }) {
                     <div className="welcomePage_form-buttons">
                         <button type="submit">Sign Up</button>
                         {/* onClick={logInDemo} */}
-                        <button className="form_demo">Login as Gusteau</button>
+                        <button className="form_demo">Login as Demo</button>
                     </div>
                 </form>
             </div>
