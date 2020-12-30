@@ -10,6 +10,8 @@ import { authenticate } from "./services/auth";
 import Routes from "./components/Routes";
 import WelcomePage from "./components/WelcomePage";
 import HomePage from "./components/HomePage";
+import SingleRoute from './components/SingleRoute';
+
 
 function App() {
     const [authenticated, setAuthenticated] = useState(false);
@@ -70,6 +72,13 @@ function App() {
                     authenticated={authenticated}
                 >
                     <Routes user={user} />
+                </ProtectedRoute>
+                <ProtectedRoute
+                    path="/routes/:routeId"
+                    exact={true}
+                    authenticated={authenticated}
+                >
+                    <SingleRoute />
                 </ProtectedRoute>
                 <ProtectedRoute
                     path="/"
