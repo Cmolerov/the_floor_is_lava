@@ -2,6 +2,9 @@ from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import User, Route
 
+import os
+
+apiKey = os.environ.get('GOOGLE_API')
 user_routes = Blueprint('users', __name__)
 
 # ****************** USERS SEARCH *********************
@@ -26,7 +29,8 @@ def user(id):
 @user_routes.route('/<int:id>/routes')
 @login_required
 def routes(id):
-    # print("THIS IS THE ID FOR BACKEND ROUTES", id)
+    print("THIS IS THE ID FOR BACKEND ROUTES", id)
     routes = Route.query.filter_by(userId=id).all()
-    # print("THESE ARE THE ROUTES FOR BACKEND", routes)
-    return {route.id:route.to_dict() for route in routes}
+    print("THESE ARE THE ROUTES FOR BACKEND", routes)
+    returnRoutes = {route.id:route.to_dict() for route in routes}
+    return {'routes': returnRoutes, 'apiKey': apiKey}
