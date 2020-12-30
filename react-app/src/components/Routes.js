@@ -21,19 +21,21 @@ function Routes(props) {
     userRoutes =
       Object.values(routes).map((route, idx) => {
       return (
-        <div key={idx} className='results-container__body__local'>
-            <NavLink className='navlinks' to={`/routes/${route.id}`}>
-              <div className='results-local-header'>
-                {/* <img className='results-local-header__image' src={person.avatar /> */}
-              <h1 className='results-local-username'>{route.name}</h1>
+        <div key={idx} className="routes__container">
+            <NavLink className='routes__navlinks' to={`/routes/${route.id}`}>
+              <div className='routes__map-container'>
+                <img className='routs__image' src="https://i.pinimg.com/originals/fb/87/92/fb8792fafecad712d36172ce77469860.png" width="200" height="150"/>
               </div>
             </NavLink>
-            <div className='results-local-user__bio'><p>{route.description}</p></div>
+              <h3 className='routes__name'>{route.name}</h3>
+          <div className='routes__description'><p>{route.description}</p></div>
+          <p><h3>{ route.startLat }</h3>Distance</p>
+          <p>{`${route.startLong}`}</p>
         </div>
       )
     })
   } else {
-    userRoutes = <div className='no-results-found'> No Results Found </div>
+    userRoutes = <div className='routes__no-results-found'> No Results Found </div>
   }
 
   return isLoaded && (
