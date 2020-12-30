@@ -40,7 +40,7 @@ function SingleRoute() {
       if (response.status === 'OK') {
         setResponse(response)
       } else {
-        // console.log('response: ', response)
+        console.log('response: ', response)
       }
     }
   }
@@ -55,8 +55,7 @@ function SingleRoute() {
   // let origin;
 
 
-
-  return  (
+  return isLoaded &&(
     <div>
     {/* { origin = `${route.startLat}, ${route.startLong}`}
     { destination = `${route.endLat }, ${ route.endLong }` } */}
@@ -109,6 +108,7 @@ function SingleRoute() {
       </LoadScript>
     </div>
   )
+  // return isLoadedMap ? renderMap() : null;
 }
 
 export default SingleRoute;
