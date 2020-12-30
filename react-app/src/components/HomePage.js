@@ -4,8 +4,12 @@ export default function HomePage() {
     return (
         <div className="homePage_container">
             <div className="homePage_container-left">
-                <div className="homePage_container-left_top"></div>
-                <div className="homePage_container-left_bottom"></div>
+                <div className="homePage_container-left_top">
+                    <h1>Profile</h1>
+                </div>
+                <div className="homePage_container-left_bottom">
+                    <h1>This Week</h1>
+                </div>
             </div>
             <div className="homePage_container-middle">
                 <div className="homePage_container-middle-container">
