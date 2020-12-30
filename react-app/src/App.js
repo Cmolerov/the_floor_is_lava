@@ -9,6 +9,7 @@ import User from "./components/User";
 import { authenticate } from "./services/auth";
 import Routes from "./components/Routes";
 import WelcomePage from "./components/WelcomePage";
+import SingleRoute from './components/SingleRoute';
 
 function App() {
     const [authenticated, setAuthenticated] = useState(false);
@@ -71,11 +72,11 @@ function App() {
                     <Routes user={user} />
                 </ProtectedRoute>
                 <ProtectedRoute
-                    path="/routes/:id"
+                    path="/routes/:routeId"
                     exact={true}
                     authenticated={authenticated}
                 >
-                    <Route user={user} />
+                    <SingleRoute />
                 </ProtectedRoute>
                 <ProtectedRoute
                     path="/"
