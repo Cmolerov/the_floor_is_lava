@@ -71,6 +71,13 @@ function App() {
                     <Routes user={user} />
                 </ProtectedRoute>
                 <ProtectedRoute
+                    path="/routes/:id"
+                    exact={true}
+                    authenticated={authenticated}
+                >
+                    <Route user={user} />
+                </ProtectedRoute>
+                <ProtectedRoute
                     path="/"
                     exact={true}
                     authenticated={authenticated}
