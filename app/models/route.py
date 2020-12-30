@@ -22,6 +22,8 @@ class Route(db.Model):
       "endLong": self.endLong,
       "startLat": self.startLat,
       "endLat": self.endLat,
+      "distance": self.distance,
+      "createdAt": self.createdAt,
       "description": self.description,
       "userId": self.userId,
     }
