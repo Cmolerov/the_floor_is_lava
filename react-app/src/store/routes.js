@@ -8,23 +8,22 @@ const DELETE_TESTIMONY = 'testimony/deleteTestimony'
 const findRoutes = (routes, apiKey) => {
   return {
     type: FIND_ROUTES,
-    routes,
+    routes, 
     apiKey
   }
 }
 
-const findRoute = (route) => {
+const findRoute = (route, apiKey) => {
   return {
     type: FIND_ROUTE,
-    route
+    route, apiKey
   }
 }
 
-const addRoute = (route, apiKey) => {
+const addRoute = (route) => {
   return {
     type: ADD_ROUTE,
-    route,
-    apiKey
+    route
   }
 }
 
@@ -102,7 +101,8 @@ export const routeAdd = (route) => async (dispatch) => {
 //   return res
 // }
 
-const initialState = { routes: null }
+const initialState = { routes: null, route: {} }
+
 
 const routesReducer = (state = initialState, action) => {
   let newState;
