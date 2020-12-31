@@ -15,7 +15,7 @@ function UsersList() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [label, setLabel] = useState(false)
   const [ markers, setMarkers ] = useState([]);
-  const [createMark, setcreateMark] = useState(false);
+  const [createMark, setcreateMark] = useState(true);
   const [ myMap, setMyMap ] = useState(null);
   const [center, setCenter] = useState(null);
   let start = "start"
@@ -122,15 +122,6 @@ function UsersList() {
     ) : null }
       
     </GoogleMap>
-    <button
-      type="button"
-      style={{backgroundColor: createMark ? "green" : null}}
-      onClick={()=>{setcreateMark(()=>!createMark)}}
-    >ADD & DRAG</button>
-    <button
-      type="button"
-      onClick={()=>setMarkers([])}
-        >CLEAR MAP</button>
     </LoadScript>
   </div>
   )
