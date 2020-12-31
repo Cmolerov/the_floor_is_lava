@@ -15,7 +15,6 @@ function UsersList() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [label, setLabel] = useState(false)
   const [ markers, setMarkers ] = useState([]);
-  const [createMark, setcreateMark] = useState(false);
   const [ myMap, setMyMap ] = useState(null);
   const [center, setCenter] = useState(null);
   let start = "start"
@@ -105,36 +104,26 @@ function UsersList() {
             setMyMap(map)
             }
           }
-          onClick={(e)=> createMark && markers.length < 2 ? addMarker(e.latLng.toJSON()) : null}
+          onClick={(e)=> markers.length < 2 ? addMarker(e.latLng.toJSON()) : null}
     >{markers ? (
       markers.map((marker) => {
         return (
           <Marker
             key={marker.id}
-            draggable={createMark}
+            draggable={true}
             position={marker.coords}
             onDragEnd={e => marker.coords = e.latLng.toJSON()}
-            label = {marker.id === 0 ? "start" : "end"}
+            label={marker.id === 0 ? { text: "start", color: 'rgba(214, 140, 140, 0.9)'} : null}
+            icon={marker.id === 0 ? 'https://img.icons8.com/officexs/30/000000/volcano.png' : 'https://img.icons8.com/fluent-systems-filled/24/000000/finish-flag.png'}
           />
         )
       })
     ) : null }
       
     </GoogleMap>
-    <button
-      type="button"
-      style={{backgroundColor: createMark ? "green" : null}}
-      onClick={()=>{setcreateMark(()=>!createMark)}}
-    >ADD & DRAG</button>
-    <button
-      type="button"
-      onClick={()=>setMarkers([])}
-        >CLEAR MAP</button>
     </LoadScript>
   </div>
   )
-
-  // return renderMap();
 }
 
 export default UsersList;
