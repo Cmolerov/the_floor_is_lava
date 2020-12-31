@@ -31,7 +31,7 @@ function SingleRoute() {
   let travelMode = 'WALKING'
 
   const containerStyle = {
-    width: '800px',
+    width: '600px',
     height: '400px'
   };
   
@@ -63,10 +63,8 @@ function SingleRoute() {
   // let origin;
 
     return(
-      <div>
-      {/* { origin = `${route.startLat}, ${route.startLong}`}
-      { destination = `${route.endLat }, ${ route.endLong }` } */}
-      {/* {console.log('return route', route.startLat)} */}
+      <div className="main__div__map-container">
+        <p className="route__p__name">Route Name Here</p>
         <LoadScript
           googleMapsApiKey={apiKey}
         >
@@ -76,41 +74,41 @@ function SingleRoute() {
             zoom={10}
           >
             {
-                (
-                  destination !== '' &&
-                  origin !== ''
-                ) && (
-                  <DirectionsService
-                    // required
-                    options={{ 
-                      destination: destination,
-                      origin: origin,
-                      travelMode: travelMode
-                    }}
-                    // required
-                    callback={directionsCallback}
-                    // optional
-                    onLoad={directionsService => {
-                      console.log('DirectionsService onLoad directionsService: ', directionsService)
-                    }}
-                  />
-                )
-              }
+              (
+                destination !== '' &&
+                origin !== ''
+              ) && (
+                <DirectionsService
+                  // required
+                  options={{ 
+                    destination: destination,
+                    origin: origin,
+                    travelMode: travelMode
+                  }}
+                  // required
+                  callback={directionsCallback}
+                  // optional
+                  onLoad={directionsService => {
+                    console.log('DirectionsService onLoad directionsService: ', directionsService)
+                  }}
+                />
+              )
+            }
   
-              {
-                response !== null && (
-                  <DirectionsRenderer
-                    // required
-                    options={{
-                      directions: response
-                    }}
-                    // optional
-                    onLoad={directionsRenderer => {
-                      console.log('DirectionsRenderer onLoad directionsRenderer: ', directionsRenderer)
-                    }}
-                  />
-                )
-              }
+            {
+              response !== null && (
+                <DirectionsRenderer
+                  // required
+                  options={{
+                    directions: response
+                  }}
+                  // optional
+                  onLoad={directionsRenderer => {
+                    console.log('DirectionsRenderer onLoad directionsRenderer: ', directionsRenderer)
+                  }}
+                />
+              )
+            }
           </GoogleMap>
         </LoadScript>
       </div>

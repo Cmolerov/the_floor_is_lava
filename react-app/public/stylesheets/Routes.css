@@ -15,6 +15,12 @@
   border: 1px solid #ccf;
   border-radius: 5px;
   padding: 0;
+  transition: transform .2s;
+}
+
+.routes__card__container:hover {
+  transform: translate(10px, -10px);
+  box-shadow: -4px -4px 16px rgba(0, 0, 0, 0.7);
 }
 
 .routes__h2__name {
@@ -34,10 +40,10 @@
 
 .routes__div__description:hover {
   transform: scale(1.5);
-  background-color: #fc5200;
+  background-color: rgba(252, 82, 0, 0.7);
   font-style: normal;
   color: white;
-  text-shadow: 1px 1px black;
+  text-shadow: 1.5px 1.5px black;
   padding: 10px;
   align-items: center;
 }
