@@ -63,9 +63,16 @@ export const routeSearch = (id) => async (dispatch) => {
 }
 
 export const routeAdd = (route) => async (dispatch) => {
-  const { name, startLong, endLong, startLat, endLat, description, userId} = route;
-  const res = await fetch(`/api/routes/`, {
+  const { name, startLong, endLong, startLat, endLat, description, userId, apiKey } = route;
+  let proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+  let data = await fetch(proxyUrl + `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&mode=walking&origins=${startLat},${startLong}&destinations=${endLat}%2C${endLong}&key=${apiKey}`)
+  let resp = await data.json()
+  const distance = (resp.rows[0].elements[0].distance.text)
+  const res = await fetch(`/api/routes/new`, {
     method: 'POST',
+    headers: {
+      "content_type":"application/json"
+    },
     body: JSON.stringify({
       name,
       startLong,
@@ -73,6 +80,7 @@ export const routeAdd = (route) => async (dispatch) => {
       startLat,
       endLat,
       description,
+      distance,
       userId
     }),
   })
