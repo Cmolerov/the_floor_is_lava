@@ -124,8 +124,6 @@ function UsersList() {
     </LoadScript>
   </div>
   )
-
-  // return renderMap();
 }
 
 export default UsersList;
