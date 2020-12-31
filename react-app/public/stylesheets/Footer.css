@@ -1,0 +1,46 @@
+.footer {
+  height: 50px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: ;
+  
+}
+
+.footer_home {
+  width: 5px;
+  height: 5px;
+  margin-left: 50px;
+  border-radius: 50%;
+  animation-name: lava;
+  animation-duration: 60s;
+  animation-iteration-count: infinite;
+}
+
+.footer__img__icon {
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+}
+
+.footer__grid-container {
+  display: grid;
+  grid-template-columns: 4fr 3fr 3fr 3fr;
+}
+
+.footer__grid-1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.footer__grid-2, .footer__grid-3, .footer__grid-4{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.github__links{
+  text-decoration: none;
+  color: black;
+}
