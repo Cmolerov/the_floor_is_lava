@@ -114,7 +114,8 @@ function UsersList() {
             draggable={createMark}
             position={marker.coords}
             onDragEnd={e => marker.coords = e.latLng.toJSON()}
-            label = {marker.id === 0 ? "start" : "end"}
+            label={marker.id === 0 ? { text: "start", color: 'rgba(214, 140, 140, 0.9)'} : null}
+            icon={marker.id === 0 ? 'https://img.icons8.com/officexs/30/000000/volcano.png' : 'https://img.icons8.com/fluent-systems-filled/24/000000/finish-flag.png'}
           />
         )
       })
