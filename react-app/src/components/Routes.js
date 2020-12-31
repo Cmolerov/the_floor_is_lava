@@ -1,8 +1,10 @@
-import React, { useEffect, useState, Component } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 import * as routesAction from '../store/routes'
+
+import NewRoute from './NewRoute'
 
 const containerStyle = {
   width: '200px',
@@ -16,9 +18,7 @@ function Routes(props) {
   const routes = useSelector(state => state.routes.routes);
   const apiKey = useSelector(state => state.routes.apiKey)
   const [response, setResponse] = useState(null)
-  let travelMode = 'WALKING'
-  let origin = '42.35796768090105,-71.07336678423798'
-  let destination = '42.369803176648205,-71.06982626829688'
+  const [redirect, setRedirect] = useState(false)
   
   function directionsCallback (response) {
     console.log(response)
@@ -37,8 +37,20 @@ function Routes(props) {
       .then(() => setIsLoaded(true))
   }, [dispatch])
 
+  function updateRedirect() {
+    setRedirect(true)
+  }
+
+  function newRoute() {
+    if (redirect) {
+      return <Redirect to='/routes/new' />
+    }
+  }
+
   return isLoaded &&(
     <>
+      {newRoute()}
+      <button onClick={updateRedirect}>Create New Route</button>
       <div>{
         Object.values(routes).map((route, idx) => {
           const center = {
@@ -78,7 +90,7 @@ function Routes(props) {
           })
         }
     </div>
-      </>
+  </>
   )
 }
 

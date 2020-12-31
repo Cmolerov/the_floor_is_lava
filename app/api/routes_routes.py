@@ -1,6 +1,7 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import Route
+from app.models import Route, db
+from datetime import datetime
 import os
 
 routes_routes = Blueprint('routes', __name__)
@@ -19,11 +20,24 @@ def route(id):
 
 # ****************** ROUTE ADD *********************
 
-@routes_routes.route('/',methods = ['POST'])
+@routes_routes.route('/new',methods = ['POST'])
 @login_required
 def routePost():
-    # print("THIS IS THE ID FOR BACKEND ROUTE", id)
-    # route = Route.query.filter_by(id=id).one()
-    # print("THIS IS THE ROUTE FOR BACKEND", route)
-    # return route.to_dict()
+    data = request.json
+    print(data)
+    route = Route(
+        name=data['name'],
+        startLong=data['startLong'],
+        startLat=data['startLat'],
+        endLat=data['endLat'],
+        endLong=data['endLong'],
+        distance=data['distance'],
+        description=data['description'],
+        userId=data['userId'],
+        createdAt=datetime.now(),
+        updatedAt=datetime.now()
+    )
+    db.session.add(route)
+    db.session.commit()
+    return route.to_dict()
     print("POST ROUTE IS CONNECTING")

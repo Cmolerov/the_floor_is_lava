@@ -12,6 +12,7 @@ import WelcomePage from "./components/WelcomePage";
 import HomePage from "./components/HomePage";
 import SingleRoute from "./components/SingleRoute";
 import Footer from "./components/Footer";
+import NewRoute from './components/NewRoute';
 
 function App() {
     const [authenticated, setAuthenticated] = useState(false);
@@ -68,6 +69,13 @@ function App() {
                     authenticated={authenticated}
                 >
                     <User />
+                </ProtectedRoute>
+                <ProtectedRoute
+                    path="/routes/new"
+                    exact={true}
+                    authenticated={authenticated}
+                >
+                    <NewRoute user={user} />
                 </ProtectedRoute>
                 <ProtectedRoute
                     path="/routes"
