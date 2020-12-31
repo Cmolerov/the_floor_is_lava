@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="footer__grid-container">
         <div className="footer__grid-1">
           <img className="footer__img__icon" src='./images/favicon.ico' alt="volcano"/> 
-          <div>LAVA</div>
+          <div className="footer__image__label">LAVA</div>
         </div>
           <div className="footer__grid-2">
             <a className='github__links' href='https://daletsakamoto.github.io/'>Dale Sakamoto</a>
