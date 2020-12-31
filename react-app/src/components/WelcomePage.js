@@ -35,9 +35,6 @@ export default function WelcomePage({ authenticated, setAuthenticated }) {
         setRepeatPassword(e.target.value);
     };
 
-    if (authenticated) {
-        return <Redirect to="/" />;
-    }
     const loginDemo = async (e) => {
         e.preventDefault();
         const user = await login("demo_user@aa.com", "password");
@@ -48,6 +45,9 @@ export default function WelcomePage({ authenticated, setAuthenticated }) {
         }
     };
 
+    if (authenticated) {
+        return <Redirect to="/" />;
+    }
     return (
         <div className="welcomePage">
             <div className="welcomePage_form">
@@ -94,7 +94,9 @@ export default function WelcomePage({ authenticated, setAuthenticated }) {
                     <div className="welcomePage_form-buttons">
                         <button type="submit">Sign Up</button>
                         {/* onClick={logInDemo} */}
-                        <button className="form_demo">Login as Demo</button>
+                        <button onClick={loginDemo} className="demo-button">
+                            Log In as Demo User
+                        </button>
                     </div>
                 </form>
             </div>

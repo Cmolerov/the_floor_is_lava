@@ -10,9 +10,8 @@ import { authenticate } from "./services/auth";
 import Routes from "./components/Routes";
 import WelcomePage from "./components/WelcomePage";
 import HomePage from "./components/HomePage";
-import SingleRoute from './components/SingleRoute';
-import Footer from './components/Footer';
-
+import SingleRoute from "./components/SingleRoute";
+import Footer from "./components/Footer";
 
 function App() {
     const [authenticated, setAuthenticated] = useState(false);
@@ -39,7 +38,10 @@ function App() {
             <NavBar setAuthenticated={setAuthenticated} />
             <Switch>
                 <Route exact path="/welcome">
-                    <WelcomePage />
+                    <WelcomePage
+                        authenticated={authenticated}
+                        setAuthenticated={setAuthenticated}
+                    />
                 </Route>
                 <Route path="/login" exact={true}>
                     <LoginForm
