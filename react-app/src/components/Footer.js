@@ -32,7 +32,7 @@ const Footer = () => {
         <div className="footer__grid-5">
           <a className='github__links' href='https://github.com/Cmolerov/the_floor_is_lava.git'>
             <span className="footer__span__repo">
-              <img className="footer__img__repo" src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png' width="30" height="30"/>
+              <img className="footer__img__repo" src='../images/github-cat.png' width="50" height="50"/>
             </span>
           </a>
         </div>
