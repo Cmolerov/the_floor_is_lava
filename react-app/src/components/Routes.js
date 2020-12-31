@@ -58,53 +58,27 @@ function Routes(props) {
                 <NavLink className='navlinks' to={`/routes/${route.id}`}>
                   <div className='routes__map-container'>
                     <div className='routes__map'>
-                    <div>
-                      <LoadScript
-                        googleMapsApiKey={apiKey}
-                      >
-                      <GoogleMap
-                        mapContainerStyle={containerStyle}
-                            center={center}
-                        zoom={10}
-                      >
-                        {/* {
-                          (
-                            destination !== '' &&
-                            origin !== ''
-                          ) && (
-                            <DirectionsService
-                              options={{ 
-                                destination: destination,
-                                origin: origin,
-                                travelMode: travelMode
-                              }}
-                              callback={directionsCallback}
-                            />
-                          )
-                        }
-              
-                        {
-                          response !== null && (
-                            <DirectionsRenderer
-                              // required
-                              options={{
-                                directions: response
-                              }}
-                              // optional
-                              onLoad={directionsRenderer => {
-                                console.log('DirectionsRenderer onLoad directionsRenderer: ', directionsRenderer)
-                              }}
-                            />
-                          )
-                        } */}
-                      </GoogleMap>
-                      </LoadScript>
-        </div>
-            </div>
-              </div>
-              </NavLink>
-                <h2 className='routes__name'>{route.name}</h2>
-                <div className='routes__description'><p>{route.description}</p></div>
+                      <div className='google__map-container'>
+                        <LoadScript
+                          googleMapsApiKey={apiKey}
+                        >
+                        <GoogleMap
+                          mapContainerStyle={containerStyle}
+                          center={center}
+                          zoom={10}
+                        >
+                        </GoogleMap>
+                        </LoadScript>
+                      </div>
+                    </div>
+                  </div>
+                </NavLink>
+                <h2 className='routes__h2__name'>{route.name}</h2>
+                <div className='routes__div__description'><p>{route.description}</p></div>
+                <div className="routes__div__distance">
+                  <h4>Distance ~ <span>{route.distance}</span></h4>
+                  <span className="routes__span__createdAt">Created:<h5 className="routes__h5__createdAt">{route.createdAt}</h5></span>
+                </div>
               </div>
             )
           })

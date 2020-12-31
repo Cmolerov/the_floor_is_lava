@@ -1,13 +1,38 @@
 .routes__container {
   display: inline-flex;
   width: 200px;
-  height: 500px;
+  height: 575px;
   background-color: #f7f7f7;
   flex-direction: column;
   margin: 10px;
   border: 1px solid #ccf;
+  padding: 0;
 }
 
-/* .routes__name {
-  display: block;
-} */
+.routes__h2__name {
+  text-align: center;
+  height: 10%
+}
+
+.routes__div__description {
+  font-style: italic;
+  font-weight: 700;
+  border: 1px solid #fc5200;
+  height: 25%;
+  border-radius: 25px;
+  padding: 10px;
+  align-items: center;
+  box-shadow: 2px 2px 8px #fc5200;
+}
+
+.routes__div__distance {
+
+}
+
+.routes__span__createdAt {
+  font-weight: 800;
+}
+
+.routes__h5__createdAt {
+  margin-top: 0px;
+}
