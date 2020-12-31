@@ -11,6 +11,7 @@ import Routes from "./components/Routes";
 import WelcomePage from "./components/WelcomePage";
 import HomePage from "./components/HomePage";
 import SingleRoute from './components/SingleRoute';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -88,6 +89,7 @@ function App() {
                     <HomePage />
                 </ProtectedRoute>
             </Switch>
+            <Footer setAuthenticated={setAuthenticated} />
         </BrowserRouter>
     );
 }

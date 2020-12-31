@@ -1,25 +1,45 @@
 .wrapper__login {
   display: flex;
-  width: 1200px;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
   height: 800px;
-  background-image: url("https://cbsnews1.cbsistatic.com/hub/i/2012/09/07/e7d5cf61-a644-11e2-a3f0-029118418759/CATERS_Lava_Lovers_Amazing_Images_22.jpg");
-  background-repeat: no-repeat;
-  background-size: 1200px 800px;
-  margin-right: 0px;
+  background: url('../images/lava-field.jpg');
+  background-size: cover;
+}
+
+.form__wrapper__login{
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  /* top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  width: 400px;
+  height: 450px;
+  background: linear-gradient(
+    to bottom,
+    rgba(214, 140, 140, 0.8) 0%,
+    rgba(199, 197, 197, 0.8) 12%,
+    rgba(255, 255, 255, 0.8) 30%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0.8) 70%,
+    rgba(199, 197, 197, 0.8) 88%,
+    rgba(214, 140, 140, 0.8) 100%
+  );
+  box-sizing: border-box;
+  border-radius: 5px;
 }
 
 .form__login {
-  position: absolute;
-  top: 50%;
+  height: 100%;
+  width: 100%;
+  /* top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 400px;
-  height: 350px;
+  transform: translate(-50%, -50%); */
   padding: 50px;
-  background-color: rgba(255, 255, 255, 0.8);
   box-sizing: border-box;
-  box-shadow: 0 15px 25px #fc5200;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .form__login h2 {
@@ -41,7 +61,7 @@
   margin-bottom: 30px;
   border: none;
   border-bottom: 1px solid #fff;
-  box-shadow: 0 15px 25px #fc5200;
+  box-shadow: 0 2px 10px #e0682c;
   outline: none;
   background: transparent;
 }
