@@ -1,11 +1,19 @@
-.routes__container {
+.main__div__container {
+  display: inline-flex;
+  flex-direction: column;
+  margin-top: 75px;
+  padding: 20px;
+}
+
+
+.routes__card__container {
   display: inline-flex;
   width: 200px;
   height: 575px;
   background-color: #f7f7f7;
   flex-direction: column;
-  margin: 10px;
   border: 1px solid #ccf;
+  border-radius: 5px;
   padding: 0;
 }
 
@@ -16,13 +24,22 @@
 
 .routes__div__description {
   font-style: italic;
-  font-weight: 700;
   border: 1px solid #fc5200;
   height: 25%;
   border-radius: 25px;
   padding: 10px;
   align-items: center;
   box-shadow: 2px 2px 8px #fc5200;
+}
+
+.routes__div__description:hover {
+  transform: scale(1.5);
+  background-color: #fc5200;
+  font-style: normal;
+  color: white;
+  text-shadow: 1px 1px black;
+  padding: 10px;
+  align-items: center;
 }
 
 .routes__div__distance {
