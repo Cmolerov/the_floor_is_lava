@@ -15,7 +15,6 @@ function UsersList() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [label, setLabel] = useState(false)
   const [ markers, setMarkers ] = useState([]);
-  const [createMark, setcreateMark] = useState(true);
   const [ myMap, setMyMap ] = useState(null);
   const [center, setCenter] = useState(null);
   let start = "start"
@@ -105,13 +104,13 @@ function UsersList() {
             setMyMap(map)
             }
           }
-          onClick={(e)=> createMark && markers.length < 2 ? addMarker(e.latLng.toJSON()) : null}
+          onClick={(e)=> markers.length < 2 ? addMarker(e.latLng.toJSON()) : null}
     >{markers ? (
       markers.map((marker) => {
         return (
           <Marker
             key={marker.id}
-            draggable={createMark}
+            draggable={true}
             position={marker.coords}
             onDragEnd={e => marker.coords = e.latLng.toJSON()}
             label={marker.id === 0 ? { text: "start", color: 'rgba(214, 140, 140, 0.9)'} : null}
