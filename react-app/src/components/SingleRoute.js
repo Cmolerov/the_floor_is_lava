@@ -3,16 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer, useLoadScript, } from '@react-google-maps/api';
 
-import * as routesAction from '../store/routes'
+import * as routesAction from '../store/routes';
 
 
 function SingleRoute() {
   
-  // const route = useSelector(state => state.routes.route);
+  const route = useSelector(state => state.routes.route);
   const origin = useSelector(state => `${state.routes.route.startLat},${state.routes.route.startLong}`);
   const destination = useSelector(state => `${state.routes.route.endLat},${state.routes.route.endLong}`)
   const apiKey = useSelector(state => state.routes.apiKey)
-    const center = useSelector( state =>
+  const center = useSelector( state =>
   {
     return {
       lat: state.routes.route.startLat,
@@ -64,7 +64,7 @@ function SingleRoute() {
 
     return(
       <div className="main__div__map-container">
-        <p className="route__p__name">Route Name Here</p>
+        <p className="route__p__name">{ route.name }</p>
         <LoadScript
           googleMapsApiKey={apiKey}
         >
