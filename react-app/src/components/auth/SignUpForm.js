@@ -95,7 +95,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
                     </div>
                     <button type="submit">Sign Up</button>
                     <button onClick={loginDemo} className="demo-button">
-                        Log In as Demo User
+                        Demo User
                     </button>
                 </form>
             </div>

@@ -69,7 +69,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
                         />
                         <button type="submit">Login</button>
                         <button onClick={loginDemo} className="demo-button">
-                            Log In as Demo User
+                            Demo User
                         </button>
                     </div>
                 </form>

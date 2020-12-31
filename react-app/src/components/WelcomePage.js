@@ -95,7 +95,7 @@ export default function WelcomePage({ authenticated, setAuthenticated }) {
                         <button type="submit">Sign Up</button>
                         {/* onClick={logInDemo} */}
                         <button onClick={loginDemo} className="demo-button">
-                            Log In as Demo User
+                            Demo User
                         </button>
                     </div>
                 </form>
