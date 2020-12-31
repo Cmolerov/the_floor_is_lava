@@ -88,7 +88,7 @@ function App() {
                     exact={true}
                     authenticated={authenticated}
                 >
-                    <HomePage />
+                    <HomePage user={user} />
                 </ProtectedRoute>
             </Switch>
             <Footer setAuthenticated={setAuthenticated} />
