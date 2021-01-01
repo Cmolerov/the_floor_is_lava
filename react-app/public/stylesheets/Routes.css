@@ -1,7 +1,19 @@
+.routes__div__banner {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.routes__button__new-route {
+  width: 180px;
+  background-color:rgba(252, 82, 0, 1);
+  margin-left: 0px;
+}
+
 .main__div__container {
   display: inline-flex;
   flex-direction: column;
-  margin-top: 75px;
+  margin-top: 5px;
   padding: 20px;
 }
 
