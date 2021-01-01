@@ -2,3 +2,11 @@
 body{
     margin: 0px;
 }
+
+h1, h2, h3 {
+    font-family: 'Raleway', sans-serif;
+}
+
+p, div, form, li, button {
+    font-family: 'Raleway', sans-serif;
+}

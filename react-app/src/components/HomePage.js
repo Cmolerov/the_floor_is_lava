@@ -4,7 +4,10 @@ import './HomePage.css';
 import * as routesAction from '../store/routes'
 
 export default function HomePage(props) {
-  const id = props.user.id;
+    let id;
+    if (props.authenticated) {
+        id = props.user.id
+  }
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const routes = useSelector(state => state.routes.routes);

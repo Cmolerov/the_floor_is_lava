@@ -1,9 +1,13 @@
 .navbar {
+    margin: 0 auto;
     height: 80px;
-    display: inline-flex;
+    max-width: 1200px;
 }
 
 .navbar__home {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     width: 5px;
     height: 5px;
     margin-left: 50px;
@@ -14,13 +18,16 @@
 }
 
 .img__icon {
+    height: 60px;
+    width: 80px;
     margin-top: 5px;
     margin-left: -40px;
 }
 
 .navbar__grid-container {
     display: grid;
-    grid-template-columns: 3fr 4fr 4fr 4fr 3fr 1fr;
+    height: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .navbar__grid {
@@ -29,14 +36,18 @@
 }
 
 .navbar__logout-button {
-    margin-right: 60px;
-    margin-top: 20px;
+    display:flex;
+    margin-right: 10px;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
     cursor: pointer;
 }
 
 .navbar__button__logout {
     background-color:rgba(252, 82, 0, 1);
-    width: 120px;
+    width: 100px;
+    border: .5px solid grey;
 }
 
 @keyframes lava {
