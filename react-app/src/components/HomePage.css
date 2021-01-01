@@ -1,0 +1,49 @@
+.homePage_container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    min-height: 100%;
+    min-width: 100%;
+    background-color: #f7f7fa;
+    justify-content: space-around;
+}
+
+.homePage_container-left {
+    justify-content: flex-start;
+    /* background-color: aqua; */
+    height: 800px;
+    width: 350px;
+}
+
+.homePage_container-left_top {
+    height: 200px;
+    width: 300px;
+    background-color: white;
+    margin: 50px 25px 25px 25px;
+}
+
+.homePage_container-left_bottom {
+    height: 300px;
+    width: 300px;
+    background-color: white;
+    margin: 120px 25px 25px 25px;
+}
+
+.homePage_container-middle {
+    /* background-color: blue; */
+    height: 800px;
+    width: 750px;
+}
+
+.homePage_container-middle-container {
+    margin-top: 65px;
+    margin-left: 20px;
+    height: 75%;
+    width: 95%;
+    background-color: white;
+}
+
+.homePage_container-right {
+    /* background-color: red; */
+    height: 800px;
+    width: 350px;
+}

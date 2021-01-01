@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { signUp, login } from "../services/auth";
-
+import './WelcomePage.css';
 export default function WelcomePage({ authenticated, setAuthenticated }) {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");

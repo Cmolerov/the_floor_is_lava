@@ -1,0 +1,72 @@
+.navbar {
+    height: 80px;
+    display: inline-flex;
+}
+
+.navbar__home {
+    width: 5px;
+    height: 5px;
+    margin-left: 50px;
+    border-radius: 50%;
+    animation-name: lava;
+    animation-duration: 60s;
+    animation-iteration-count: infinite;
+}
+
+.img__icon {
+    margin-top: 5px;
+    margin-left: -40px;
+}
+
+.navbar__grid-container {
+    display: grid;
+    grid-template-columns: 3fr 4fr 4fr 4fr 3fr 1fr;
+}
+
+.navbar__grid {
+    display: grid;
+    align-content: center;
+}
+
+.navbar__logout-button {
+    margin-right: 60px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.navbar__button__logout {
+    background-color:rgba(252, 82, 0, 1);
+    width: 120px;
+}
+
+@keyframes lava {
+    0% {
+    }
+    10% {
+    }
+    20% {
+    }
+    30% {
+    }
+    40% {
+    }
+    50% {
+    }
+    60% {
+    }
+    70% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
+        background-color: white;
+    }
+    80% {
+        box-shadow: 0px 0px 100px 100px rgba(255, 0, 0, 1);
+        background-color: rgba(255, 0, 0, 0.8);
+    }
+    90% {
+    }
+    100% {
+    }
+}
+.navbar__grid-link {
+    text-decoration: none;
+}
