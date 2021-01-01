@@ -127,7 +127,6 @@ const routesReducer = (state = initialState, action) => {
       return newState;
     case ADD_ROUTE:
       newState = Object.assign({}, state)
-      newState.routes[newState.routes.length] = action.route;
       return newState;
     // case UPDATE_TESTIMONY:
     //   newState = Object.assign({}, state)

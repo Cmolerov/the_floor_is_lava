@@ -4,8 +4,6 @@ import { NavLink, Redirect } from 'react-router-dom';
 import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 import * as routesAction from '../store/routes'
 
-import NewRoute from './NewRoute'
-
 const containerStyle = {
   width: '200px',
   height: '200px'
@@ -19,18 +17,6 @@ function Routes(props) {
   const apiKey = useSelector(state => state.routes.apiKey)
   const [response, setResponse] = useState(null)
   const [redirect, setRedirect] = useState(false)
-  
-  function directionsCallback (response) {
-    console.log(response)
-  
-    if (response !== null) {
-      if (response.status === 'OK') {
-        setResponse(response)
-      } else {
-        console.log('response: ', response)
-      }
-    }
-  }
 
   useEffect(() => {
     dispatch(routesAction.routesSearch(id))
@@ -58,8 +44,8 @@ function Routes(props) {
                           lng: route.startLong
                         };
           return (
-              <div className="main__div__container">
-                <div key={idx} className='routes__card__container'>
+              <div key={idx} className="main__div__container">
+                <div className='routes__card__container'>
                   <NavLink className='navlinks' to={`/routes/${route.id}`}>
                     <div className='routes__map-container'>
                       <div className='routes__map'>

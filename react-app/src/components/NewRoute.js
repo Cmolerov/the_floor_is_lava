@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer, Marker} from '@react-google-maps/api';
+import { Redirect } from 'react-router-dom';
+import { GoogleMap, LoadScript, Marker} from '@react-google-maps/api';
 
 import * as routesAction from '../store/routes'
 
@@ -16,7 +17,8 @@ function NewRoute(props) {
   const [ myMap, setMyMap ] = useState(null);
   const [center, setCenter] = useState(null);
   const [name, setName] = useState('')
-  const [description, setDescription] = useState(null)
+  const [description, setDescription] = useState('')
+  const [redirect, setRedirect] = useState(false)
 
   const routeSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +28,9 @@ function NewRoute(props) {
       const startLong = markers[0].coords.lng
       const endLat = markers[1].coords.lat
       const endLong = markers[1].coords.lng
-      dispatch(routesAction.routeAdd({name, description, userId, startLat, startLong, endLat, endLong, apiKey}))
+      dispatch(routesAction.routeAdd({ name, description, userId, startLat, startLong, endLat, endLong, apiKey }))
+        .then(() => console.log("THIS WORKED!!!!"))
+      .then(() => setRedirect(true))
     }
 };
 
@@ -93,10 +97,17 @@ function NewRoute(props) {
   
   const updateDescription = (e) => {
     setDescription(e.target.value);
-};
+  };
+
+  function homeRoutes() {
+    if (redirect) {
+      return <Redirect to='/routes' />
+    }
+  }
 
   return (
     <div className='new__route__container'>
+      {homeRoutes()}
       <h1>New Route</h1>
       {center ? 
       <div>
