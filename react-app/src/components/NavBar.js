@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+import './Nav-Bar.css';
 
 const NavBar = ({ setAuthenticated }) => {
   return (
@@ -28,7 +29,7 @@ const NavBar = ({ setAuthenticated }) => {
           </div>
           <div className="navbar__grid">
             <NavLink className="navbar__grid-link" to="/users" exact={true} activeClassName="active">
-              Users
+          
             </NavLink>
           </div>
           <div className="navbar__logout-button">

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-
+import './HomePage.css';
 import * as routesAction from '../store/routes'
 
 export default function HomePage(props) {
