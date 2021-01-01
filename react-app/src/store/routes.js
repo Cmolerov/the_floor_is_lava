@@ -48,7 +48,6 @@ export const routesSearch = (id) => async (dispatch) => {
     method: 'GET',
   })
   let response = await res.json();
-  console.log("THE RESPONSE!!!!!!!!!!!", response)
   dispatch(findRoutes(response.routes, response.apiKey));
   return response
 }
@@ -140,7 +139,6 @@ const routesReducer = (state = initialState, action) => {
     // case DELETE_TESTIMONY:
     //   newState = Object.assign({}, state)
     //   const testimony = newState.testimony.filter(person => person.id !== parseInt(action.primaryKey));
-    //   console.log(testimony)
     //   newState.testimony = testimony
     //   return newState
     default:

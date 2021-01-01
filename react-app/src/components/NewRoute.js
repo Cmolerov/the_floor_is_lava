@@ -23,13 +23,12 @@ function NewRoute(props) {
   const routeSubmit = async (e) => {
     e.preventDefault();
     if (markers.length === 2) {
-      console.log(markers[0].coords.lng)
+
       const startLat = markers[0].coords.lat
       const startLong = markers[0].coords.lng
       const endLat = markers[1].coords.lat
       const endLong = markers[1].coords.lng
       dispatch(routesAction.routeAdd({ name, description, userId, startLat, startLong, endLat, endLong, apiKey }))
-        .then(() => console.log("THIS WORKED!!!!"))
       .then(() => setRedirect(true))
     }
 };

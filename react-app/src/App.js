@@ -10,7 +10,6 @@ import { authenticate } from "./services/auth";
 import Routes from "./components/Routes";
 import WelcomePage from "./components/WelcomePage";
 import HomePage from "./components/HomePage";
-import HomePage2 from "./components/HomePage2";
 import SingleRoute from "./components/SingleRoute";
 import Footer from "./components/Footer";
 import NewRoute from './components/NewRoute';
