@@ -36,7 +36,10 @@ function Routes(props) {
   return isLoaded &&(
     <>
       {newRoute()}
-      <button onClick={updateRedirect}>Create New Route</button>
+      <div className="routes__div__banner">
+        <h1>My Routes</h1>
+      <button className="routes__button__new-route" onClick={updateRedirect}>Create New Route</button>
+      </div>
       <div>{
         Object.values(routes).map((route, idx) => {
           const center = {
