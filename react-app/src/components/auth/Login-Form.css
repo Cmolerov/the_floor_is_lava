@@ -104,4 +104,5 @@ button {
   border-radius: 5px;
   font-weight: 900;
   margin-left: 37%;
+  cursor: pointer;
 }

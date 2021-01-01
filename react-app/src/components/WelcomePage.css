@@ -1,13 +1,19 @@
 .welcomePage {
-    background-image: url("../images/running-lady.png");
-    background-size: cover;
-    width: 100%;
-    height: 1080px;
     display: flex;
-    justify-content: flex-end;
-    margin: 0;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 800px;
+    background: url("../images/running-lady.png");
+    background-size: cover;
 }
-.welcomePage_form {
+
+.welcomePage__header{
+    font-size: 44px;
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+/* .welcomePage_form {
     align-content: center;
     display: flex;
     justify-content: center;
@@ -15,14 +21,49 @@
     width: 350px;
     margin-right: 25px;
     margin-top: 100px;
-    background-color: #f7f7fa;
+    background-color: transparent;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
         rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-}
+} */
 .welcomePage_form-title {
     margin-left: 25px;
 }
+
+.welcome__page__sign{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 300px;
+    background: linear-gradient(
+        to bottom,
+        rgba(214, 140, 140, 0.8) 0%,
+        rgba(199, 197, 197, 0.8) 12%,
+        rgba(255, 255, 255, 0.8) 30%,
+        rgba(255, 255, 255, 0.8) 50%,
+        rgba(255, 255, 255, 0.8) 70%,
+        rgba(199, 197, 197, 0.8) 88%,
+        rgba(214, 140, 140, 0.8) 100%
+      );
+    color:  black;
+    text-decoration: none;
+}
+
+.welcome__page__sign:hover{
+    background: linear-gradient(
+        to bottom,
+        rgba(224, 150, 150, 0.9) 0%,
+        rgba(209, 207, 207, 0.9) 12%,
+        rgba(245, 245, 245, 0.9) 30%,
+        rgba(245, 245, 245, 0.9) 50%,
+        rgba(245, 245, 245, 0.9) 70%,
+        rgba(209, 207, 207, 0.9) 88%,
+        rgba(224, 150, 150, 0.9) 100%
+      );
+}
+
 .form-import {
     width: 100%;
     height: 5%;
