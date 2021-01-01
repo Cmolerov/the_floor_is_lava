@@ -41,7 +41,6 @@ function SingleRoute() {
   // };
   
   function directionsCallback(response) {
-    // console.log(response)
   
     if (response !== null) {
       if (response.status === 'OK') {

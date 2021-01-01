@@ -30,14 +30,6 @@ function UsersList() {
   }, [dispatch])
 
   useEffect(() => {
-    console.log(markers)
-  }, [markers])
-
-  useEffect(() => {
-    console.log(currentLocation)
-  }, [currentLocation])
-
-  useEffect(() => {
     getLocation()
 }, [])
 
