@@ -97,12 +97,12 @@
 }
 
 button {
-  background-color: black;
-  color: white;
+  background-color: #fc5200;
+   color: white;
   height: 40px;
   width: 80px;
   border-radius: 5px;
   font-weight: 900;
   margin-left: 37%;
-  cursor: pointer;
+  cursor: pointer; 
 }
