@@ -44,8 +44,8 @@ function Routes(props) {
                           lng: route.startLong
                         };
           return (
-              <div className="main__div__container">
-                <div key={idx} className='routes__card__container'>
+              <div key={idx} className="main__div__container">
+                <div className='routes__card__container'>
                   <NavLink className='navlinks' to={`/routes/${route.id}`}>
                     <div className='routes__map-container'>
                       <div className='routes__map'>
