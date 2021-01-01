@@ -20,26 +20,28 @@ export default function HomePage(props) {
 
     return isLoaded &&(
         <div className="homePage_container">
-            <div className="homePage_container-left">
-                <div className="homePage_container-left_top">
-                    <h1>Profile</h1>
+            <div className="homePage_container_container">
+                <div className="homePage_container-left">
+                    <div className="homePage_container-left_top">
+                        <h1>Profile</h1>
+                    </div>
+                    <div className="homePage_container-left_bottom">
+                        <h1>This Week</h1>
+                    </div>
                 </div>
-                <div className="homePage_container-left_bottom">
-                    <h1>This Week</h1>
+                <div className="homePage_container-middle">
+                    <div className="homePage_container-middle-container">
+                        <h1>Activity of the Week</h1>
+                        <p>{routes[1].name}</p>
+                    </div>
                 </div>
-            </div>
-            <div className="homePage_container-middle">
-                <div className="homePage_container-middle-container">
-                    <h1>Activity of the Week</h1>
-                    <p>{routes[1].name}</p>
-                </div>
-            </div>
-            <div className="homePage_container-right">
-                <div className="homePage_container-left_top">
-                    <h1>Explore New Routes</h1>
-                </div>
-                <div className="homePage_container-left_bottom">
-                    <h1>Route of the Day</h1>
+                <div className="homePage_container-right">
+                    <div className="homePage_container-left_top">
+                        <h1>Explore New Routes</h1>
+                    </div>
+                    <div className="homePage_container-left_bottom">
+                        <h1>Route of the Day</h1>
+                    </div>
                 </div>
             </div>
         </div>
