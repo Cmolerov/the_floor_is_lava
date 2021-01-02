@@ -56,8 +56,17 @@
     width: 300px;
 }
 
-@media screen and (max-width: 1140px) and (min-width: 912px){
-    
+.homePage_routesCard {
+    margin-left: 20px;
+    width: 400px;
+    height: 150px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+/* -----------------------------------------Media Queries------------------------ */
+
+@media screen and (max-width: 1140px) and (min-width: 912px) {
     .homePage_container_container {
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
@@ -66,14 +75,13 @@
         margin: 0 auto;
         justify-content: space-around;
     }
-    
-    .homePage_container-right{
+
+    .homePage_container-right {
         display: none;
     }
 }
 
-@media screen and (max-width: 911px){
-    
+@media screen and (max-width: 911px) {
     .homePage_container_container {
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
@@ -82,12 +90,12 @@
         margin: 0 auto;
         justify-content: space-around;
     }
-    
-    .homePage_container-right{
+
+    .homePage_container-right {
         display: none;
     }
 
-    .homePage_container-left{
+    .homePage_container-left {
         display: none;
     }
 }
