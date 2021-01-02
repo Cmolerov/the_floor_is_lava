@@ -24,17 +24,18 @@ export default function HomePage(props) {
     //             .then(() => setIsLoaded(true));
     //     })
     // }, [dispatch]);
-
     // console.log(props)
 
-        useEffect(() => {
-            dispatch(routesAction.routesSearch(id))
-                .then(() => setIsLoaded(true));
-            }, [dispatch]);
-    let id;
-    if (props.authenticated) {
-        id = props.user.id;
-    }
+    useEffect(() => {
+        let id;
+        if (props.user) {
+            id = props.user.id;
+            dispatch(routesAction.routesSearch(id)).then(() =>
+                setIsLoaded(true)
+            );
+        }
+    }, [dispatch, props.user]);
+
     return (
         isLoaded && (
             <div className="homePage_container">

@@ -49,6 +49,7 @@ function App() {
                     <LoginForm
                         authenticated={authenticated}
                         setAuthenticated={setAuthenticated}
+                        setUser={setUser}
                     />
                 </Route>
                 <Route path="/sign-up" exact={true}>
@@ -78,19 +79,15 @@ function App() {
                 >
                     <SingleRoute />
                 </ProtectedRoute>
-                <Route
-                    path="/"
-                    exact={true}
-                    authenticated={authenticated}
-                >
-                    {authenticated ? 
-                    <HomePage authenticated={authenticated} user={user} />
-                    :
-                    <WelcomePage
-                    authenticated={authenticated}
-                    setAuthenticated={setAuthenticated}
-                    />
-                }
+                <Route path="/" exact={true} authenticated={authenticated}>
+                    {authenticated ? (
+                        <HomePage authenticated={authenticated} user={user} />
+                    ) : (
+                        <WelcomePage
+                            authenticated={authenticated}
+                            setAuthenticated={setAuthenticated}
+                        />
+                    )}
                 </Route>
             </Switch>
             <Footer setAuthenticated={setAuthenticated} />
