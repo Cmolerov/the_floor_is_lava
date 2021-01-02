@@ -4,7 +4,7 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-// import { authenticate } from "./services/auth";
+import { authenticate } from "./services/auth";
 import Routes from "./components/Routes";
 import WelcomePage from "./components/WelcomePage";
 import HomePage from "./components/HomePage";
@@ -14,25 +14,25 @@ import NewRoute from "./components/NewRoute";
 
 function App() {
     const [authenticated, setAuthenticated] = useState(false);
-    // const [loaded, setLoaded] = useState(false);
+    const [loaded, setLoaded] = useState(false);
     const [user, setUser] = useState(null);
 
-    // useEffect(() => {
-    //     (async () => {
-    //         if (!authenticated) {
-    //             const userData = await authenticate();
-    //             if (!userData.errors) {
-    //                 setUser(userData);
-    //                 setAuthenticated(true);
-    //             }
-    //             setLoaded(true);
-    //         }
-    //     })();
-    // },);
+    useEffect(() => {
+        (async () => {
+            if (!authenticated) {
+                const userData = await authenticate();
+                if (!userData.errors) {
+                    setUser(userData);
+                    setAuthenticated(true);
+                }
+                setLoaded(true);
+            }
+        })();
+    },);
 
-    // if (!loaded) {
-    //     return null;
-    // }
+    if (!loaded) {
+        return null;
+    }
 
     return (
         <BrowserRouter>
