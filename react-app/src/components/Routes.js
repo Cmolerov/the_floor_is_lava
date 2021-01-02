@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
-import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import * as routesAction from '../store/routes'
 import './Routes.css'
 const containerStyle = {
@@ -15,7 +15,6 @@ function Routes(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const routes = useSelector(state => state.routes.routes);
   const apiKey = useSelector(state => state.routes.apiKey)
-  const [response, setResponse] = useState(null)
   const [redirect, setRedirect] = useState(false)
 
   useEffect(() => {

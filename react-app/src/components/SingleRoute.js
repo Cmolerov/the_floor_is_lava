@@ -136,7 +136,7 @@ function SingleRoute() {
             }
               <Marker
               key={1}
-              position={currentLocation}
+              position={start}
               icon={'https://img.icons8.com/office/30/000000/running.png'}
             />
             <Marker
