@@ -11,7 +11,6 @@ export default function HomePage(props) {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const routes = useSelector(state => state.routes.routes);
-  const apiKey = useSelector(state => state.routes.apiKey)
     
     useEffect(() => {
         dispatch(routesAction.routesSearch(id))

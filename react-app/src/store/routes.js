@@ -2,8 +2,6 @@
 const FIND_ROUTES = 'routes/findRoutes'
 const FIND_ROUTE = 'routes/findRoute'
 const ADD_ROUTE = 'routes/addRoute'
-const UPDATE_TESTIMONY = 'testimony/updateTestimony'
-const DELETE_TESTIMONY = 'testimony/deleteTestimony'
 
 const findRoutes = (routes, apiKey) => {
   return {

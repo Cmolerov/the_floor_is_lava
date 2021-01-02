@@ -8,7 +8,6 @@ import * as routesAction from '../store/routes'
 function NewRoute(props) {
   const userId = props.user.id
   const dispatch = useDispatch()
-  const routes = useSelector(state => state.routes.routes)
   const apiKey = useSelector(state => state.routes.apiKey)
   const [currentLocation, setCurrentLocation] = useState(null)
   const [id, setId] = useState(0);
