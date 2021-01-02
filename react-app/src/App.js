@@ -4,14 +4,13 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import User from "./components/User";
 import { authenticate } from "./services/auth";
 import Routes from "./components/Routes";
 import WelcomePage from "./components/WelcomePage";
 import HomePage from "./components/HomePage";
 import SingleRoute from "./components/SingleRoute";
 import Footer from "./components/Footer";
-import NewRoute from './components/NewRoute';
+import NewRoute from "./components/NewRoute";
 
 function App() {
     const [authenticated, setAuthenticated] = useState(false);
@@ -36,8 +35,9 @@ function App() {
     return (
         <BrowserRouter>
             <NavBar
-                authenticated = {authenticated}
-                setAuthenticated={setAuthenticated} />
+                authenticated={authenticated}
+                setAuthenticated={setAuthenticated}
+            />
             <Switch>
                 <Route exact path="/welcome">
                     <WelcomePage
@@ -57,13 +57,6 @@ function App() {
                         setAuthenticated={setAuthenticated}
                     />
                 </Route>
-                <ProtectedRoute
-                    path="/users/:userId"
-                    exact={true}
-                    authenticated={authenticated}
-                >
-                    <User />
-                </ProtectedRoute>
                 <ProtectedRoute
                     path="/routes/new"
                     exact={true}
@@ -90,9 +83,7 @@ function App() {
                     exact={true}
                     authenticated={authenticated}
                 >
-                    <HomePage
-                        authenticated={authenticated}
-                        user={user} />
+                    <HomePage authenticated={authenticated} user={user} />
                 </ProtectedRoute>
             </Switch>
             <Footer setAuthenticated={setAuthenticated} />
