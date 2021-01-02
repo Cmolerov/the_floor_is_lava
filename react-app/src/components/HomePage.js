@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
+import { authenticate } from "../services/auth";
 import "./HomePage.css";
 import * as routesAction from "../store/routes";
 
@@ -7,15 +9,26 @@ export default function HomePage(props) {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     const routes = useSelector((state) => state.routes.routes);
-    let id;
 
     useEffect(() => {
-        dispatch(routesAction.routesSearch(id)).then(() => setIsLoaded(true));
+        let id;
+        (async () => {
+            const userData = await authenticate();
+            if (!userData.errors) {
+                console.log(userData);
+                id = userData.id;
+                }
+        })()
+            .then(() => {
+                dispatch(routesAction.routesSearch(id))
+                .then(() => setIsLoaded(true));
+        })
     }, [dispatch]);
 
-    if (props.authenticated) {
-        id = props.user.id;
-    }
+    // console.log(props)
+    // if (props.authenticated) {
+    //     id = props.user.id;
+    // }
     return (
         isLoaded && (
             <div className="homePage_container">
