@@ -56,6 +56,7 @@ function App() {
                     <SignUpForm
                         authenticated={authenticated}
                         setAuthenticated={setAuthenticated}
+                        setUser={setUser}
                     />
                 </Route>
                 <ProtectedRoute
