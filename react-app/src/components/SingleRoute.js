@@ -34,7 +34,7 @@ function SingleRoute() {
 
     function success(pos) {
       var crd = pos.coords;
-      console.log(crd)
+      // console.log(crd)
       setCurrentLocation({'lat': crd.latitude, 'lng': crd.longitude})
     
       if (target.lat === crd.latitude && target.lng === crd.longitude) {
