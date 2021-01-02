@@ -22,27 +22,51 @@ export default function HomePage(props) {
                 <div className="homePage_container_container">
                     <div className="homePage_container-left">
                         <div className="homePage_container-left_top">
-                            <h1>Profile</h1>
+                            <h2>Profile</h2>
                         </div>
                         <div className="homePage_container-left_bottom">
-                            <h1>This Week</h1>
+                            <h2>This Week</h2>
                         </div>
                     </div>
                     <div className="homePage_container-middle">
                         <div className="homePage_container-middle-container">
-                            <h1>Activity of the Week</h1>
+                            <h2>Activity of the Week</h2>
                             <div className="homePage_routesCard">
-                                <p>Name: {routes[1].name}</p>
+                                <p>
+                                    Name: {routes[1].name} || Distance:{" "}
+                                    {routes[1].distance}
+                                </p>
                                 <p>Description: {routes[1].description}</p>
+                            </div>
+                            <div className="homePage_routesCard">
+                                <p>
+                                    Name: {routes[2].name} || Distance:{" "}
+                                    {routes[2].distance}
+                                </p>
+                                <p>Description: {routes[2].description}</p>
+                            </div>
+                            <div className="homePage_routesCard">
+                                <p>
+                                    Name: {routes[3].name} || Distance:{" "}
+                                    {routes[3].distance}
+                                </p>
+                                <p>Description: {routes[3].description}</p>
+                            </div>
+                            <div className="homePage_routesCard">
+                                <p>
+                                    Name: {routes[4].name} || Distance:{" "}
+                                    {routes[4].distance}
+                                </p>
+                                <p>Description: {routes[4].description}</p>
                             </div>
                         </div>
                     </div>
                     <div className="homePage_container-right">
                         <div className="homePage_container-left_top">
-                            <h1>Explore New Routes</h1>
+                            <h2>Explore New Routes</h2>
                         </div>
                         <div className="homePage_container-left_bottom">
-                            <h1>Route of the Day</h1>
+                            <h2>Route of the Day</h2>
                         </div>
                     </div>
                 </div>

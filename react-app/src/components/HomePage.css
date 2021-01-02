@@ -57,11 +57,12 @@
 }
 
 .homePage_routesCard {
-    margin-left: 20px;
-    width: 400px;
-    height: 150px;
+    margin-left: 25px;
+    width: 525px;
+    height: 90px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
         rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border-radius: 3px;
 }
 
 /* -----------------------------------------Media Queries------------------------ */
