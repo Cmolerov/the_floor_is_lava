@@ -16,9 +16,20 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
         </div>
         {authenticated ?
           <div className="navbar__grid">
-            <NavLink className="navbar__grid-link" to="/routes" exact={true} activeClassName="active">
-              Routes
-            </NavLink>
+            <div className="navbar__div__dropdown-container">
+              <div>test</div>
+              <div className="navbar__div__dropdown-content">
+                <NavLink className="navbar__grid-link" to="/" exact={true} activeClassName="active">
+                  Activity Feed
+                </NavLink>
+                <NavLink className="navbar__grid-link" to="/routes" exact={true} activeClassName="active">
+                  Routes
+                </NavLink>
+                <NavLink className="navbar__grid-link" to="/routes/new" exact={true} activeClassName="active">
+                Create Route
+                </NavLink>
+              </div>
+            </div>
           </div>
           :
           <div></div>
