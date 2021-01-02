@@ -67,6 +67,8 @@ export default function HomePage(props) {
                         </div>
                         <div className="homePage_container-left_bottom">
                             <h2>Route of the Day</h2>
+                            <p>{routes[6].name}</p>
+                            <p>Distance: {routes[6].distance}</p>
                         </div>
                     </div>
                 </div>

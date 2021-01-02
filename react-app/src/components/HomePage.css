@@ -57,7 +57,9 @@
 }
 
 .homePage_routesCard {
-    margin-left: 25px;
+    padding-left: 10px;
+    margin-top: 40px;
+    margin-left: 20px;
     width: 525px;
     height: 90px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
