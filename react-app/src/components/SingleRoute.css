@@ -1,10 +1,16 @@
+.single__route__container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .main__div__map-container {
   width: 600px;
   height: 400px;
-  margin-left: 25%;
-  margin-top: 8%;
 }
 
-.route__p__name {
-  text-align: center;
+.single__route__run__button{
+  /* height: 100px;
+  width: 200px */
 }
