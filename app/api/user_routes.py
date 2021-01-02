@@ -29,8 +29,6 @@ def user(id):
 @user_routes.route('/<int:id>/routes')
 @login_required
 def routes(id):
-    print("THIS IS THE ID FOR BACKEND ROUTES", id)
     routes = Route.query.filter_by(userId=id).all()
-    print("THESE ARE THE ROUTES FOR BACKEND", routes)
     returnRoutes = {route.id:route.to_dict() for route in routes}
     return {'routes': returnRoutes, 'apiKey': apiKey}
