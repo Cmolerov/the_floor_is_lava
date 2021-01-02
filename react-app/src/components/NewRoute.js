@@ -167,7 +167,7 @@ function NewRoute(props) {
               value={description}
               onChange={updateDescription}
           />
-        <button type="submit">Create Route</button>
+        <button className="new-route__button__create" type="submit">Create Route</button>
       </div>
     </form>
   </div>
