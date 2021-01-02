@@ -17,16 +17,16 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
         {authenticated ?
           <div className="navbar__grid">
             <div className="navbar__div__dropdown-container">
-              <div>test</div>
+            <button className="navbar__button__dashboard">Dashboard<img alt="downarrow" className="navbar__img__down-arrow" src="https://image.flaticon.com/icons/png/512/19/19967.png" width="10" height="10"/></button>
               <div className="navbar__div__dropdown-content">
-                <NavLink className="navbar__grid-link" to="/" exact={true} activeClassName="active">
-                  Activity Feed
+                <NavLink className="navbar__grid-link-1" to="/" exact={true} activeClassName="active">
+                  <span className="navbar__dropdown__ label">Activity Feed</span>
                 </NavLink>
-                <NavLink className="navbar__grid-link" to="/routes" exact={true} activeClassName="active">
-                  Routes
+                <NavLink className="navbar__grid-link-2" to="/routes" exact={true} activeClassName="active">
+                <span className="navbar__dropdown__ label">Routes</span>
                 </NavLink>
-                <NavLink className="navbar__grid-link" to="/routes/new" exact={true} activeClassName="active">
-                Create Route
+                <NavLink className="navbar__grid-link-3" to="/routes/new" exact={true} activeClassName="active">
+                <span className="navbar__dropdown__ label">Create Route</span>
                 </NavLink>
               </div>
             </div>
@@ -36,6 +36,9 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
           }
         {authenticated ? 
           <div className="navbar__logout-button">
+            <div>
+              <img className="navbar__img__running" src="../images/runninggif.gif" width="120" height="120" />
+            </div>
             <LogoutButton setAuthenticated={setAuthenticated} />
           </div>
           :
