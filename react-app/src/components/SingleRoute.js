@@ -1,15 +1,19 @@
-import React, { useEffect, useState, Component } from "react";
+import React, { useEffect, useState} from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, useParams } from 'react-router-dom';
-import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer, useLoadScript, } from '@react-google-maps/api';
+import { useParams } from 'react-router-dom';
+import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer, Marker } from '@react-google-maps/api';
 import './SingleRoute.css'
 import * as routesAction from '../store/routes';
 
 
 function SingleRoute() {
+
+  const [currentLocation, setCurrentLocation] = useState(null)
   
   const route = useSelector(state => state.routes.route);
   const origin = useSelector(state => `${state.routes.route.startLat},${state.routes.route.startLong}`);
+  const start = useSelector(state => ({ 'lat': state.routes.route.startLat, 'lng': state.routes.route.startLong }));
+  const end = useSelector(state => ({ 'lat': state.routes.route.endLat, 'lng': state.routes.route.endLong }));
   const destination = useSelector(state => `${state.routes.route.endLat},${state.routes.route.endLong}`)
   const apiKey = useSelector(state => state.routes.apiKey)
   const center = useSelector( state =>
@@ -23,10 +27,40 @@ function SingleRoute() {
   const dispatch = useDispatch();
   const [isLoaded2, setIsLoaded2] = useState(false);
   const [response, setResponse] = useState(null);
-  // const [origin, setOrigin] = useState("");
-  // const [destination, setDestination] = useState("");
   
- 
+    //TEST FOR CURRENT MOVEMENT
+
+    let movementId, target, options;
+
+    function success(pos) {
+      var crd = pos.coords;
+      console.log(crd)
+      setCurrentLocation({'lat': crd.latitude, 'lng': crd.longitude})
+    
+      if (target.lat === crd.latitude && target.lng === crd.longitude) {
+        alert('You beat the volcano!');
+        navigator.geolocation.clearWatch(movementId);
+      }
+    };
+    
+    function error(err) {
+      console.warn('ERROR(' + err.code + '): ' + err.message);
+    };
+    
+    target = {
+      lat : 0,
+      lng: 0,
+    }
+    
+    options = {
+      enableHighAccuracy: false,
+      timeout: 5000,
+      maximumAge: 0
+    };
+    
+    movementId = navigator.geolocation.watchPosition(success, error, options);
+      
+      //END TEST FOR CURRENT MOVEMENT
 
   let travelMode = 'WALKING'
 
@@ -35,14 +69,7 @@ function SingleRoute() {
     height: '400px'
   };
   
-  // const center = {
-  //   lat: -3.745,
-  //   lng: -38.523
-  // };
-  
   function directionsCallback(response) {
-    // console.log(response)
-  
     if (response !== null) {
       if (response.status === 'OK') {
         setResponse(response)
@@ -55,14 +82,11 @@ function SingleRoute() {
   
   useEffect(() => {
     dispatch(routesAction.routeSearch(routeId))
-      // .then(() => setOrigin(`${route.startLat},${route.startLong}`))
-      // .then(() => setDestination(`${route.endLat},${route.endLong}`))
+      .then(() => setCurrentLocation(start))
       .then(() => setIsLoaded2(true))
-  }, [dispatch])
-  // let destination;
-  // let origin;
+  }, [])
 
-    return(
+    return isLoaded2 && currentLocation &&(
       <div className="main__div__map-container">
         <p className="route__p__name">{ route.name }</p>
         <LoadScript
@@ -100,7 +124,8 @@ function SingleRoute() {
                 <DirectionsRenderer
                   // required
                   options={{
-                    directions: response
+                    directions: response,
+                    suppressMarkers: true
                   }}
                   // optional
                   onLoad={directionsRenderer => {
@@ -109,6 +134,16 @@ function SingleRoute() {
                 />
               )
             }
+              <Marker
+              key={1}
+              position={currentLocation}
+              icon={'https://img.icons8.com/office/30/000000/running.png'}
+            />
+            <Marker
+              key={2}
+              position={end}
+              icon={'https://img.icons8.com/fluent-systems-filled/24/000000/finish-flag.png'}
+            />
           </GoogleMap>
         </LoadScript>
       </div>
