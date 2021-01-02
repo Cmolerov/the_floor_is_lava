@@ -19,16 +19,14 @@ function App() {
 
     useEffect(() => {
         (async () => {
-            if (!authenticated) {
-                const userData = await authenticate();
-                if (!userData.errors) {
-                    setUser(userData);
-                    setAuthenticated(true);
-                }
-                setLoaded(true);
+            const userData = await authenticate();
+            if (!userData.errors) {
+                setAuthenticated(true);
+                setUser(userData);
             }
+            setLoaded(true);
         })();
-    },);
+    }, []);
 
     if (!loaded) {
         return null;
@@ -41,18 +39,16 @@ function App() {
                 setAuthenticated={setAuthenticated}
             />
             <Switch>
-                <Route exact path="/welcome">
+                {/* <Route exact path="/welcome">
                     <WelcomePage
                         authenticated={authenticated}
                         setAuthenticated={setAuthenticated}
                     />
-                </Route>
+                </Route> */}
                 <Route path="/login" exact={true}>
                     <LoginForm
                         authenticated={authenticated}
                         setAuthenticated={setAuthenticated}
-                        user={user}
-                        setUser={setUser}
                     />
                 </Route>
                 <Route path="/sign-up" exact={true}>
@@ -82,20 +78,20 @@ function App() {
                 >
                     <SingleRoute />
                 </ProtectedRoute>
-                <ProtectedRoute
+                <Route
                     path="/"
                     exact={true}
                     authenticated={authenticated}
                 >
                     {authenticated ? 
-                    <HomePage user={user} setUser={setUser} authenticated={authenticated} />
+                    <HomePage authenticated={authenticated} user={user} />
                     :
                     <WelcomePage
                     authenticated={authenticated}
                     setAuthenticated={setAuthenticated}
-                />
+                    />
                 }
-                </ProtectedRoute>
+                </Route>
             </Switch>
             <Footer setAuthenticated={setAuthenticated} />
         </BrowserRouter>

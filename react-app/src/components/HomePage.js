@@ -10,25 +10,31 @@ export default function HomePage(props) {
     const [isLoaded, setIsLoaded] = useState(false);
     const routes = useSelector((state) => state.routes.routes);
 
-    useEffect(() => {
-        let id;
-        (async () => {
-            const userData = await authenticate();
-            if (!userData.errors) {
-                console.log(userData);
-                id = userData.id;
-                }
-        })()
-            .then(() => {
-                dispatch(routesAction.routesSearch(id))
-                .then(() => setIsLoaded(true));
-        })
-    }, [dispatch]);
+    // useEffect(() => {
+    //     let id;
+    //     (async () => {
+    //         const userData = await authenticate();
+    //         if (!userData.errors) {
+    //             console.log(userData);
+    //             id = userData.id;
+    //             }
+    //     })()
+    //         .then(() => {
+    //             dispatch(routesAction.routesSearch(id))
+    //             .then(() => setIsLoaded(true));
+    //     })
+    // }, [dispatch]);
 
     // console.log(props)
-    // if (props.authenticated) {
-    //     id = props.user.id;
-    // }
+
+        useEffect(() => {
+            dispatch(routesAction.routesSearch(id))
+                .then(() => setIsLoaded(true));
+            }, [dispatch]);
+    let id;
+    if (props.authenticated) {
+        id = props.user.id;
+    }
     return (
         isLoaded && (
             <div className="homePage_container">
