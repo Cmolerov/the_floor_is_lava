@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer, Marker, Circle } from '@react-google-maps/api';
 // import './SingleRoute.css'
 import * as routesAction from '../store/routes';
@@ -40,6 +40,7 @@ function SingleRoute() {
   const [isLoaded2, setIsLoaded2] = useState(false);
   const [response, setResponse] = useState(null);
   const [lavas, setLavas] = useState([]);
+  const [redirect, setRedirect] = useState(false)
   
     //TEST FOR CURRENT MOVEMENT
 
@@ -104,6 +105,19 @@ function SingleRoute() {
     setRunning(true)
     lavaFlowing();
   };
+
+  const deleteRoute = async (e) => {
+    e.preventDefault();
+    let id = route.id;
+      dispatch(routesAction.routeDelete({ id }))
+      .then(() => setRedirect(true))
+  };
+  
+  function homeRoutes() {
+    if (redirect) {
+      return <Redirect to='/routes' />
+    }
+  }
   
   useEffect(() => {
     dispatch(routesAction.routeSearch(routeId))
@@ -112,7 +126,8 @@ function SingleRoute() {
   }, [])
 
   return isLoaded2 && currentLocation && (
-      <div className='single__route__container'>
+    <div className='single__route__container'>
+      {homeRoutes()}
         <h1 className="route__p__name">{ route.name }</h1>
         <div className="main__div__map-container">
         <LoadScript
@@ -191,7 +206,7 @@ function SingleRoute() {
                         key={lava.id}
                         draggable={false}
                         position={lava}
-                        icon={'https://img.icons8.com/officexs/30/000000/volcano.png'}
+                        icon={'https://img.icons8.com/officexs/16/000000/volcano.png'}
                       />
                     </>
                     )
@@ -203,7 +218,9 @@ function SingleRoute() {
             </GoogleMap>
           </LoadScript>
         </div>
-        <button onClick={runRoute} className="single__route__run__button">Run Route</button>
+      <button onClick={runRoute} className="single__route__run__button">Run Route</button>
+      <button onClick={deleteRoute} className="single__route__run__button">Delete Route</button>
+      
       </div>
     )
 }

@@ -12,9 +12,7 @@ apiKey = os.environ.get('GOOGLE_API')
 @routes_routes.route('/<int:id>')
 @login_required
 def route(id):
-    # print("THIS IS THE ID FOR BACKEND ROUTE", id)
     returnRoute = Route.query.filter_by(id=id).one()
-    # print("THIS IS THE ROUTE FOR BACKEND", route)
     route = returnRoute.to_dict()
     return {'route': route, 'apiKey': apiKey}
 
@@ -24,7 +22,6 @@ def route(id):
 @login_required
 def routePost():
     data = request.json
-    print(data)
     route = Route(
         name=data['name'],
         startLong=data['startLong'],
@@ -40,4 +37,13 @@ def routePost():
     db.session.add(route)
     db.session.commit()
     return route.to_dict()
-    print("POST ROUTE IS CONNECTING")
+
+# ****************** ROUTE DELETE *********************
+
+@routes_routes.route('/<int:id>', methods = ['DELETE'])
+@login_required
+def routeDelete(id):
+    route = Route.query.get(id)
+    db.session.delete(route)
+    db.session.commit()
+    return {'primaryKey': id}
