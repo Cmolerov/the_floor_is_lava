@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { authenticate } from "../services/auth";
-import "./HomePage.css";
+// import "./HomePage.css";
 import * as routesAction from "../store/routes";
 
 export default function HomePage(props) {
