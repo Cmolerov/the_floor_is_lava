@@ -1,15 +1,26 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer, Marker } from '@react-google-maps/api';
-import './SingleRoute.css'
+import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer, Marker, Circle } from '@react-google-maps/api';
+// import './SingleRoute.css'
 import * as routesAction from '../store/routes';
 
 
 function SingleRoute() {
 
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1) + Math.ceil(min));
+  }
+
+  function getRandomNum(min, max) {
+    let minn = getRandomInt(0, 1000) % 2 ? min - .000008 : min + .000008;
+    let maxx = getRandomInt(0, 1000) % 2 ? max - .000008 : max + .000008;
+    return Math.random() * (maxx - minn) + minn;
+  }
+
   const [currentLocation, setCurrentLocation] = useState(null)
   const [running, setRunning] = useState(false)
+  let [rad, setRad] = useState([])
   
   const route = useSelector(state => state.routes.route);
   const origin = useSelector(state => `${state.routes.route.startLat},${state.routes.route.startLong}`);
@@ -17,17 +28,18 @@ function SingleRoute() {
   const end = useSelector(state => ({ 'lat': state.routes.route.endLat, 'lng': state.routes.route.endLong }));
   const destination = useSelector(state => `${state.routes.route.endLat},${state.routes.route.endLong}`)
   const apiKey = useSelector(state => state.routes.apiKey)
-  const center = useSelector( state =>
-  {
-    return {
-      lat: state.routes.route.startLat,
-      lng: state.routes.route.startLong,
-    }
-  })
+  // const center = useSelector( state =>
+  // {
+  //   return {
+  //     lat: state.routes.route.startLat,
+  //     lng: state.routes.route.startLong,
+  //   }
+  // })
   const { routeId } = useParams();
   const dispatch = useDispatch();
   const [isLoaded2, setIsLoaded2] = useState(false);
   const [response, setResponse] = useState(null);
+  const [lavas, setLavas] = useState([]);
   
     //TEST FOR CURRENT MOVEMENT
 
@@ -48,10 +60,7 @@ function SingleRoute() {
       console.warn('ERROR(' + err.code + '): ' + err.message);
     };
     
-    target = {
-      lat : 0,
-      lng: 0,
-    }
+    target = end
     
     options = {
       enableHighAccuracy: false,
@@ -80,8 +89,20 @@ function SingleRoute() {
     }
   }
 
+  let count = -1;
+  function lavaFlowing() {
+    setInterval(function () {
+      setRad((rad) => rad.concat([getRandomInt(80, 220)]))
+      setLavas((lavas) => lavas.concat([     {
+        lat: getRandomNum(route.startLat, route.endLat),
+        lng: getRandomNum(route.startLong, route.endLong),
+      }]))
+    }, 5000);
+  }
+
   const runRoute = () => {
     setRunning(true)
+    lavaFlowing();
   };
   
   useEffect(() => {
@@ -94,14 +115,15 @@ function SingleRoute() {
       <div className='single__route__container'>
         <h1 className="route__p__name">{ route.name }</h1>
         <div className="main__div__map-container">
-          <LoadScript
+        <LoadScript
+            libraries={["visualization"]}
             googleMapsApiKey={apiKey}
           >
             <GoogleMap
               mapContainerStyle={containerStyle}
-              center={center}
+              // center={center}
               zoom={10}
-            >
+          >
               {
                 (
                   destination !== '' &&
@@ -116,10 +138,6 @@ function SingleRoute() {
                     }}
                     // required
                     callback={directionsCallback}
-                    // optional
-                    onLoad={directionsService => {
-                      console.log('DirectionsService onLoad directionsService: ', directionsService)
-                    }}
                   />
                 )
               }
@@ -132,13 +150,9 @@ function SingleRoute() {
                       directions: response,
                       suppressMarkers: running ? true : false
                     }}
-                    // optional
-                    onLoad={directionsRenderer => {
-                      console.log('DirectionsRenderer onLoad directionsRenderer: ', directionsRenderer)
-                    }}
                   />
                 )
-              }
+            }
               {running ?
                 <>
                 <Marker
@@ -150,10 +164,42 @@ function SingleRoute() {
                 key={2}
                 position={end}
                 icon={'https://img.icons8.com/fluent-systems-filled/24/000000/finish-flag.png'}
-                  />
-                  </>
+                />
+                {lavas ? (
+                  lavas.map((lava) => {
+                    count += 1
+                    return (
+                      <>
+                     <Circle
+                    // required
+                    center={lava}
+                      // required
+                    options={{
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 0.4,
+                    strokeWeight: 2,
+                    fillColor: '#FF0000',
+                    fillOpacity: 0.35,
+                    clickable: false,
+                    draggable: false,
+                    editable: false,
+                    radius: rad[count],
+                    zIndex: 1,
+                      }}
+                        />
+                      <Marker
+                        key={lava.id}
+                        draggable={false}
+                        position={lava}
+                        icon={'https://img.icons8.com/officexs/30/000000/volcano.png'}
+                      />
+                    </>
+                    )
+                  })
+                ) : null }
+             </>
                 :
-                null}
+              null}
             </GoogleMap>
           </LoadScript>
         </div>

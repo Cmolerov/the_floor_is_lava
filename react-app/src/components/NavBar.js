@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import LoginButton from './auth/LoginButton'
 import LogoutButton from './auth/LogoutButton';
-import './Nav-Bar.css';
+// import './Nav-Bar.css';
 
 const NavBar = ({ setAuthenticated, authenticated }) => {
   return (

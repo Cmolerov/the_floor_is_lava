@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
-import { GoogleMap, LoadScript, Marker} from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+
+// import './NewRoute.css'
 
 import * as routesAction from '../store/routes'
 
@@ -18,6 +20,7 @@ function NewRoute(props) {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [redirect, setRedirect] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
 
   const routeSubmit = async (e) => {
     e.preventDefault();
@@ -29,11 +32,14 @@ function NewRoute(props) {
       const endLong = markers[1].coords.lng
       dispatch(routesAction.routeAdd({ name, description, userId, startLat, startLong, endLat, endLong, apiKey }))
       .then(() => setRedirect(true))
+    } else {
+      alert("You must add an end point!")
     }
 };
 
   useEffect(() => {
     dispatch(routesAction.routeSearch(8))
+    .then(() => setIsLoaded(true))
   }, [dispatch])
 
   useEffect(() => {
@@ -103,7 +109,7 @@ function NewRoute(props) {
     }
   }
 
-  return (
+  return isLoaded &&(
     <div className='new__route__container'>
       {homeRoutes()}
       <h1>New Route</h1>
@@ -167,8 +173,8 @@ function NewRoute(props) {
               value={description}
               onChange={updateDescription}
           />
-        <button className="new-route__button__create" type="submit">Create Route</button>
       </div>
+        <button className="new-route__button__create" type="submit">Create Route</button>
     </form>
   </div>
   )
