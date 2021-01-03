@@ -133,51 +133,53 @@ function NewRoute(props) {
             }
           }
           onClick={(e)=> markers.length < 2 ? addMarker(e.latLng.toJSON()) : null}
-    >{markers ? (
-      markers.map((marker) => {
-        return (
-          <Marker
-            key={marker.id}
-            draggable={true}
-            position={marker.coords}
-            onDragEnd={e => marker.coords = e.latLng.toJSON()}
-            label={marker.id === 0 ? { text: "start", color: 'rgba(214, 140, 140, 0.9)'} : null}
-            icon={marker.id === 0 ? 'https://img.icons8.com/officexs/30/000000/volcano.png' : 'https://img.icons8.com/fluent-systems-filled/24/000000/finish-flag.png'}
-          />
-        )
-      })
-    ) : null }
-    </GoogleMap>
-    </LoadScript>
-  </div>
-    :
-    null
+      >{markers ? (
+        markers.map((marker) => {
+          return (
+            <Marker
+              key={marker.id}
+              draggable={true}
+              position={marker.coords}
+              onDragEnd={e => marker.coords = e.latLng.toJSON()}
+              label={marker.id === 0 ? { text: "start", color: 'rgba(214, 140, 140, 0.9)'} : null}
+              icon={marker.id === 0 ? 'https://img.icons8.com/officexs/30/000000/volcano.png' : 'https://img.icons8.com/fluent-systems-filled/24/000000/finish-flag.png'}
+            />
+          )
+        })
+      ) : null }
+      </GoogleMap>
+      </LoadScript>
+    </div>
+      :
+      null
       }
-    <form className="form__new__route" onSubmit={routeSubmit}>
-      <div>
-      <label htmlFor="name"></label>
-      <input
-          name="name"
-          type="text"
-          placeholder="Name"
-          value={name}
-          required={true}
-          onChange={updateName}
-      />
-        </div>
-        <div>
-          <label htmlFor="description"></label>
+      <div className="new-route__div__form-container">
+        <form className="form__new__route" onSubmit={routeSubmit}>
+          <div>
+          <label htmlFor="name"></label>
           <input
-              name="description"
-              type="textarea"
-              placeholder="Description"
-              value={description}
-              onChange={updateDescription}
+              name="name"
+              type="text"
+              placeholder="Name"
+              value={name}
+              required={true}
+              onChange={updateName}
           />
+          </div>
+          <div>
+            <label htmlFor="description"></label>
+            <input
+                name="description"
+                type="textarea"
+                placeholder="Description"
+                value={description}
+                onChange={updateDescription}
+            />
+            </div>
+            <button className="new-route__button__create" type="submit">Create Route</button>
+        </form>
       </div>
-        <button className="new-route__button__create" type="submit">Create Route</button>
-    </form>
-  </div>
+    </div>
   )
       
 }

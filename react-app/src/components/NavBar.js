@@ -11,7 +11,7 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
       <div className="navbar__grid-container">
         <div className="navbar__home">
           <NavLink className="navbar__grid-link" to="/" exact={true} activeClassName="active">
-            <img className="img__icon" src='../images/favicon.ico' alt="volcano" size="50px"/> 
+            <img className="img__icon" src='./favicon.ico' alt="volcano" size="50px"/> 
           </NavLink>
         </div>
         {authenticated ?

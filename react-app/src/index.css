@@ -343,7 +343,7 @@
 
 .navbar__img__running {
     margin-top: -30px;
-    margin-right: -40px;
+    margin-right: 20px;
     cursor: pointer;
 }
 
@@ -739,8 +739,14 @@
       align-items: center;
       justify-content: center;
     }
+
+    .new-route__div__form-container {
+      position: relative;
+      top: -33%;
+      left: -38%;
+    }
     
     .form__new__route > div {
-      padding: 5px;
+      padding: 20px;
     }
     
