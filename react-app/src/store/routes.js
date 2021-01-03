@@ -1,7 +1,7 @@
-
 const FIND_ROUTES = 'routes/findRoutes'
 const FIND_ROUTE = 'routes/findRoute'
 const ADD_ROUTE = 'routes/addRoute'
+const DELETE_ROUTE = 'routes/deleteRoute'
 
 const findRoutes = (routes, apiKey) => {
   return {
@@ -34,12 +34,12 @@ const addRoute = (route) => {
 //   }
 // }
 
-// const deleteTestimony = (primaryKey) => {
-//   return {
-//     type: DELETE_TESTIMONY,
-//     primaryKey
-//   }
-// }
+const deleteRoute = (primaryKey) => {
+  return {
+    type: DELETE_ROUTE,
+    primaryKey
+  }
+}
 
 export const routesSearch = (id) => async (dispatch) => {
   const res = await fetch(`/api/users/${id}/routes`, {
@@ -61,7 +61,6 @@ export const routeSearch = (id) => async (dispatch) => {
 
 export const routeAdd = (route) => async (dispatch) => {
   const { name, startLong, endLong, startLat, endLat, description, userId, apiKey } = route;
-  // let proxyUrl = 'https://cors-anywhere.herokuapp.com/'
   let proxyUrl = 'https://dry-atoll-62815.herokuapp.com/'
   let data = await fetch(proxyUrl + `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&mode=walking&origins=${startLat},${startLong}&destinations=${endLat}%2C${endLong}&key=${apiKey}`)
   let resp = await data.json()
@@ -101,13 +100,16 @@ export const routeAdd = (route) => async (dispatch) => {
 //   return res
 // }
 
-// export const testimonyDelete = (id) => async (dispatch) => {
-//   const res = await fetch(`/api/testimony/${id}`, {
-//     method: 'DELETE',
-//   })
-//   dispatch(deleteTestimony(res.data.primaryKey));
-//   return res
-// }
+export const routeDelete = (sentId) => async (dispatch) => {
+  let { id } = sentId
+  const res = await fetch(`/api/routes/${id}`, {
+    method: 'DELETE',
+  })
+  let response = await res.json();
+  console.log("FRONTEND RESPONSE!!!!!!", response)
+  dispatch(deleteRoute(response.primaryKey));
+  return res
+}
 
 const initialState = { routes: null, route: {} }
 
@@ -136,11 +138,11 @@ const routesReducer = (state = initialState, action) => {
     //     };
     //   }
     //   return newState;
-    // case DELETE_TESTIMONY:
-    //   newState = Object.assign({}, state)
-    //   const testimony = newState.testimony.filter(person => person.id !== parseInt(action.primaryKey));
-    //   newState.testimony = testimony
-    //   return newState
+    case DELETE_ROUTE:
+      newState = Object.assign({}, state)
+      // const routes = newState.routes.filter(route => route.id !== parseInt(action.primaryKey));
+      // newState.routes = routes
+      return newState
     default:
       return state;
   }
