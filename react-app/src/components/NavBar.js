@@ -1,11 +1,12 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
-import LoginButton from './auth/LoginButton'
-import LogoutButton from './auth/LogoutButton';
+import LoginButton from "./auth/LoginButton";
+import LogoutButton from "./auth/LogoutButton";
 // import './Nav-Bar.css';
 
 const NavBar = ({ setAuthenticated, authenticated }) => {
+
   return (
     <nav className="navbar">
       <div className="navbar__grid-container">
@@ -28,27 +29,21 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
                 <NavLink className="navbar__grid-link-3" to="/routes/new" exact={true} activeClassName="active">
                 <span className="navbar__dropdown__ label">Create Route</span>
                 </NavLink>
+                <NavLink
+                                    className="navbar__grid-link-3"
+                                    to="/calendar"
+                                    exact={true}
+                                    activeClassName="active"
+                                >
+                                    <span className="navbar__dropdown__ label">
+                                        Activity Log
+                                    </span>
+                                </NavLink>
               </div>
+
             </div>
-          </div>
-          :
-          <div></div>
-          }
-        {authenticated ? 
-          <div className="navbar__logout-button">
-            <div>
-              <img className="navbar__img__running" src="https://i.gifer.com/7QUq.gif" width="120" height="120" />
-            </div>
-            <LogoutButton setAuthenticated={setAuthenticated} />
-          </div>
-          :
-          <div className="navbar__logout-button">
-            <LoginButton setAuthenticated={setAuthenticated} />
-          </div>
-      }
-      </div>
-    </nav>
-  );
-}
+        </nav>
+    );
+};
 
 export default NavBar;
