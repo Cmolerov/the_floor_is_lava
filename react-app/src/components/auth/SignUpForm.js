@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { signUp, login } from "../../services/auth";
+
 // import './Signup-Form.css';
 
-const SignUpForm = ({ authenticated, setAuthenticated }) => {
+
+const SignUpForm = ({ authenticated, setAuthenticated, setUser }) => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,6 +18,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
             const user = await signUp(username, email, password);
             if (!user.errors) {
                 setAuthenticated(true);
+                setUser(user);
             }
         }
     };
@@ -41,6 +44,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         const user = await login("demo_user@aa.com", "password");
         if (!user.errors) {
             setAuthenticated(true);
+            setUser(user);
         } else {
             setErrors(user.errors);
         }
