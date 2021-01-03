@@ -2,6 +2,8 @@
     margin: 0 auto;
     height: 80px;
     max-width: 1200px;
+    overflow: hidden;
+    text-decoration: none;
 }
 
 .navbar__home {
@@ -27,12 +29,82 @@
 .navbar__grid-container {
     display: grid;
     height: 100%;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
 }
 
 .navbar__grid {
     display: grid;
-    align-content: center;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.navbar__div__dropdown-container {
+    float: left;
+    overflow: hidden;
+    width: 180px;
+    height: 40px;
+    border-radius: 5px;
+    margin-top: 20px;
+    
+}
+
+.navbar__button__dashboard {
+    margin: auto;
+    width: 180px;
+    background-color: white;
+    color: black;
+    border: none;
+}
+
+.navbar__img__down-arrow {
+    margin-left: 5px;
+}
+
+.navbar__button__dashboard:hover {
+    margin: auto;
+    background-color: white;
+    color: #fc5200;
+    /* border: 1px solid black;
+    border-bottom: 1px solid white; */
+}
+
+.navbar__div__dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1; 
+}
+
+ .navbar__grid-link-1, .navbar__grid-link-2, .navbar__grid-link-3 {
+     text-decoration: none;
+     padding: 20px;
+     font-weight: 400;
+     color: black;
+} 
+
+.navbar__grid-link-1:hover, .navbar__grid-link-2:hover, .navbar__grid-link-3:hover {
+    background-color: #ddd;
+    font-weight: 700;
+    color:rgba(252, 82, 0, 1);
+}
+
+.navbar__div__dropdown-container:hover .navbar__div__dropdown-content {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.navbar__div__dropdown-container:hover  {
+    background-color: #ddd;
+
+}
+
+.navbar__img__running {
+    margin-top: -30px;
+    margin-right: -40px;
+    cursor: pointer;
 }
 
 .navbar__logout-button {
