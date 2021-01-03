@@ -8,6 +8,7 @@ export default function HomePage(props) {
     const [isLoaded, setIsLoaded] = useState(false);
     const routes = useSelector((state) => state.routes.routes);
     let id;
+    let username;
 
     useEffect(() => {
         dispatch(routesAction.routesSearch(id)).then(() => setIsLoaded(true));
@@ -15,7 +16,9 @@ export default function HomePage(props) {
 
     if (props.authenticated) {
         id = props.user.id;
+        username = props.user.username;
     }
+
     return (
         isLoaded && (
             <div className="homePage_container">
@@ -24,7 +27,7 @@ export default function HomePage(props) {
                         <div className="homePage_container-left_top">
                             <div className="homePage_profile">
                                 <h2> Profile</h2>
-                                <p>Mr.Bean</p>
+                                <p>{username}</p>
                                 <p>Member since 2020</p>
                                 <p>Routes Completed: 65</p>
                                 <p>Avg. Miles per week: 28 mi</p>
