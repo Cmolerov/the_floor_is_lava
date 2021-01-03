@@ -11,7 +11,6 @@ import HomePage from "./components/HomePage";
 import SingleRoute from "./components/SingleRoute";
 import Footer from "./components/Footer";
 import NewRoute from "./components/NewRoute";
-import Calendar from "./components/Calendar.tsx";
 
 function App() {
     const [authenticated, setAuthenticated] = useState(false);
@@ -91,9 +90,6 @@ function App() {
                         />
                     )}
                 </Route>
-                <ProtectedRoute path="/calendar" authenticated={authenticated}>
-                    <Calendar />
-                </ProtectedRoute>
             </Switch>
             <Footer setAuthenticated={setAuthenticated} />
         </BrowserRouter>
