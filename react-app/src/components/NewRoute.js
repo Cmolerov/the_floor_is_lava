@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
-import './NewRoute.css'
+// import './NewRoute.css'
 
 import * as routesAction from '../store/routes'
 

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import * as routesAction from '../store/routes'
-import './Routes.css'
+// import './Routes.css'
 const containerStyle = {
   width: '200px',
   height: '200px'
