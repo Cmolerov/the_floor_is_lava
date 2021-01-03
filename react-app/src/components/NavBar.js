@@ -68,6 +68,16 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
                                         Create Route
                                     </span>
                                 </NavLink>
+                                <NavLink
+                                    className="navbar__grid-link-3"
+                                    to="/calendar"
+                                    exact={true}
+                                    activeClassName="active"
+                                >
+                                    <span className="navbar__dropdown__ label">
+                                        Calendar
+                                    </span>
+                                </NavLink>
                             </div>
                         </div>
                     </div>
