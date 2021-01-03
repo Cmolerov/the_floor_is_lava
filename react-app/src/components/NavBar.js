@@ -37,7 +37,7 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
         {authenticated ? 
           <div className="navbar__logout-button">
             <div>
-              <img className="navbar__img__running" src="../images/runninggif.gif" width="120" height="120" />
+              <img className="navbar__img__running" src="https://i.gifer.com/7QUq.gif" width="120" height="120" />
             </div>
             <LogoutButton setAuthenticated={setAuthenticated} />
           </div>
