@@ -24,8 +24,9 @@ function NewRoute(props) {
 
   const routeSubmit = async (e) => {
     e.preventDefault();
+    console.log("HELLO!OO!!!!!!")
     if (markers.length === 2) {
-
+      console.log("GOODBYEEEEE!!!!")
       const startLat = markers[0].coords.lat
       const startLong = markers[0].coords.lng
       const endLat = markers[1].coords.lat
