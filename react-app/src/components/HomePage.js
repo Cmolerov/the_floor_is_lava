@@ -37,28 +37,40 @@ export default function HomePage(props) {
                                     {routes[1].name} || Distance:{" "}
                                     {routes[1].distance}
                                 </p>
-                                <p>Description: {routes[1].description}</p>
+                                {/* <p>Description: {routes[1].description}</p> */}
+                                <p>
+                                    <p>Avg. Pace: 17 min</p>
+                                </p>
                             </div>
                             <div className="homePage_routesCard">
                                 <p>
                                     {routes[2].name} || Distance:{" "}
                                     {routes[2].distance}
                                 </p>
-                                <p>Description: {routes[2].description}</p>
+                                <p>
+                                    <p>Avg. Pace: 21 min</p>
+                                </p>
+                                {/* <p>Description: {routes[2].description}</p> */}
                             </div>
                             <div className="homePage_routesCard">
                                 <p>
                                     {routes[3].name} || Distance:{" "}
                                     {routes[3].distance}
                                 </p>
-                                <p>Description: {routes[3].description}</p>
+                                <p>
+                                    <p>Avg. Pace: 9 min</p>
+                                </p>
+                                {/* <p>Description: {routes[3].description}</p> */}
                             </div>
                             <div className="homePage_routesCard">
                                 <p>
                                     {routes[4].name} || Distance:{" "}
                                     {routes[4].distance}
                                 </p>
-                                <p>Description: {routes[4].description}</p>
+                                <p>
+                                    <p>Avg. Pace: 94 min</p>
+                                </p>
+                                {/* <p>Description: {routes[4].description}</p> */}
                             </div>
                         </div>
                     </div>
