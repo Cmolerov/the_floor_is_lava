@@ -99,6 +99,9 @@
   }
   
   .form__login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100%;
     width: 100%;
     padding: 50px;
@@ -117,7 +120,7 @@
   }
   
   .wrapper__login .form__login input {
-    width: 100%;
+    width: 280px;
     padding: 10px 0;
     font-size: 16px;
     color: black;
@@ -150,21 +153,33 @@
   }
   
   .form__login input[type="submit"] {
+    height: 50px;
+    width: 280px;
     background: transparent;
     border: none;
     outline: none;
     color: #fff;
-    background: #03a9f4;
+    /* background: #03a9f4; */
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
+  }
+
+  .login-form__buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login-form__buttons > button{
+    margin-top: 10px;
   }
   
   button {
     background-color: #fc5200;
     color: white;
     height: 40px;
-    width: 80px;
+    width: 180px;
     border-radius: 5px;
     font-weight: 900;
     cursor: pointer;
@@ -750,3 +765,17 @@
       padding: 20px;
     }
     
+
+   /* --------------------------DEFAULT CSS SECTION-------------------------------- */
+
+  body{
+      margin: 0px;
+  }
+  
+  h1, h2, h3 {
+      font-family: 'Raleway', sans-serif;
+  }
+  
+  p, div, form, li, button {
+      font-family: 'Raleway', sans-serif;
+  }

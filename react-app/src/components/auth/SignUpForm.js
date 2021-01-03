@@ -95,10 +95,12 @@ const SignUpForm = ({ authenticated, setAuthenticated, setUser }) => {
                             required={true}
                         ></input>
                     </div>
-                    <button type="submit">Sign Up</button>
-                    <button onClick={loginDemo} className="demo-button">
-                        Demo User
-                    </button>
+                    <div className="login-form__buttons">
+                        <button type="submit">Sign Up</button>
+                        <button onClick={loginDemo} className="demo-button">
+                            Demo User
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
