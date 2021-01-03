@@ -343,7 +343,7 @@
 
 .navbar__img__running {
     margin-top: -30px;
-    margin-right: -40px;
+    margin-right: 20px;
     cursor: pointer;
 }
 
@@ -516,7 +516,7 @@
   
    /* --------------------------HOMEPAGE CSS SECTION-------------------------------- */
 
-   .homePage_container {
+  .homePage_container {
     height: 800px;
     width: 100%;
     background-color: #f7f7fa;
@@ -544,6 +544,15 @@
     width: 250px;
     background-color: white;
     margin: 50px 25px 25px 25px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+/* ---------------profile card----------------------- */
+.homePage_profile,
+.homePage_newRoutes,
+.homePage_routeOfDay {
+    margin-left: 10px;
 }
 
 .homePage_container-left_bottom {
@@ -551,6 +560,8 @@
     width: 250px;
     background-color: white;
     margin: 120px 25px 25px 25px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .homePage_container-middle {
@@ -566,6 +577,8 @@
     height: 75%;
     width: 95%;
     background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .homePage_container-right {
@@ -575,11 +588,14 @@
 }
 
 .homePage_routesCard {
+    padding-left: 10px;
+    margin-top: 40px;
     margin-left: 20px;
-    width: 400px;
-    height: 150px;
+    width: 525px;
+    height: 100px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
         rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border-radius: 3px;
 }
 
 /* -----------------------------------------Media Queries------------------------ */
@@ -739,8 +755,14 @@
       align-items: center;
       justify-content: center;
     }
+
+    .new-route__div__form-container {
+      position: relative;
+      top: -33%;
+      left: -38%;
+    }
     
     .form__new__route > div {
-      padding: 5px;
+      padding: 20px;
     }
     
