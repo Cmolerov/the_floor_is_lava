@@ -717,8 +717,30 @@
 
      /* --------------------------NEW ROUTE CSS SECTION-------------------------------- */
 
-    .new-route__button__create {
-    width: 180px;
-    background-color:rgba(252, 82, 0, 1);
-    margin-left: 0px;
+     .new-route__button__create {
+      width: 180px;
+      background-color:rgba(252, 82, 0, 1);
+      margin-bottom: 20px;
+      margin-top: 10px;
     }
+    
+    .new__route__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 800px;
+      margin-top: 20px;
+    }
+    
+    .form__new__route{
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .form__new__route > div {
+      padding: 5px;
+    }
+    
