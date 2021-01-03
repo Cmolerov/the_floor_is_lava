@@ -30,6 +30,11 @@
         rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
+/* ---------------profile card----------------------- */
+.homePage_profile {
+    margin-left: 10px;
+}
+
 .homePage_container-left_bottom {
     height: 300px;
     width: 250px;

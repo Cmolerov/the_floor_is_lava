@@ -22,8 +22,13 @@ export default function HomePage(props) {
                 <div className="homePage_container_container">
                     <div className="homePage_container-left">
                         <div className="homePage_container-left_top">
-                            <h2>Profile</h2>
-                            <p>Mr.Bean</p>
+                            <div className="homePage_profile">
+                                <h2> Profile</h2>
+                                <p>Mr.Bean</p>
+                                <p>Member since 2020</p>
+                                <p>Routes Completed: 65</p>
+                                <p>Avg. Miles per week: 28 mi</p>
+                            </div>
                         </div>
                         <div className="homePage_container-left_bottom">
                             <h2>This Week</h2>
