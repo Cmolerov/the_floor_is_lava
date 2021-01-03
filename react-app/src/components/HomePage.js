@@ -16,7 +16,7 @@ export default function HomePage(props) {
 
     if (props.authenticated) {
         id = props.user.id;
-        username = props.user.username;
+        // username = props.user.username;
     }
 
     return (
@@ -27,7 +27,7 @@ export default function HomePage(props) {
                         <div className="homePage_container-left_top">
                             <div className="homePage_profile">
                                 <h2> Profile</h2>
-                                <p>{username}</p>
+                                {/* <p>{username}</p> */}
                                 <p>Member since 2020</p>
                                 <p>Routes Completed: 65</p>
                                 <p>Avg. Miles per week: 28 mi</p>
