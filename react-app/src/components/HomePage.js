@@ -24,7 +24,6 @@ export default function HomePage(props) {
                         <div className="homePage_container-left_top">
                             <h2>Profile</h2>
                             <p>Mr.Bean</p>
-                            
                         </div>
                         <div className="homePage_container-left_bottom">
                             <h2>This Week</h2>
@@ -35,28 +34,28 @@ export default function HomePage(props) {
                             <h2>Activity of the Week</h2>
                             <div className="homePage_routesCard">
                                 <p>
-                                    Name: {routes[1].name} || Distance:{" "}
+                                    {routes[1].name} || Distance:{" "}
                                     {routes[1].distance}
                                 </p>
                                 <p>Description: {routes[1].description}</p>
                             </div>
                             <div className="homePage_routesCard">
                                 <p>
-                                    Name: {routes[2].name} || Distance:{" "}
+                                    {routes[2].name} || Distance:{" "}
                                     {routes[2].distance}
                                 </p>
                                 <p>Description: {routes[2].description}</p>
                             </div>
                             <div className="homePage_routesCard">
                                 <p>
-                                    Name: {routes[3].name} || Distance:{" "}
+                                    {routes[3].name} || Distance:{" "}
                                     {routes[3].distance}
                                 </p>
                                 <p>Description: {routes[3].description}</p>
                             </div>
                             <div className="homePage_routesCard">
                                 <p>
-                                    Name: {routes[4].name} || Distance:{" "}
+                                    {routes[4].name} || Distance:{" "}
                                     {routes[4].distance}
                                 </p>
                                 <p>Description: {routes[4].description}</p>
@@ -66,6 +65,11 @@ export default function HomePage(props) {
                     <div className="homePage_container-right">
                         <div className="homePage_container-left_top">
                             <h2>Explore New Routes</h2>
+                            <div className="homePage_newRoutes">
+                                <p>Path: {routes[9].name} </p>
+                                <p> Distance: {routes[9].distance}</p>
+                                <p>Avg. Time: 57 min</p>
+                            </div>
                         </div>
                         <div className="homePage_container-left_bottom">
                             <h2>Route of the Day</h2>

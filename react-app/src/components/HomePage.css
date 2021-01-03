@@ -26,6 +26,8 @@
     width: 250px;
     background-color: white;
     margin: 50px 25px 25px 25px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .homePage_container-left_bottom {
@@ -33,6 +35,8 @@
     width: 250px;
     background-color: white;
     margin: 120px 25px 25px 25px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .homePage_container-middle {
@@ -48,6 +52,8 @@
     height: 75%;
     width: 95%;
     background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .homePage_container-right {
