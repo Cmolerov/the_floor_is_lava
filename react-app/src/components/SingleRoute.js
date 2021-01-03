@@ -2,7 +2,7 @@ import React, { useEffect, useState} from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer, Marker } from '@react-google-maps/api';
-import './SingleRoute.css'
+// import './SingleRoute.css';
 import * as routesAction from '../store/routes';
 
 

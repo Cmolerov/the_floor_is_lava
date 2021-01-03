@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { signUp, login } from "../../services/auth";
-import './Signup-Form.css';
+// import './Signup-Form.css';
 
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
     const [username, setUsername] = useState("");

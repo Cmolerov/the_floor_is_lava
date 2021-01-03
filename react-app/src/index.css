@@ -1,12 +1,725 @@
-/* TODO Add site wide styles */
-body{
-    margin: 0px;
+/* --------------------------WELCOME PAGE CSS SECTION-------------------------------- */
+
+.welcomePage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 800px;
+    background: url("./running-lady.png");
+    background-size: cover;
 }
 
-h1, h2, h3 {
-    font-family: 'Raleway', sans-serif;
+.welcomePage__header{
+    font-size: 44px;
+    margin-top: 50px;
+    margin-bottom: 40px;
 }
 
-p, div, form, li, button {
-    font-family: 'Raleway', sans-serif;
+.welcomePage_form-title {
+    margin-left: 25px;
 }
+
+.welcome__page__sign{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 300px;
+    background: linear-gradient(
+        to bottom,
+        rgba(214, 140, 140, 0.8) 0%,
+        rgba(199, 197, 197, 0.8) 12%,
+        rgba(255, 255, 255, 0.8) 30%,
+        rgba(255, 255, 255, 0.8) 50%,
+        rgba(255, 255, 255, 0.8) 70%,
+        rgba(199, 197, 197, 0.8) 88%,
+        rgba(214, 140, 140, 0.8) 100%
+      );
+    color:  black;
+    text-decoration: none;
+}
+
+.welcome__page__sign:hover{
+    background: linear-gradient(
+        to bottom,
+        rgba(224, 150, 150, 0.9) 0%,
+        rgba(209, 207, 207, 0.9) 12%,
+        rgba(245, 245, 245, 0.9) 30%,
+        rgba(245, 245, 245, 0.9) 50%,
+        rgba(245, 245, 245, 0.9) 70%,
+        rgba(209, 207, 207, 0.9) 88%,
+        rgba(224, 150, 150, 0.9) 100%
+      );
+}
+
+.form-import {
+    width: 100%;
+    height: 5%;
+    margin: 5px;
+    margin-bottom: 10%;
+    background-color: #fd925e;
+}
+
+.welcomePage_form-buttons {
+    justify-content: space-around;
+}
+
+/* --------------------------LOGIN FORM CSS SECTION-------------------------------- */
+
+.wrapper__login {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 800px;
+    background: url('./lava-field.jpg');
+    background-size: cover;
+  }
+  
+  .form__wrapper__login{
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    width: 400px;
+    height: 450px;
+    background: linear-gradient(
+      to bottom,
+      rgba(214, 140, 140, 0.8) 0%,
+      rgba(199, 197, 197, 0.8) 12%,
+      rgba(255, 255, 255, 0.8) 30%,
+      rgba(255, 255, 255, 0.8) 50%,
+      rgba(255, 255, 255, 0.8) 70%,
+      rgba(199, 197, 197, 0.8) 88%,
+      rgba(214, 140, 140, 0.8) 100%
+    );
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  
+  .form__login {
+    height: 100%;
+    width: 100%;
+    padding: 50px;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  
+  .form__login h2 {
+    margin-bottom: 30px;
+    color: black;
+    text-align: center;
+  }
+  
+  .wrapper__login .form__login {
+    position: relative;
+  }
+  
+  .wrapper__login .form__login input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: black;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    box-shadow: 0 2px 10px #e0682c;
+    outline: none;
+    background: transparent;
+  }
+  
+  .wrapper__login .form__login label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+  }
+  
+  .wrapper__login .form__login input:focus ~ label,
+  .wrapper__login .form__login input:focus ~ label {
+    top: -20px;
+    left: 0;
+    color: #03a9f4;
+    font-size: 12px;
+  }
+  
+  .form__login input[type="submit"] {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #03a9f4;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  button {
+    background-color: #fc5200;
+    color: white;
+    height: 40px;
+    width: 80px;
+    border-radius: 5px;
+    font-weight: 900;
+    margin-left: 37%;
+    cursor: pointer;
+  }
+
+  /* --------------------------SIGNUP FORM CSS SECTION-------------------------------- */
+
+  .wrapper__signup {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 800px;
+    background: url('./lava-field.jpg');
+    background-size: cover;
+  }
+  
+  .form__wrapper__signup{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    width: 400px;
+    height: 550px;
+    padding: 20px 50px;
+    background: linear-gradient(
+      to bottom,
+      rgba(214, 140, 140, 0.8) 0%,
+      rgba(199, 197, 197, 0.8) 12%,
+      rgba(255, 255, 255, 0.8) 30%,
+      rgba(255, 255, 255, 0.8) 50%,
+      rgba(255, 255, 255, 0.8) 70%,
+      rgba(199, 197, 197, 0.8) 88%,
+      rgba(214, 140, 140, 0.8) 100%
+    );
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  
+  .form__signup {
+    height: 100%;
+    width: 100%
+  }
+  
+  .form__signup h2 {
+    margin-bottom: 30px;
+    color: black;
+    text-align: center;
+  }
+  
+  .wrapper__signup .form__signup input {
+    width: 100%;
+    padding: 5px 0;
+    font-size: 16px;
+    color: black;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    box-shadow: 0 2px 10px #e0682c;
+    outline: none;
+    background: transparent;
+  }
+  
+  .form__login input[type="submit"] {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #03a9f4;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  /* --------------------------NAVBAR CSS SECTION-------------------------------- */
+
+  .navbar {
+    margin: 0 auto;
+    height: 80px;
+    max-width: 1200px;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.navbar__home {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 5px;
+    height: 5px;
+    margin-left: 50px;
+    border-radius: 50%;
+    animation-name: lava;
+    animation-duration: 60s;
+    animation-iteration-count: infinite;
+}
+
+.img__icon {
+    height: 60px;
+    width: 80px;
+    margin-top: 5px;
+    margin-left: -40px;
+}
+
+.navbar__grid-container {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr 4fr 1fr;
+}
+
+.navbar__grid {
+    display: grid;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.navbar__div__dropdown-container {
+    float: left;
+    overflow: hidden;
+    width: 180px;
+    height: 40px;
+    border-radius: 5px;
+    margin-top: 20px;
+    
+}
+
+.navbar__button__dashboard {
+    margin: auto;
+    width: 180px;
+    background-color: white;
+    color: black;
+    border: none;
+}
+
+.navbar__img__down-arrow {
+    margin-left: 5px;
+}
+
+.navbar__button__dashboard:hover {
+    margin: auto;
+    background-color: white;
+    color: #fc5200;
+}
+
+.navbar__div__dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1; 
+}
+
+ .navbar__grid-link-1, .navbar__grid-link-2, .navbar__grid-link-3 {
+     text-decoration: none;
+     padding: 20px;
+     font-weight: 400;
+     color: black;
+} 
+
+.navbar__grid-link-1:hover, .navbar__grid-link-2:hover, .navbar__grid-link-3:hover {
+    background-color: #ddd;
+    font-weight: 700;
+    color:rgba(252, 82, 0, 1);
+}
+
+.navbar__div__dropdown-container:hover .navbar__div__dropdown-content {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.navbar__div__dropdown-container:hover  {
+    background-color: #ddd;
+
+}
+
+.navbar__img__running {
+    margin-top: -30px;
+    margin-right: -40px;
+    cursor: pointer;
+}
+
+.navbar__logout-button {
+    display:flex;
+    margin-right: 10px;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navbar__button__logout {
+    background-color:rgba(252, 82, 0, 1);
+    width: 100px;
+    border: .5px solid grey;
+}
+
+@keyframes lava {
+    0% {
+    }
+    10% {
+    }
+    20% {
+    }
+    30% {
+    }
+    40% {
+    }
+    50% {
+    }
+    60% {
+    }
+    70% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
+        background-color: white;
+    }
+    80% {
+        box-shadow: 0px 0px 100px 100px rgba(255, 0, 0, 1);
+        background-color: rgba(255, 0, 0, 0.8);
+    }
+    90% {
+    }
+    100% {
+    }
+}
+.navbar__grid-link {
+    text-decoration: none;
+}
+
+ /* --------------------------FOOTER CSS SECTION-------------------------------- */
+
+ .footer {
+    height: 50px;
+    margin-top: 75px;
+    margin-bottom: 0px;
+    background-color: rgba(252, 82, 0, 0.9);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .footer__img__icon {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    animation-name: lava;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+  }
+  
+  .footer__image__label {
+    margin-right: 30px;
+    margin-top: 0px;
+    font-size: x-large;
+    font-weight: 900;
+    font-family: 'Montserrat Subrayada', sans-serif;
+  }
+  
+  .footer__grid-container {
+    display: grid;
+    grid-template-columns: 3fr 2.5fr 2.5fr 2.5fr 1fr;
+  }
+  
+  .footer__grid-1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 50px;
+  }
+  
+  .footer__grid-2, .footer__grid-3, .footer__grid-4, .footer__grid-5 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .footer__grid-5 {
+    background-color:  rgba(252, 82, 0, 0.8); 
+  }
+  
+  .github__links__creator {
+    height: 33px;
+    width: 150px;
+    border-radius: 4px;
+    text-decoration: none;
+    background-color: white;
+    text-align: center;
+    align-content: center;
+    margin-top: 0px;
+    color: black;
+  }
+  
+   .github__links__creator:hover {
+    transform: scale(1.83);
+  }
+  
+  .footer__span__names {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+  }
+
+  .footer__img__repo {
+      background-color:rgba(252, 82, 0, 0.8);
+      margin-right: 40px;
+  }
+  
+  @keyframes lava {
+    0%   {
+          
+        }
+    10%  {
+          
+        }
+    20%  {
+          
+        }
+    30%  {
+          
+          }
+    40%  {
+          
+        }
+    50%  {
+          
+        }
+    60%  {
+    }
+    70%  {
+      .footer__image__label {
+        color: red;
+      }
+    }
+    88%  {
+      box-shadow: 0px 0px 0px 0px rgba(235, 167, 43, 0.5);
+      background-color: rgba(255,0,0,0.3); 
+        }
+    90%  {
+      box-shadow: 0px -40px 60px 20px rgba(255, 0, 0, 1);  
+        }
+    92% {
+      box-shadow: 0px 0px 0px 0px rgba(235, 167, 43, 0.5);
+    }
+   100%  {
+   
+        }
+  }
+  
+   /* --------------------------HOMEPAGE CSS SECTION-------------------------------- */
+
+   .homePage_container {
+    height: 800px;
+    width: 100%;
+    background-color: #f7f7fa;
+}
+
+.homePage_container_container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: space-around;
+}
+
+.homePage_container-left {
+    grid-column: 1/2;
+    justify-content: flex-start;
+    /* background-color: aqua; */
+    height: 800px;
+    width: 300px;
+}
+
+.homePage_container-left_top {
+    height: 200px;
+    width: 250px;
+    background-color: white;
+    margin: 50px 25px 25px 25px;
+}
+
+.homePage_container-left_bottom {
+    height: 300px;
+    width: 250px;
+    background-color: white;
+    margin: 120px 25px 25px 25px;
+}
+
+.homePage_container-middle {
+    /* background-color: blue; */
+    grid-column: 2/3;
+    height: 800px;
+    width: 600px;
+}
+
+.homePage_container-middle-container {
+    margin-top: 65px;
+    margin-left: 20px;
+    height: 75%;
+    width: 95%;
+    background-color: white;
+}
+
+.homePage_container-right {
+    /* background-color: red; */
+    height: 800px;
+    width: 300px;
+}
+
+.homePage_routesCard {
+    margin-left: 20px;
+    width: 400px;
+    height: 150px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+/* -----------------------------------------Media Queries------------------------ */
+
+@media screen and (max-width: 1140px) and (min-width: 912px) {
+    .homePage_container_container {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        height: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        justify-content: space-around;
+    }
+
+    .homePage_container-right {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 911px) {
+    .homePage_container_container {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        height: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        justify-content: space-around;
+    }
+
+    .homePage_container-right {
+        display: none;
+    }
+
+    .homePage_container-left {
+        display: none;
+    }
+}
+
+ /* --------------------------ROUTES CSS SECTION-------------------------------- */
+
+ .routes__div__banner {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+  }
+  
+  .routes__button__new-route {
+    width: 180px;
+    background-color:rgba(252, 82, 0, 1);
+    margin-left: 0px;
+  }
+  
+  .main__div__container {
+    display: inline-flex;
+    flex-direction: column;
+    margin-top: 5px;
+    margin-left: 25px;
+    margin-bottom: 45px;
+    padding: 20px;
+  }
+  
+  
+  .routes__card__container {
+    display: inline-flex;
+    width: 200px;
+    height: 575px;
+    background-color: #f7f7f7;
+    flex-direction: column;
+    border: 1px solid #ccf;
+    border-radius: 5px;
+    padding: 0;
+    transition: transform .2s;
+  }
+  
+  .routes__card__container:hover {
+    transform: translate(10px, -10px);
+    box-shadow: -4px -4px 16px rgba(0, 0, 0, 0.7);
+  }
+  
+  .routes__h2__name {
+    text-align: center;
+    height: 10%
+  }
+  
+  .routes__div__description {
+    font-style: italic;
+    border: 1px solid #fc5200;
+    height: 25%;
+    border-radius: 25px;
+    padding: 10px;
+    align-items: center;
+    box-shadow: 2px 2px 8px #fc5200;
+  }
+  
+  .routes__div__description:hover {
+    transform: scale(1.5);
+    background-color: rgba(252, 82, 0, 0.7);
+    font-style: normal;
+    color: white;
+    text-shadow: 1.5px 1.5px black;
+    padding: 10px;
+    align-items: center;
+  }
+  
+  .routes__div__distance {
+  
+  }
+  
+  .routes__span__createdAt {
+    font-weight: 800;
+  }
+  
+  .routes__h5__createdAt {
+    margin-top: 0px;
+  }
+
+   /* --------------------------SINGLE ROUTE CSS SECTION-------------------------------- */
+
+   .single__route__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .main__div__map-container {
+    width: 600px;
+    height: 400px;
+  }
+  
+  .single__route__run__button{
+    /* height: 100px;
+    width: 200px */
+  }
+
+     /* --------------------------NEW ROUTE CSS SECTION-------------------------------- */
+
+    .new-route__button__create {
+    width: 180px;
+    background-color:rgba(252, 82, 0, 1);
+    margin-left: 0px;
+    }
