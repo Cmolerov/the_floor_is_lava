@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Redirect } from 'react-router-dom';
 import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer, Marker, Circle } from '@react-google-maps/api';
@@ -41,6 +41,7 @@ function SingleRoute() {
   const [response, setResponse] = useState(null);
   const [lavas, setLavas] = useState([]);
   const [redirect, setRedirect] = useState(false)
+  const increment = useRef(null);
   
     //TEST FOR CURRENT MOVEMENT
 
@@ -92,7 +93,7 @@ function SingleRoute() {
 
   let count = -1;
   function lavaFlowing() {
-    setInterval(function () {
+    increment.current = setInterval(function () {
       setRad((rad) => rad.concat([getRandomInt(80, 220)]))
       setLavas((lavas) => lavas.concat([     {
         lat: getRandomNum(route.startLat, route.endLat),
@@ -104,6 +105,12 @@ function SingleRoute() {
   const runRoute = () => {
     setRunning(true)
     lavaFlowing();
+  };
+
+  const stopRoute = () => {
+    setRunning(false)
+    clearInterval(increment.current)
+    setLavas([])
   };
 
   const deleteRoute = async (e) => {
@@ -219,6 +226,7 @@ function SingleRoute() {
           </LoadScript>
         </div>
       <button onClick={runRoute} className="single__route__run__button">Run Route</button>
+      <button onClick={stopRoute} className="single__route__run__button">Stop Run</button>
       <button onClick={deleteRoute} className="single__route__run__button">Delete Route</button>
       
       </div>
