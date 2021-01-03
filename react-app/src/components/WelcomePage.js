@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect, NavLink } from "react-router-dom";
-import './WelcomePage.css';
+// import './WelcomePage.css';
 
 export default function WelcomePage({ authenticated }) {
     if (authenticated) {
