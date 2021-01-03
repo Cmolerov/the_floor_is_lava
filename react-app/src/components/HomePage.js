@@ -81,17 +81,19 @@ export default function HomePage(props) {
                     </div>
                     <div className="homePage_container-right">
                         <div className="homePage_container-left_top">
-                            <h2>Explore New Routes</h2>
                             <div className="homePage_newRoutes">
+                                <h2>Explore New Routes</h2>
                                 <p>Path: {routes[9].name} </p>
                                 <p> Distance: {routes[9].distance}</p>
                                 <p>Avg. Time: 57 min</p>
                             </div>
                         </div>
                         <div className="homePage_container-left_bottom">
-                            <h2>Route of the Day</h2>
-                            <p>{routes[6].name}</p>
-                            <p>Distance: {routes[6].distance}</p>
+                            <div className="homePage_routeOfDay">
+                                <h2>Route of the Day</h2>
+                                <p>{routes[6].name}</p>
+                                <p>Distance: {routes[6].distance}</p>
+                            </div>
                         </div>
                     </div>
                 </div>

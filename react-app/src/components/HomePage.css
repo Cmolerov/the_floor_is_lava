@@ -31,7 +31,9 @@
 }
 
 /* ---------------profile card----------------------- */
-.homePage_profile {
+.homePage_profile,
+.homePage_newRoutes,
+.homePage_routeOfDay {
     margin-left: 10px;
 }
 
