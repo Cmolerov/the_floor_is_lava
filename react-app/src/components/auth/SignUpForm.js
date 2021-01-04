@@ -55,39 +55,44 @@ const SignUpForm = ({ authenticated, setAuthenticated, setUser }) => {
     return (
         <div className="wrapper__signup">
             {/* <img className="img__signup" src={process.env.PUBLIC_URL + './images/lava-field.jpg'} alt="lava"  />  */}
-            <div className="form__wrapper__signup">
+            <div className="form__wrapper__signup animate__animated animate__zoomIn">
                 <form className="form__signup" onSubmit={onSignUp}>
+                    <h1 className="form_title">The Road is Lava</h1>
                     <h2>Signup</h2>
-                    <div>
-                        <label>User Name</label>
+                    <div className="input_wrapper">
+                        <label className="input_label">User Name</label>
                         <input
+                            className="input"
                             type="text"
                             name="username"
                             onChange={updateUsername}
                             value={username}
                         ></input>
                     </div>
-                    <div>
-                        <label>Email</label>
+                    <div className="input_wrapper">
+                        <label className="input_label">Email</label>
                         <input
+                            className="input"
                             type="text"
                             name="email"
                             onChange={updateEmail}
                             value={email}
                         ></input>
                     </div>
-                    <div>
-                        <label>Password</label>
+                    <div className="input_wrapper">
+                        <label className="input_label">Password</label>
                         <input
+                            className="input"
                             type="password"
                             name="password"
                             onChange={updatePassword}
                             value={password}
                         ></input>
                     </div>
-                    <div>
-                        <label>Repeat Password</label>
+                    <div className="input_wrapper">
+                        <label className="input_label">Confirm Password</label>
                         <input
+                            className="input"
                             type="password"
                             name="repeat_password"
                             onChange={updateRepeatPassword}
@@ -96,8 +101,10 @@ const SignUpForm = ({ authenticated, setAuthenticated, setUser }) => {
                         ></input>
                     </div>
                     <div className="login-form__buttons">
-                        <button type="submit">Sign Up</button>
-                        <button onClick={loginDemo} className="demo-button">
+                        <button className="btn-grad" type="submit">
+                            Sign Up
+                        </button>
+                        <button onClick={loginDemo} className="btn-grad">
                             Demo User
                         </button>
                     </div>
