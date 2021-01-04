@@ -24,9 +24,7 @@ function NewRoute(props) {
 
   const routeSubmit = async (e) => {
     e.preventDefault();
-    console.log("HELLO!OO!!!!!!")
     if (markers.length === 2) {
-      console.log("GOODBYEEEEE!!!!")
       const startLat = markers[0].coords.lat
       const startLong = markers[0].coords.lng
       const endLat = markers[1].coords.lat
@@ -110,51 +108,55 @@ function NewRoute(props) {
     }
   }
 
-  return isLoaded &&(
-    <div className='new__route__container'>
-      {homeRoutes()}
-      <h1>New Route</h1>
-      {center ? 
-      <div>
-      <LoadScript
-      googleMapsApiKey={apiKey}
-      >
-        <GoogleMap
-          mapContainerStyle={{
-            height: "50vh",
-            width: "50vw",
-            margin: "20px",
-          }}
-          zoom={12}
-          center={center}
-          onLoad={map => {
-            addMarker(currentLocation)
-            setMyMap(map)
+  return isLoaded && (
+    <>
+    <h1 className="new__route__header">New Route</h1>
+    <div className='new__route__holder'>
+      <div className='new__route__container'>
+        {homeRoutes()}
+        {center ? 
+        <div>
+        <LoadScript
+        googleMapsApiKey={apiKey}
+        >
+          <GoogleMap
+            mapContainerStyle={{
+              height: "50vh",
+              width: "50vw",
+              margin: "20px",
+            }}
+            zoom={12}
+            center={center}
+            onLoad={map => {
+              addMarker(currentLocation)
+              setMyMap(map)
+              }
             }
-          }
-          onClick={(e)=> markers.length < 2 ? addMarker(e.latLng.toJSON()) : null}
-      >{markers ? (
-        markers.map((marker) => {
-          return (
-            <Marker
-              key={marker.id}
-              draggable={true}
-              position={marker.coords}
-              onDragEnd={e => marker.coords = e.latLng.toJSON()}
-              label={marker.id === 0 ? { text: "start", color: 'rgba(214, 140, 140, 0.9)'} : null}
-              icon={marker.id === 0 ? 'https://img.icons8.com/officexs/30/000000/volcano.png' : 'https://img.icons8.com/fluent-systems-filled/24/000000/finish-flag.png'}
-            />
-          )
-        })
-      ) : null }
-      </GoogleMap>
-      </LoadScript>
-    </div>
+            onClick={(e)=> markers.length < 2 ? addMarker(e.latLng.toJSON()) : null}
+        >{markers ? (
+          markers.map((marker) => {
+            return (
+              <Marker
+                key={marker.id}
+                draggable={true}
+                position={marker.coords}
+                onDragEnd={e => marker.coords = e.latLng.toJSON()}
+                label={marker.id === 0 ? { text: "start", color: 'rgba(214, 140, 140, 0.9)'} : null}
+                icon={marker.id === 0 ? 'https://img.icons8.com/officexs/30/000000/volcano.png' : 'https://img.icons8.com/fluent-systems-filled/24/000000/finish-flag.png'}
+              />
+            )
+          })
+        ) : null }
+        </GoogleMap>
+        </LoadScript>
+      </div>
       :
       null
-      }
-      <div className="new-route__div__form-container">
-        <form className="form__new__route" onSubmit={routeSubmit}>
+        }
+        </div>
+        <div className="new-route__div__form-container">
+            <h2>Create Route</h2>
+          <form className="form__new__route" onSubmit={routeSubmit}> 
           <div>
           <label htmlFor="name"></label>
           <input
@@ -179,9 +181,9 @@ function NewRoute(props) {
             <button className="new-route__button__create" type="submit">Create Route</button>
         </form>
       </div>
-    </div>
-  )
-      
+      </div>
+      </>
+  )   
 }
 
 export default NewRoute;
