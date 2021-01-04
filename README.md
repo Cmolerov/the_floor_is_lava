@@ -34,7 +34,7 @@ The Road Is Lava was built using the python/flask framework with a PostgreSQL(po
 ### [Example of Site Navigation]
 A display of various routes taken while navigating site
 
-![Login Example](./navbar-example.gif)
+![Login Example](./footer-anime.gif)
 
 ![Login Example](./routes-example.gif)
 
