@@ -54,7 +54,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 800px;
+    height: 80vh;
     background: url("./running-lady.png");
     background-size: cover;
 }
@@ -63,12 +63,36 @@
     font-size: 44px;
     margin-top: 50px;
     margin-bottom: 40px;
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 800;
 }
 
 .welcomePage_form-title {
     margin-left: 25px;
 }
-
+.welcome_wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.card_wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    margin-top: 10px;
+    padding: 40px;
+}
+.card {
+    height: 300px;
+    width: 250px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
 .welcome__page__sign {
     margin: 10px;
     display: flex;
@@ -76,30 +100,27 @@
     justify-content: center;
     height: 50px;
     width: 300px;
-    background: linear-gradient(
-        to bottom,
-        rgba(214, 140, 140, 0.8) 0%,
-        rgba(199, 197, 197, 0.8) 12%,
-        rgba(255, 255, 255, 0.8) 30%,
-        rgba(255, 255, 255, 0.8) 50%,
-        rgba(255, 255, 255, 0.8) 70%,
-        rgba(199, 197, 197, 0.8) 88%,
-        rgba(214, 140, 140, 0.8) 100%
+    background-image: linear-gradient(
+        to right,
+        #e44d26 0%,
+        #f16529 51%,
+        #e44d26 100%
     );
-    color: black;
+    border-radius: 5px;
+    color: white;
     text-decoration: none;
 }
 
+.btn-wrap {
+    display: flex;
+}
+
 .welcome__page__sign:hover {
-    background: linear-gradient(
-        to bottom,
-        rgba(224, 150, 150, 0.9) 0%,
-        rgba(209, 207, 207, 0.9) 12%,
-        rgba(245, 245, 245, 0.9) 30%,
-        rgba(245, 245, 245, 0.9) 50%,
-        rgba(245, 245, 245, 0.9) 70%,
-        rgba(209, 207, 207, 0.9) 88%,
-        rgba(224, 150, 150, 0.9) 100%
+    background-image: linear-gradient(
+        to right,
+        #e44d26 0%,
+        #f16529 51%,
+        #e44d26 100%
     );
 }
 
