@@ -25,11 +25,11 @@ The Road Is Lava was built using the python/flask framework with a PostgreSQL(po
 
 ### [Example Sign-up]:
 
-![Database Schema](./readme-resources/signup-example.gif)
+![Database Schema](./signup-example.gif)
 
 ### [Example Login]:
 
-![Database Schema](./readme-resources/navbar-example.gif)
+![Database Schema](./navbar-example.gif)
 
 ### [Example of Site Navigation]
 A display of various routes taken while navigating site
@@ -38,7 +38,7 @@ A display of various routes taken while navigating site
 One of the larger challenges of this project was ensuring we had the right database setup. We tried to design it well enough to cover all of the usages we needed. This project was incredibly important to have the relations between tables setup properly.
 
 The end database schema:  
-![Database Schema](./wiki/Database-Schema)
+![Database Schema](./The-Road-Is-Lava-database-schema.png)
 
 ### [Conclusion && Next Steps]:
 Things learned while we worked on The Road Is Lava:
