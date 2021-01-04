@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 // import "./HomePage.css";
 import * as routesAction from "../store/routes";
+// import Calendar from "./Calendar";
 
 export default function HomePage(props) {
     const dispatch = useDispatch();
@@ -25,7 +26,7 @@ export default function HomePage(props) {
             <div className="homePage_container">
                 <div className="homePage_container_container">
                     <div className="homePage_container-left">
-                        <div className="homePage_container-left_top">
+                        <div className="homePage_container-left_top animate__animated animate__slideInLeft">
                             <div className="homePage_profile">
                                 <h2> Profile</h2>
                                 <p>{username ? username : "Mr. Bean"}</p>
@@ -34,15 +35,18 @@ export default function HomePage(props) {
                                 <p>Avg. Miles per week: 28 mi</p>
                             </div>
                         </div>
-                        <div className="homePage_container-left_bottom">
+                        <div className="homePage_container-left_bottom animate__animated animate__slideInLeft">
                             <div className="homePage_profile">
                                 <h2>This Week</h2>
+                                {/* <Calendar /> */}
                             </div>
                         </div>
                     </div>
                     <div className="homePage_container-middle">
-                        <div className="homePage_container-middle-container">
-                            <h2>Activity of the Week</h2>
+                        <div className="homePage_container-middle-container animate__animated animate__slideInUp">
+                            <h2 className="homePage_activityHeader">
+                                Activity of the Week
+                            </h2>
                             <NavLink
                                 style={{
                                     textDecoration: "none",
@@ -118,7 +122,7 @@ export default function HomePage(props) {
                         </div>
                     </div>
                     <div className="homePage_container-right">
-                        <div className="homePage_container-left_top">
+                        <div className="homePage_container-left_top animate__animated animate__slideInRight">
                             <NavLink
                                 style={{
                                     textDecoration: "none",
@@ -141,7 +145,7 @@ export default function HomePage(props) {
                             }}
                             to={`/routes/${routes[6].id}`}
                         >
-                            <div className="homePage_container-left_bottom">
+                            <div className="homePage_container-left_bottom animate__animated animate__slideInRight">
                                 <div className="homePage_routeOfDay">
                                     <h2>Route of the Day</h2>
                                     <p>{routes[6].name}</p>
