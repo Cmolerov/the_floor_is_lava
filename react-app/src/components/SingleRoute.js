@@ -224,11 +224,12 @@ function SingleRoute() {
               null}
             </GoogleMap>
           </LoadScript>
+      </div>
+      <div className='button-holders'>
+          <button onClick={runRoute} className="single__route__run__button">Run Route</button>
+          <button onClick={stopRoute} className="single__route__run__button">Stop Run</button>
+          <button onClick={deleteRoute} className="single__route__run__button">Delete Route</button>
         </div>
-      <button onClick={runRoute} className="single__route__run__button">Run Route</button>
-      <button onClick={stopRoute} className="single__route__run__button">Stop Run</button>
-      <button onClick={deleteRoute} className="single__route__run__button">Delete Route</button>
-      
       </div>
     )
 }
