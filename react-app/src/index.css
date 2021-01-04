@@ -762,24 +762,31 @@ button {
 .single__route__container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
 }
 
 .main__div__map-container {
-    width: 600px;
-    height: 400px;
+    max-width: 600px;
+    max-height: 400px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
         rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     border-radius: 5px;
 }
 
 .single__route__run__button {
-    /* height: 100px;
-    width: 200px */
+    margin: 0 8px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
         rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     border-radius: 5px;
+}
+
+.button-holders{
+    margin-top: 20px;
+    width: 320px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
 }
 
 /* --------------------------NEW ROUTE CSS SECTION-------------------------------- */
