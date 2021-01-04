@@ -3,7 +3,6 @@ import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
 // import './Login-Form.css';
 
-
 const LoginForm = ({ authenticated, setAuthenticated, setUser }) => {
     const [errors, setErrors] = useState([]);
     const [email, setEmail] = useState("");
@@ -43,18 +42,23 @@ const LoginForm = ({ authenticated, setAuthenticated, setUser }) => {
     }
 
     return (
-        <div className="wrapper__login">
-            <div className="form__wrapper__login">
-                <form className="form__login" onSubmit={onLogin}>
+        <div className="wrapper__signup">
+            <div className="form__wrapper__signup animate__animated animate__zoomIn">
+                <form className="form__signup" onSubmit={onLogin}>
                     <div>
                         {errors.map((error) => (
                             <div>{error}</div>
                         ))}
                     </div>
+                    <h1 className="form_title">The Road is Lava</h1>
                     <h2>Login</h2>
-                    <div>
-                        <label htmlFor="email"></label>
+                    <div className="input_wrapper">
+                        <label className="input_label" htmlFor="email">
+                            {" "}
+                            Email
+                        </label>
                         <input
+                            className="input"
                             name="email"
                             type="text"
                             placeholder="Email"
@@ -62,9 +66,12 @@ const LoginForm = ({ authenticated, setAuthenticated, setUser }) => {
                             onChange={updateEmail}
                         />
                     </div>
-                    <div>
-                        <label htmlFor="password"></label>
+                    <div className="input_wrapper">
+                        <label className="input_label" htmlFor="password">
+                            Password
+                        </label>
                         <input
+                            className="input"
                             name="password"
                             type="password"
                             placeholder="Password"
@@ -73,8 +80,10 @@ const LoginForm = ({ authenticated, setAuthenticated, setUser }) => {
                         />
                     </div>
                     <div className="login-form__buttons">
-                        <button type="submit">Login</button>
-                        <button onClick={loginDemo} className="demo-button">
+                        <button className="btn-grad" type="submit">
+                            Login
+                        </button>
+                        <button onClick={loginDemo} className="btn-grad">
                             Demo User
                         </button>
                     </div>

@@ -10,7 +10,7 @@
 /* SINGLE ROUTE */
 /* NEW ROUTE */
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
 /* -----------------------------------------Media Queries------------------------ */
 
 @media screen and (max-width: 1140px) and (min-width: 912px) {
@@ -54,7 +54,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 800px;
+    height: 80vh;
     background: url("./running-lady.png");
     background-size: cover;
 }
@@ -63,12 +63,36 @@
     font-size: 44px;
     margin-top: 50px;
     margin-bottom: 40px;
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 800;
 }
 
 .welcomePage_form-title {
     margin-left: 25px;
 }
-
+.welcome_wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.card_wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    margin-top: 10px;
+    padding: 40px;
+}
+.card {
+    height: 300px;
+    width: 250px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
 .welcome__page__sign {
     margin: 10px;
     display: flex;
@@ -76,30 +100,27 @@
     justify-content: center;
     height: 50px;
     width: 300px;
-    background: linear-gradient(
-        to bottom,
-        rgba(214, 140, 140, 0.8) 0%,
-        rgba(199, 197, 197, 0.8) 12%,
-        rgba(255, 255, 255, 0.8) 30%,
-        rgba(255, 255, 255, 0.8) 50%,
-        rgba(255, 255, 255, 0.8) 70%,
-        rgba(199, 197, 197, 0.8) 88%,
-        rgba(214, 140, 140, 0.8) 100%
+    background-image: linear-gradient(
+        to right,
+        #e44d26 0%,
+        #f16529 51%,
+        #e44d26 100%
     );
-    color: black;
+    border-radius: 5px;
+    color: white;
     text-decoration: none;
 }
 
+.btn-wrap {
+    display: flex;
+}
+
 .welcome__page__sign:hover {
-    background: linear-gradient(
-        to bottom,
-        rgba(224, 150, 150, 0.9) 0%,
-        rgba(209, 207, 207, 0.9) 12%,
-        rgba(245, 245, 245, 0.9) 30%,
-        rgba(245, 245, 245, 0.9) 50%,
-        rgba(245, 245, 245, 0.9) 70%,
-        rgba(209, 207, 207, 0.9) 88%,
-        rgba(224, 150, 150, 0.9) 100%
+    background-image: linear-gradient(
+        to right,
+        #e44d26 0%,
+        #f16529 51%,
+        #e44d26 100%
     );
 }
 
@@ -122,7 +143,7 @@
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    height: 800px;
+    height: 100vh;
     background: url("./lava-field.jpg");
     background-size: cover;
 }
@@ -241,65 +262,93 @@ button {
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    height: 800px;
+    height: 100vh;
     background: url("./lava-field.jpg");
     background-size: cover;
+    align-items: center;
+    align-content: center;
 }
 
 .form__wrapper__signup {
-    margin-top: 100px;
-    margin-bottom: 100px;
-    width: 400px;
-    height: 550px;
-    padding: 20px 50px;
-    background: linear-gradient(
-        to bottom,
-        rgba(214, 140, 140, 0.8) 0%,
-        rgba(199, 197, 197, 0.8) 12%,
-        rgba(255, 255, 255, 0.8) 30%,
-        rgba(255, 255, 255, 0.8) 50%,
-        rgba(255, 255, 255, 0.8) 70%,
-        rgba(199, 197, 197, 0.8) 88%,
-        rgba(214, 140, 140, 0.8) 100%
-    );
-    box-sizing: border-box;
+    width: 300px;
+    height: 520px;
+    padding: 30px 60px;
+    background-color: white;
     border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.form_title {
+    text-align: center;
+    font-weight: 800;
+    font-family: "Open Sans", sans-serif;
+    font-size: 35px;
+    color: black;
+    /* text-shadow: -1px -1px 0 #fc5200, 1px -1px 0 #fc5200, -1px 1px 0 #fc5200,
+        1px 1px 0 #fc5200;
+} */
+}
+.input {
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    border-bottom: 3px solid black;
+    margin-bottom: 10px;
+}
+.input:focus {
+    outline: none;
+}
+.input:hover {
+    border-bottom: 3px solid #fc5200;
+}
+.input:active {
+    border-bottom: 3px solid;
+    color: #fc5200;
+}
+.btn-grad {
+    background-image: linear-gradient(
+        to right,
+        #e44d26 0%,
+        #f16529 51%,
+        #e44d26 100%
+    );
+}
+.btn-grad {
+    margin: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 5px;
+    border: none;
+    padding: 15px 25px;
 }
 
+.btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
 .form__signup {
     height: 100%;
     width: 100%;
+    background-color: white;
+    margin-bottom: 10px;
 }
-
+.input_wrapper {
+    flex-direction: column;
+    display: flex;
+}
+.input_label {
+    margin-bottom: 10px;
+}
 .form__signup h2 {
     margin-bottom: 30px;
     color: black;
     text-align: center;
-}
-
-.wrapper__signup .form__signup input {
-    width: 100%;
-    padding: 5px 0;
-    font-size: 16px;
-    color: black;
-    letter-spacing: 1px;
-    margin-bottom: 30px;
-    border: none;
-    border-bottom: 1px solid #fff;
-    box-shadow: 0 2px 10px #e0682c;
-    outline: none;
-    background: transparent;
-}
-
-.form__login input[type="submit"] {
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #fff;
-    background: #03a9f4;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
 }
 
 /* --------------------------NAVBAR CSS SECTION-------------------------------- */
