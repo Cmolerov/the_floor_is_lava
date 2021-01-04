@@ -34,6 +34,10 @@ The Road Is Lava was built using the python/flask framework with a PostgreSQL(po
 ### [Example of Site Navigation]
 A display of various routes taken while navigating site
 
+![Login Example](./navbar-example.gif)
+
+![Login Example](./routes-example.gif)
+
 ## [Relational Database Model]:
 One of the larger challenges of this project was ensuring we had the right database setup. We tried to design it well enough to cover all of the usages we needed. This project was incredibly important to have the relations between tables setup properly.
 
