@@ -1,102 +1,52 @@
-# Flask React Project
+# [The Road Is Lava](https://theroadislava.herokuapp.com/) - The #1 app for avoiding hot lava
+*By [David Griffin](https://github.com/davidleegriffin) [Carlos Monero](https://github.com/Cmolerov) [Dale Sakamoto](https://github.com/DaleTsakamoto)*
 
-This is the backend for the Flask React project.
 
-## Getting started
+### [Table Of Contents]:
+- [Description](https://github.com/Cmolerov/the_floor_is_lava#Description)
+- [Application Architecture && Technologies Used](https://github.com/Cmolerov/the_floor_is_lava#Application-Architecture-&&-Technologies-Used)
+- [Technology Shields](https://github.com/Cmolerov/the_floor_is_lava#Technology-Shields)
+- [Frontend Overview](https://github.com/Cmolerov/the_floor_is_lava#Frontend-Overview)
+- [Backend Overview](https://github.com/Cmolerov/the_floor_is_lava#Backend-Overview)
 
-1. Clone this repository (only this branch)
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
+## [Description]:
+The Road Is Lava is an exercise helper web app designed to shake things up when lava strikes ruin your favorite bike path and forces you on the fly to take a different route to achieve your fitness goals.
 
-2. Install dependencies
+Get [MOVING!](https://theroadislava.herokuapp.com/).
 
-   ```bash
-   pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-   ```
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+### [Application Architecture && Technologies Used]:
+The Road Is Lava was built using the python/flask framework with a PostgreSQL(postgres) database to serve up  RESTful API's in combination with REACT frontend framework.
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+### [Frontend Overview]:
 
-   ```bash
-   pipenv shell
-   ```
+### [Backend Overview]:
 
-   ```bash
-   flask db upgrade
-   ```
+### [Example Sign-up]:
 
-   ```bash
-   flask seed all
-   ```
+![Database Schema](./readme-resources/signup-example.gif)
 
-   ```bash
-   flask run
-   ```
+### [Example Login]:
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+![Database Schema](./readme-resources/navbar-example.gif)
 
----
+### [Example of Site Navigation]
+A display of various routes taken while navigating site
 
-_IMPORTANT!_
-If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-You can do this by running:
+## [Relational Database Model]:
+One of the larger challenges of this project was ensuring we had the right database setup. We tried to design it well enough to cover all of the usages we needed. This project was incredibly important to have the relations between tables setup properly.
 
-```bash
-pipenv lock -r > requirements.txt
-```
+The end database schema:  
+![Database Schema](./wiki/Database-Schema)
 
-_ALSO IMPORTANT!_
-psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
+### [Conclusion && Next Steps]:
+Things learned while we worked on The Road Is Lava:
+- Some issues are immensely simple, but after long hours of programming you miss them.
+- More than one brain and one set of eyes is always better for debugging.
+- Going back to the project with a fresh mind always helps.
 
----
+Next Steps:
 
-## Deploy to Heroku
-
-1. Create a new project on Heroku
-2. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-3. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-4. Run
-
-   ```bash
-   heroku login
-   ```
-
-5. Login to the heroku container registry
-
-   ```bash
-   heroku container:login
-   ```
-
-6. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-7. Push your docker container to heroku from the root directory of your project.
-   This will build the dockerfile and push the image to your heroku container registry
-
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
-
-8. Release your docker container to heroku
-
-   ```bash
-   heroku container:release web -a {NAME_OF_HEROKU_APP}
-   ```
-
-9. set up your database:
-
-   ```bash
-   heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-   heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-   ```
-
-10. Under Settings find "Config Vars" and add any additional/secret .env variables.
-
-11. profit
-
-# the_floor_is_lava
+### [Technology Shields]:
+![](https://img.shields.io/badge/Tools-npm-informational?style=flat&logo=NPM&logoColor=white&color=ff8300) ![](https://img.shields.io/badge/Tools-Nodemon-informational?style=flat&logo=Nodemon&logoColor=white&color=ff8300) ![](https://img.shields.io/badge/Tools-Node.js-informational?style=flat&logo=Node.js&logoColor=white&color=ff8300) ![](https://img.shields.io/badge/Tools-Git-informational?style=flat&logo=Git&logoColor=white&color=ff8300) ![](https://img.shields.io/badge/Tools-Postman-informational?style=flat&logo=Postman&logoColor=white&color=ff8300) ![](https://img.shields.io/badge/Tools-PostgreSQL-informational?style=flat&logo=PostgreSQL&logoColor=white&color=ff8300) ![](https://img.shields.io/badge/Code-JavaScript-informational?style=flat&logo=JavaScript&logoColor=white&color=ff0000) ![](https://img.shields.io/badge/Code-HTML-informational?style=flat&logo=HTML5&logoColor=white&color=ff0000) ![](https://img.shields.io/badge/Code-CSS-informational?style=flat&logo=CSS3&logoColor=white&color=ff0000) 
