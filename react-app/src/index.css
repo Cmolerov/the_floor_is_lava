@@ -792,7 +792,7 @@ button {
 }
 
 .new-route__div__form-container {
-    margin-top: 400px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     width: 560px;
