@@ -91,9 +91,6 @@ function App() {
                         />
                     )}
                 </Route>
-                <ProtectedRoute path="/calendar" authenticated={authenticated}>
-                    <Calendar />
-                </ProtectedRoute>
             </Switch>
             <Footer setAuthenticated={setAuthenticated} />
         </BrowserRouter>
