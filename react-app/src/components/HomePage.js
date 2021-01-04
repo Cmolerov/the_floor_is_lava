@@ -37,8 +37,11 @@ export default function HomePage(props) {
                         </div>
                         <div className="homePage_container-left_bottom animate__animated animate__slideInLeft">
                             <div className="homePage_profile">
-                                <h2>This Week</h2>
-                                {/* <Calendar /> */}
+                                <h2>Upcoming Events</h2>
+                                <p>The Boston Marathon</p>
+                                <p>The Spartan Race </p>
+                                <p>Pacifica Runners St.Pattys</p>
+                                <p>Canton Half Marathon</p>
                             </div>
                         </div>
                     </div>
