@@ -7,7 +7,6 @@ import {
     WorkWeek,
     Month,
     Agenda,
-    EventSettingsModel,
 } from "@syncfusion/ej2-react-schedule";
 
 export default function Calendar() {
