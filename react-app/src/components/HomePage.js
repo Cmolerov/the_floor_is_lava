@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 // import "./HomePage.css";
 import * as routesAction from "../store/routes";
+// import Calendar from "./Calendar";
 
 export default function HomePage(props) {
     const dispatch = useDispatch();
@@ -37,12 +38,15 @@ export default function HomePage(props) {
                         <div className="homePage_container-left_bottom animate__animated animate__slideInLeft">
                             <div className="homePage_profile">
                                 <h2>This Week</h2>
+                                {/* <Calendar /> */}
                             </div>
                         </div>
                     </div>
                     <div className="homePage_container-middle">
                         <div className="homePage_container-middle-container animate__animated animate__slideInUp">
-                            <h2 className="homePage_activityHeader">Activity of the Week</h2>
+                            <h2 className="homePage_activityHeader">
+                                Activity of the Week
+                            </h2>
                             <NavLink
                                 style={{
                                     textDecoration: "none",

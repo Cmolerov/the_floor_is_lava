@@ -307,9 +307,11 @@ button {
 .navbar {
     margin: 0 auto;
     height: 80px;
-    max-width: 1200px;
+    min-width: 1200px;
     overflow: hidden;
     text-decoration: none;
+    /* background-color: #2ce0a4; */
+    border-bottom: 1px solid black;
 }
 
 .navbar__home {
@@ -351,6 +353,7 @@ button {
     height: 40px;
     border-radius: 5px;
     margin-top: 20px;
+    border: 1px solid rgb(231, 231, 231);
 }
 
 .navbar__button__dashboard {
@@ -581,7 +584,10 @@ button {
 .homePage_container {
     height: 100vh;
     width: 100%;
-    background-color: #f7f7fa;
+    /* background-color: #f7f7fa; */
+    background-image: url("https://i.ibb.co/sjG5zzx/svg-5.png");
+    background-size: cover;
+    /* transform: rotate(180deg); */
 }
 
 .homePage_container_container {
@@ -626,6 +632,7 @@ button {
     margin: 120px 25px 25px 25px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
         rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 5px;
 }
 
 .homePage_container-middle {
@@ -642,8 +649,9 @@ button {
     width: 95%;
     background-color: white;
     border-radius: 5px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .homePage_container-right {
