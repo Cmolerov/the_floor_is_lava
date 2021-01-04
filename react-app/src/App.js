@@ -11,7 +11,7 @@ import HomePage from "./components/HomePage";
 import SingleRoute from "./components/SingleRoute";
 import Footer from "./components/Footer";
 import NewRoute from "./components/NewRoute";
-import Calendar from "./components/Calendar.tsx";
+import Calendar from "./components/Calendar";
 
 function App() {
     const [authenticated, setAuthenticated] = useState(false);
