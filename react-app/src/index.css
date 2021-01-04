@@ -769,11 +769,17 @@ button {
 .main__div__map-container {
     width: 600px;
     height: 400px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 5px;
 }
 
 .single__route__run__button {
     /* height: 100px;
     width: 200px */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 5px;
 }
 
 /* --------------------------NEW ROUTE CSS SECTION-------------------------------- */
@@ -795,9 +801,12 @@ button {
 .new__route__container {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    /* justify-content: center; */
-    height: 400px;
+}
+
+.new__route__map{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 5px;
 }
 
 .new-route__div__form-container {
@@ -817,6 +826,9 @@ button {
         rgba(140, 178, 214, 0.8) 100%
     );
     box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     border-radius: 5px;
 }
 

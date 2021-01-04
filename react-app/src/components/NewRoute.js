@@ -115,7 +115,7 @@ function NewRoute(props) {
       <div className='new__route__container'>
         {homeRoutes()}
         {center ? 
-        <div>
+        <div className='new__route__map'>
         <LoadScript
         googleMapsApiKey={apiKey}
         >
