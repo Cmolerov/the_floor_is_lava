@@ -6,7 +6,7 @@ const Footer = () => {
     <nav className="footer">
       <div className="footer__grid-container">
         <div className="footer__grid-1">
-          <img className="footer__img__icon" src="./favicon.ico" alt="volcano"/> 
+          <img className="footer__img__icon" src="../images/favicon.ico" alt="volcano"/> 
           <div className="footer__image__label">LAVA</div>
         </div>
         <div className="footer__grid-2">

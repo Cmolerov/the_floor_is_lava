@@ -18,7 +18,7 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
                     >
                         <img
                             className="img__icon"
-                            src="./favicon.ico"
+                            src="../images/favicon.ico"
                             alt="volcano"
                             size="50px"
                         />
