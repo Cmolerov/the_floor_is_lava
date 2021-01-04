@@ -42,7 +42,7 @@ export default function HomePage(props) {
                     </div>
                     <div className="homePage_container-middle">
                         <div className="homePage_container-middle-container animate__animated animate__slideInUp">
-                            <h2>Activity of the Week</h2>
+                            <h2 className="homePage_activityHeader">Activity of the Week</h2>
                             <NavLink
                                 style={{
                                     textDecoration: "none",

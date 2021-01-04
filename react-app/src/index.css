@@ -602,12 +602,13 @@ button {
 }
 
 .homePage_container-left_top {
-    height: 200px;
+    height: 250px;
     width: 250px;
     background-color: white;
     margin: 50px 25px 25px 25px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
         rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 5px;
 }
 
 /* ---------------profile card----------------------- */
@@ -615,6 +616,7 @@ button {
 .homePage_newRoutes,
 .homePage_routeOfDay {
     margin-left: 10px;
+    padding: 5px;
 }
 
 .homePage_container-left_bottom {
@@ -636,9 +638,10 @@ button {
 .homePage_container-middle-container {
     margin-top: 65px;
     margin-left: 20px;
-    height: 75%;
+    height: 81%;
     width: 95%;
     background-color: white;
+    border-radius: 5px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
         rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
@@ -659,7 +662,16 @@ button {
         rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     border-radius: 3px;
 }
+.homePage_routesCard:hover {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
 
+/* --------------------------HomePage activity SECTION-------------------------------- */
+.homePage_activityHeader {
+    text-align: center;
+    padding-top: 15px;
+}
 /* --------------------------ROUTES CSS SECTION-------------------------------- */
 
 .routes__div__banner {
@@ -780,6 +792,7 @@ button {
 }
 
 .new-route__div__form-container {
+    margin-top: 400px;
     display: flex;
     flex-direction: column;
     width: 560px;
