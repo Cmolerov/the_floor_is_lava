@@ -9,17 +9,21 @@ export default function HomePage(props) {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     const routes = useSelector((state) => state.routes.routes);
-    let id;
-    let username;
+
+    // let username = props.username
 
     useEffect(() => {
-        dispatch(routesAction.routesSearch(id)).then(() => setIsLoaded(true));
-    }, [dispatch]);
+        if (props.authenticated) {
+            dispatch(routesAction.routesSearch(props.user.id)).then(() =>
+                setIsLoaded(true)
+            );
+        }
+    }, [dispatch, props.authenticated]);
 
-    if (props.authenticated) {
-        id = props.user ? props.user.id : null;
-        username = props.user ? props.user.username : null;
-    }
+    // if (props.authenticated) {
+    //     id = props.user ? props.user.id : null;
+    //     username = props.user ? props.user.username : null;
+    // }
 
     return (
         isLoaded && (
@@ -29,7 +33,7 @@ export default function HomePage(props) {
                         <div className="homePage_container-left_top animate__animated animate__slideInLeft">
                             <div className="homePage_profile">
                                 <h2> Profile</h2>
-                                <p>{username ? username : "Mr. Bean"}</p>
+                                <p>{props.user.username}</p>
                                 <p>Member since 2020</p>
                                 <p>Routes Completed: 65</p>
                                 <p>Avg. Miles per week: 28 mi</p>

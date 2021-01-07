@@ -12,8 +12,8 @@ const LoginForm = ({ authenticated, setAuthenticated, setUser }) => {
         e.preventDefault();
         const user = await login(email, password);
         if (!user.errors) {
-            setAuthenticated(true);
             setUser(user);
+            setAuthenticated(true);
         } else {
             setErrors(user.errors);
         }
@@ -30,8 +30,8 @@ const LoginForm = ({ authenticated, setAuthenticated, setUser }) => {
         e.preventDefault();
         const user = await login("demo_user@aa.com", "password");
         if (!user.errors) {
-            setAuthenticated(true);
             setUser(user);
+            setAuthenticated(true);
         } else {
             setErrors(user.errors);
         }

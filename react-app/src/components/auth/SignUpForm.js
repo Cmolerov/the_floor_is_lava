@@ -15,8 +15,8 @@ const SignUpForm = ({ authenticated, setAuthenticated, setUser }) => {
         if (password === repeatPassword) {
             const user = await signUp(username, email, password);
             if (!user.errors) {
-                setAuthenticated(true);
                 setUser(user);
+                setAuthenticated(true);
             }
         }
     };
@@ -41,8 +41,8 @@ const SignUpForm = ({ authenticated, setAuthenticated, setUser }) => {
         e.preventDefault();
         const user = await login("demo_user@aa.com", "password");
         if (!user.errors) {
-            setAuthenticated(true);
             setUser(user);
+            setAuthenticated(true);
         } else {
             setErrors(user.errors);
         }
