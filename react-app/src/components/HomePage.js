@@ -16,11 +16,13 @@ export default function HomePage(props) {
         width: '250px',
         height: '220px'
     };
+
+    // console.log("long-lat", routes)
     
-    const center = {
-         lat: 25.96150673256875 ,
-         lng: -80.39468729802157 
-      };
+    // const center = {
+    //      lat: 25.96150673256875 ,
+    //      lng: -80.39468729802157 
+    //   };
 
     // let username = props.username
 
@@ -155,12 +157,18 @@ export default function HomePage(props) {
                                     <p> Distance: {routes[9].distance}</p>
                                     <p>Avg. Time: 57 min</p>
                                     <div className='google__map-container'>
+                                        {/* {console.log("++++++++++++++++++", routes[9].startLong)} */}
                                         <LoadScript
                                             googleMapsApiKey={apiKey}
                                         >
                                         <GoogleMap
-                                            mapContainerStyle={containerStyle}
-                                            center={center}
+                                                mapContainerStyle={containerStyle}
+                                                center={
+                                                    {
+                                                        lat: routes[9].startLat,
+                                                        lng: routes[9].startLong
+                                                    }
+                                            }
                                             zoom={10}
                                         >
                                         </GoogleMap>
@@ -181,6 +189,23 @@ export default function HomePage(props) {
                                     <h2>Route of the Day</h2>
                                     <p>{routes[6].name}</p>
                                     <p>Distance: {routes[6].distance}</p>
+                                    <div className='google__map-container'>
+                                        <LoadScript
+                                                googleMapsApiKey={apiKey}
+                                            >
+                                            <GoogleMap
+                                                    mapContainerStyle={containerStyle}
+                                                    center={
+                                                        {
+                                                            lat: routes[6].startLat,
+                                                            lng: routes[6].startLong
+                                                        }
+                                                }
+                                                zoom={10}
+                                            >
+                                            </GoogleMap>
+                                            </LoadScript>
+                                    </div>
                                 </div>
                             </div>
                         </NavLink>

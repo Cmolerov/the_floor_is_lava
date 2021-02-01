@@ -643,7 +643,7 @@ button {
 .homePage_container_container {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    height: 100%;
+    height: 150%;
     max-width: 1200px;
     margin: 0 auto;
     justify-content: space-around;
@@ -710,7 +710,7 @@ button {
 }
 
 .homePage_container-right_top {
-    height: 400px;
+    height: 420px;
     /* outline: 1px solid black; */
     background-color: white;
     margin: 50px 25px 25px 25px;
@@ -720,10 +720,10 @@ button {
 }
 
 .homePage_container-right_bottom {
-    height: 200px;
+    height: 390px;
     /* outline: 1px solid black; */
     background-color: white;
-    margin: 50px 25px 25px 25px;
+    margin: 5px 25px 25px 25px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
         rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     border-radius: 5px;
