@@ -705,9 +705,28 @@ button {
 }
 
 .homePage_container-right {
-    /* background-color: red; */
-    height: 800px;
+    height: 200px;
     width: 300px;
+}
+
+.homePage_container-right_top {
+    height: 400px;
+    /* outline: 1px solid black; */
+    background-color: white;
+    margin: 50px 25px 25px 25px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 5px;
+}
+
+.homePage_container-right_bottom {
+    height: 200px;
+    /* outline: 1px solid black; */
+    background-color: white;
+    margin: 50px 25px 25px 25px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 5px;
 }
 
 .homePage_routesCard {
@@ -723,6 +742,20 @@ button {
 .homePage_routesCard:hover {
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
         rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.homePage_newRoutes {
+    /* height: 800px; */
+}
+
+.homePage_routeOfDay {
+    /* margin-top: 200px; */
+}
+
+.google__map-container {
+    position: relative;
+    top: 0px;
+    left: -15px;
 }
 
 /* --------------------------HomePage activity SECTION-------------------------------- */

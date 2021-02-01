@@ -13,7 +13,7 @@ export default function HomePage(props) {
     const apiKey = useSelector(state => state.routes.apiKey);
 
     const containerStyle = {
-        width: '220px',
+        width: '250px',
         height: '220px'
     };
     
@@ -141,7 +141,7 @@ export default function HomePage(props) {
                         </div>
                     </div>
                     <div className="homePage_container-right">
-                        <div className="homePage_container-left_top animate__animated animate__slideInRight">
+                        <div className="homePage_container-right_top animate__animated animate__slideInRight">
                             <NavLink
                                 style={{
                                     textDecoration: "none",
@@ -176,7 +176,7 @@ export default function HomePage(props) {
                             }}
                             to={`/routes/${routes[6].id}`}
                         >
-                            <div className="homePage_container-left_bottom animate__animated animate__slideInRight">
+                            <div className="homePage_container-right_bottom animate__animated animate__slideInRight">
                                 <div className="homePage_routeOfDay">
                                     <h2>Route of the Day</h2>
                                     <p>{routes[6].name}</p>
