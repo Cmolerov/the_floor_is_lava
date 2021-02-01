@@ -14,7 +14,7 @@ function Routes(props) {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const routes = useSelector(state => state.routes.routes);
-  const apiKey = useSelector(state => state.routes.apiKey)
+  const apiKey = useSelector(state => state.routes.apiKey);
   const [redirect, setRedirect] = useState(false)
 
   useEffect(() => {
