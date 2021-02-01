@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
 // import "./HomePage.css";
 import * as routesAction from "../store/routes";
 // import Calendar from "./Calendar";
@@ -9,6 +10,17 @@ export default function HomePage(props) {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     const routes = useSelector((state) => state.routes.routes);
+    const apiKey = useSelector(state => state.routes.apiKey);
+
+    const containerStyle = {
+        width: '220px',
+        height: '220px'
+    };
+    
+    const center = {
+         lat: 25.96150673256875 ,
+         lng: -80.39468729802157 
+      };
 
     // let username = props.username
 
@@ -142,6 +154,18 @@ export default function HomePage(props) {
                                     <p>Path: {routes[9].name} </p>
                                     <p> Distance: {routes[9].distance}</p>
                                     <p>Avg. Time: 57 min</p>
+                                    <div className='google__map-container'>
+                                        <LoadScript
+                                            googleMapsApiKey={apiKey}
+                                        >
+                                        <GoogleMap
+                                            mapContainerStyle={containerStyle}
+                                            center={center}
+                                            zoom={10}
+                                        >
+                                        </GoogleMap>
+                                        </LoadScript>
+                                    </div>
                                 </div>
                             </NavLink>
                         </div>
