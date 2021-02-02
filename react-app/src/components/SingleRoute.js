@@ -38,6 +38,9 @@ function SingleRoute() {
   const end = useSelector(state => ({ 'lat': state.routes.route.endLat, 'lng': state.routes.route.endLong }));
   const destination = useSelector(state => `${state.routes.route.endLat},${state.routes.route.endLong}`)
   const apiKey = useSelector(state => state.routes.apiKey)
+  const workouts = useSelector(state => state.workouts.workouts)
+  const completed = useSelector(state => state.workouts.completed)
+  const fastestTime = useSelector(state => state.workouts.fastestTime)
   // const center = useSelector( state =>
   // {
   //   return {
@@ -140,10 +143,20 @@ function SingleRoute() {
       .then(() => setIsLoaded2(true))
   }, [])
 
-  return isLoaded2 && currentLocation && isLoaded &&(
+  return isLoaded2 && currentLocation && isLoaded && (
+  <div className='single-route-holder'>
+            {homeRoutes()}
+    <div className='single-route-workout-container'>
+        <h1>Workout info:</h1>
+        <div className='workout-info'>
+          <p>Attempted Route <b>{ Object.keys(workouts).length }</b> time(s)</p>
+          <p>Completed Route <b>{ completed }</b> time(s)</p>
+          <p>Fastest time completed: <b>{ fastestTime }</b></p>
+
+        </div>
+    </div>
     <div className='single__route__container'>
-      {homeRoutes()}
-        <h1 className="route__p__name">{ route.name }</h1>
+      <h1 className="route__p__name">{route.name}</h1>
         <div className="main__div__map-container">
         <LoadScript
             libraries={["visualization"]}
@@ -239,6 +252,7 @@ function SingleRoute() {
           <button onClick={deleteRoute} className="single__route__run__button">Delete Route</button>
         </div>
       </div>
+    </div>
     )
 }
 
