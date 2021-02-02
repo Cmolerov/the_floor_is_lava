@@ -120,6 +120,7 @@ function SingleRoute() {
 const [totalSeconds, setTotalSeconds] = useState('00');
 const [totalMinutes, setTotalMinutes] = useState('00');
 const [totalHours, setTotalHours] = useState('00');
+const [time, setTime] = useState('');
 const [isActive, setIsActive] = useState(false);
 const [counter, setCounter] = useState(0);
   
@@ -139,6 +140,7 @@ useEffect(() => {
       setTotalSeconds(finSeconds);
       setTotalMinutes(finMinutes);
       setTotalHours(finHours);
+      setTime(`${totalHours}:${totalMinutes}:${totalSeconds}`);
 
       setCounter(counter => counter + 1);
     }, 1000)
@@ -170,7 +172,7 @@ useEffect(() => {
     // console.log("THIS IS THE BEGINNING!!?!?", currentLocation)
   };
 
-  const stopRoute = () => {
+  const stopRoute = (e) => {
     setIsActive(false)
     setEnding(currentLocation)
     setRunning(false)
@@ -183,7 +185,23 @@ useEffect(() => {
     console.log("The final time is:", `${totalHours}:${totalMinutes}:${totalSeconds}`)
     // console.log("THIS IS THE END!!?!?", currentLocation)
     // stopTimer()
+
+    workoutSubmit(e)
   };
+
+  const workoutSubmit = async (e) => {
+    e.preventDefault();
+      const startLat = beginning.lat
+      const startLong = beginning.lng
+      const endLat = ending.lat
+    const endLong = ending.lng
+    let isCompleted = false;
+    if (endLat === route.endLat && endLong === route.endLong) {
+        isCompleted = true
+      }
+      dispatch(workoutsAction.workoutAdd({ time, isCompleted, endLong, startLat, startLong, endLat, routeId, apiKey }))
+      .then(() => setRedirect(true))
+};
 
   const deleteRoute = async (e) => {
     e.preventDefault();
