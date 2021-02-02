@@ -3,10 +3,12 @@ const FIND_WORKOUTS = 'workouts/findWorkouts'
 // const ADD_ROUTE = 'routes/addRoute'
 // const DELETE_ROUTE = 'routes/deleteRoute'
 
-const findWorkouts = (workouts) => {
+const findWorkouts = (workouts, completed, fastestTime) => {
   return {
     type: FIND_WORKOUTS,
-    workouts
+    workouts,
+    completed,
+    fastestTime
   }
 }
 
@@ -45,7 +47,20 @@ export const workoutsSearch = (id) => async (dispatch) => {
     method: 'GET',
   })
   let response = await res.json();
-  dispatch(findWorkouts(response.workouts));
+  let completed = 0;
+  let fastestTime = null;
+  let fastSeconds = Infinity;
+  Object.values(response.workouts).forEach((workout) => {
+    let t = workout.time
+    let currentTime = Number(t.split(':')[0]) * 60 * 60 + Number(t.split(':')[1]) * 60 + Number(t.split(':')[2])
+    if (workout.isCompleted) {
+      completed += 1
+      if (currentTime < fastSeconds) {
+        fastestTime = t;
+      }
+    }
+  })
+  dispatch(findWorkouts(response.workouts, completed, fastestTime));
   return response
 }
 
@@ -110,7 +125,7 @@ export const workoutsSearch = (id) => async (dispatch) => {
 //   return res
 // }
 
-const initialState = { workouts: null, workout: null }
+const initialState = { workouts: null, workout: null, completed: 0, fastestTime: null }
 
 const workoutsReducer = (state = initialState, action) => {
   let newState;
@@ -118,6 +133,8 @@ const workoutsReducer = (state = initialState, action) => {
     case FIND_WORKOUTS:
       newState = Object.assign({}, state)
       newState.workouts = action.workouts;
+      newState.completed = action.completed;
+      newState.fastestTime = action.fastestTime;
       return newState;
     // case FIND_ROUTE:
     //   newState = Object.assign({}, state)
