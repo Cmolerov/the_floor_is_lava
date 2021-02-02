@@ -13,7 +13,6 @@ workouts_routes = Blueprint('workouts', __name__)
 # def route(id):
 #     returnWorkouts = Route.query.filter_by(id=id).all()
 #     workouts = returnWorkouts.to_dict()
-#     print("THESE ARE THE WORKOUTS", workouts)
 #     return {'route': route, 'apiKey': apiKey}
 
 # ****************** ROUTE ADD *********************

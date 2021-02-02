@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Redirect } from 'react-router-dom';
 import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer, Marker, Circle } from '@react-google-maps/api';
 // import './SingleRoute.css'
+
+import * as workoutsAction from '../store/workouts'
 import * as routesAction from '../store/routes';
 
 
@@ -21,6 +23,14 @@ function SingleRoute() {
   const [currentLocation, setCurrentLocation] = useState(null)
   const [running, setRunning] = useState(false)
   let [rad, setRad] = useState([])
+  const { routeId } = useParams();
+  const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoaded2, setIsLoaded2] = useState(false);
+  const [response, setResponse] = useState(null);
+  const [lavas, setLavas] = useState([]);
+  const [redirect, setRedirect] = useState(false)
+  const increment = useRef(null);
   
   const route = useSelector(state => state.routes.route);
   const origin = useSelector(state => `${state.routes.route.startLat},${state.routes.route.startLong}`);
@@ -35,13 +45,11 @@ function SingleRoute() {
   //     lng: state.routes.route.startLong,
   //   }
   // })
-  const { routeId } = useParams();
-  const dispatch = useDispatch();
-  const [isLoaded2, setIsLoaded2] = useState(false);
-  const [response, setResponse] = useState(null);
-  const [lavas, setLavas] = useState([]);
-  const [redirect, setRedirect] = useState(false)
-  const increment = useRef(null);
+
+  useEffect(() => {
+    dispatch(workoutsAction.workoutsSearch(routeId))
+    .then(() => setIsLoaded(true))
+  }, [dispatch])
   
     //TEST FOR CURRENT MOVEMENT
 
@@ -132,7 +140,7 @@ function SingleRoute() {
       .then(() => setIsLoaded2(true))
   }, [])
 
-  return isLoaded2 && currentLocation && (
+  return isLoaded2 && currentLocation && isLoaded &&(
     <div className='single__route__container'>
       {homeRoutes()}
         <h1 className="route__p__name">{ route.name }</h1>

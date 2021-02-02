@@ -50,10 +50,9 @@ def routeDelete(id):
 
 # ****************** WORKOUTS SEARCH *********************
 
-@user_routes.route('/<int:id>/workouts')
+@routes_routes.route('/<int:id>/workouts')
 @login_required
 def routes(id):
     returnWorkouts = Workout.query.filter_by(routeId=id).all()
     workouts = {workout.id: workout.to_dict() for workout in returnWorkouts}
-    print("THESE ARE THE WORKOUTS!?!?!", workouts)
     return {'workouts': workouts}

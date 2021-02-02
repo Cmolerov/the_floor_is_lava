@@ -41,11 +41,11 @@ const findWorkouts = (workouts) => {
 // }
 
 export const workoutsSearch = (id) => async (dispatch) => {
-  const res = await fetch(`/api/users/${id}/workouts`, {
+  const res = await fetch(`/api/routes/${id}/workouts`, {
     method: 'GET',
   })
   let response = await res.json();
-  dispatch(findWorkouts(response));
+  dispatch(findWorkouts(response.workouts));
   return response
 }
 
