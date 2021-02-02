@@ -1,12 +1,13 @@
 from .db import db
 
-class Route(db.Model):
+class Workout(db.Model):
   __tablename__ = "workouts"
   id = db.Column(db.Integer, primary_key=True, nullable=False)
   startLong = db.Column(db.Float, nullable=False)
   endLong = db.Column(db.Float, nullable=False)
   startLat = db.Column(db.Float, nullable=False)
   endLat = db.Column(db.Float, nullable=False)
+  isCompleted = db.Column(db.Boolean, nullable=False)
   distance = db.Column(db.String(100))
   time = db.Column(db.String(255))
   routeId = db.Column(db.Integer, db.ForeignKey('routes.id'), nullable=False)
@@ -22,6 +23,7 @@ class Route(db.Model):
       "endLat": self.endLat,
       "distance": self.distance,
       "time": self.time,
+      "isCompleted": self.isCompleted,
       "routeId": self.routeId,
       "createdAt": self.createdAt,
       "updatedAt": self.updatedAt,
