@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import Route, db
+from app.models import Route, Workout, db
 from datetime import datetime
 import os
 
@@ -47,3 +47,13 @@ def routeDelete(id):
     db.session.delete(route)
     db.session.commit()
     return {'primaryKey': id}
+
+# ****************** WORKOUTS SEARCH *********************
+
+@user_routes.route('/<int:id>/workouts')
+@login_required
+def routes(id):
+    returnWorkouts = Workout.query.filter_by(routeId=id).all()
+    workouts = {workout.id: workout.to_dict() for workout in returnWorkouts}
+    print("THESE ARE THE WORKOUTS!?!?!", workouts)
+    return {'workouts': workouts}

@@ -1,10 +1,12 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import routesReducer from './routes'
+import workoutsReducer from './workouts'
 
 
 const rootReducer = combineReducers({
   routes: routesReducer,
+  workouts: workoutsReducer
 })
 
 let enhancer;
