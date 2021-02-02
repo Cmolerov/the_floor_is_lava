@@ -1,7 +1,6 @@
 const FIND_WORKOUTS = 'workouts/findWorkouts'
 // const FIND_ROUTE = 'routes/findRoute'
-// const ADD_ROUTE = 'routes/addRoute'
-// const DELETE_ROUTE = 'routes/deleteRoute'
+const ADD_WORKOUT = 'workouts/addWorkout'
 
 const findWorkouts = (workouts, completed, fastestTime) => {
   return {
@@ -20,12 +19,12 @@ const findWorkouts = (workouts, completed, fastestTime) => {
 //   }
 // }
 
-// const addRoute = (route) => {
-//   return {
-//     type: ADD_ROUTE,
-//     route
-//   }
-// }
+const addWorkout = (workout) => {
+  return {
+    type: ADD_WORKOUT,
+    workout
+  }
+}
 
 // const updateTestimony = (id, upComment) => {
 //   return {
@@ -73,33 +72,33 @@ export const workoutsSearch = (id) => async (dispatch) => {
 //   return response
 // }
 
-// export const routeAdd = (route) => async (dispatch) => {
-//   const { name, startLong, endLong, startLat, endLat, description, userId, apiKey } = route;
-//   let proxyUrl = 'https://cors-anywhere-dale.herokuapp.com/'
-//   let data = await fetch(proxyUrl + `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&mode=walking&origins=${startLat},${startLong}&destinations=${endLat}%2C${endLong}&key=${apiKey}`)
-//   let resp = await data.json()
-//   const distance = (resp.rows[0].elements[0].distance.text)
-//   // const distance = "1 mi"
-//   const res = await fetch(`/api/routes/new`, {
-//     method: 'POST',
-//     headers: {
-//       "content_type":"application/json"
-//     },
-//     body: JSON.stringify({
-//       name,
-//       startLong,
-//       endLong,
-//       startLat,
-//       endLat,
-//       description,
-//       distance,
-//       userId
-//     }),
-//   })
-//   let response = await res.json()
-//   dispatch(addRoute(response));
-//   return response
-// }
+export const workoutAdd = (workout) => async (dispatch) => {
+  const { startLong, endLong, startLat, endLat, isCompleted, routeId, time, apiKey } = workout;
+  let proxyUrl = 'https://cors-anywhere-dale.herokuapp.com/'
+  let data = await fetch(proxyUrl + `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&mode=walking&origins=${startLat},${startLong}&destinations=${endLat}%2C${endLong}&key=${apiKey}`)
+  let resp = await data.json()
+  const distance = (resp.rows[0].elements[0].distance.text)
+  const res = await fetch(`/api/workouts/`, {
+    method: 'POST',
+    headers: {
+      "content_type":"application/json"
+    },
+    body: JSON.stringify({
+      startLong,
+      endLong,
+      startLat,
+      endLat,
+      isCompleted,
+      distance,
+      routeId,
+      time
+    }),
+  })
+  let response = await res.json()
+  console.log(response.workout)
+  dispatch(addWorkout(response.workout));
+  return response
+}
 
 // export const testimonyUpdate = (test) => async (dispatch) => {
 //   const { primaryKey, comment } = test

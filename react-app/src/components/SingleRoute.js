@@ -83,7 +83,9 @@ function SingleRoute() {
       maximumAge: 0
     };
     
-    movementId = navigator.geolocation.watchPosition(success, error, options);
+  movementId = navigator.geolocation.watchPosition(success, error, options);
+  // console.log("THIS IS THE MOVEMENT!?!?!?", movementId)
+  // console.log("THIS IS WHERE I AM!", ending)
       
       //END TEST FOR CURRENT MOVEMENT
 
@@ -99,7 +101,7 @@ function SingleRoute() {
       if (response.status === 'OK') {
         setResponse(response)
       } else {
-        console.log('response: ', response)
+        // console.log('response: ', response)
       }
     }
   }
@@ -112,66 +114,76 @@ function SingleRoute() {
         lat: getRandomNum(route.startLat, route.endLat),
         lng: getRandomNum(route.startLong, route.endLong),
       }]))
-    }, 5000);
+    }, 10000);
   }
 
+const [totalSeconds, setTotalSeconds] = useState('00');
+const [totalMinutes, setTotalMinutes] = useState('00');
+const [totalHours, setTotalHours] = useState('00');
+const [isActive, setIsActive] = useState(false);
+const [counter, setCounter] = useState(0);
+  
+useEffect(() => {
+  let setIntervalReturn;
+
+  if (isActive) {
+    setIntervalReturn = setInterval(() => {
+      const seconds = counter % 60;
+      const minutes = Math.floor(counter / 60);
+      const hours = Math.floor(counter / 3600);
+
+      const finSeconds = String(seconds).length === 1 ? `0${seconds}`: seconds;
+      const finMinutes = String(minutes).length === 1 ? `0${minutes}`: minutes;
+      const finHours = String(hours).length === 1 ? `0${hours}`: hours;
+
+      setTotalSeconds(finSeconds);
+      setTotalMinutes(finMinutes);
+      setTotalHours(finHours);
+
+      setCounter(counter => counter + 1);
+    }, 1000)
+  }
+
+    return () => clearInterval(setIntervalReturn);
+  }, [isActive, counter])
+
+  // let watch = 0;
+  // const[time, setTime] = useState(0)
+  // const [watchReturn, setWatchReturn] = useState(null)
+  // let timer = () => {
+  //   watch = watch + 1
+  //   setTime(watch)
+  //   setWatchReturn(setTimeout(timer, 1000))
+  //   console.log(watch)
+  // }
+
+  // let stopTimer = () => {
+  //   clearTimeout(watchReturn)
+  // }
+
   const runRoute = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-          setBeginning(pos)
-        }, (err) => {
-          showError(err)
-        })
-    } else {
-      alert("Try another browser for geolocation services")
-    }
+    setBeginning(currentLocation)
+    setIsActive(true)
+    // timer()
     setRunning(true)
     lavaFlowing();
+    // console.log("THIS IS THE BEGINNING!!?!?", currentLocation)
   };
 
   const stopRoute = () => {
+    setIsActive(false)
+    setEnding(currentLocation)
     setRunning(false)
     clearInterval(increment.current)
     setLavas([])
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-          setEnding(pos)
-        }, (err) => {
-          showError(err)
-        })
-    } else {
-      alert("Try another browser for geolocation services")
-    }
+    // console.log("THE KNIGHTS WATCH", watch)
+    // let hours = Math.floor(watch / 3600)
+    // let minutes = Math.floor((watch % 3600) / 60)
+    // let seconds = Math.floor((watch % 3600) % 60)
+    console.log("The final time is:", `${totalHours}:${totalMinutes}:${totalSeconds}`)
+    // console.log("THIS IS THE END!!?!?", currentLocation)
+    // stopTimer()
   };
-
-  function showError(error) {
-    switch(error.code) {
-      case error.PERMISSION_DENIED:
-        alert("You must allow location services to use this app")
-        break;
-      case error.POSITION_UNAVAILABLE:
-        alert("Location information is unavailable.")
-        break;
-      case error.TIMEOUT:
-        alert("The request to get user location timed out.")
-        break;
-      case error.UNKNOWN_ERROR:
-        alert("An unknown error occurred.")
-        break;
-      default:
-        break;
-    }
-  }
 
   const deleteRoute = async (e) => {
     e.preventDefault();
@@ -194,7 +206,7 @@ function SingleRoute() {
 
   return isLoaded2 && currentLocation && isLoaded && (
   <div className='single-route-holder'>
-            {homeRoutes()}
+    {homeRoutes()}
     <div className='single-route-workout-container'>
         <h1>Workout info:</h1>
         <div className='workout-info'>
@@ -208,7 +220,7 @@ function SingleRoute() {
       <h1 className="route__p__name">{route.name}</h1>
         <div className="main__div__map-container">
         <LoadScript
-            libraries={["visualization"]}
+            // libraries={["visualization"]}
             googleMapsApiKey={apiKey}
           >
             <GoogleMap
