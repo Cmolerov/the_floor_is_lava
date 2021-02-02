@@ -15,13 +15,13 @@ workouts_routes = Blueprint('workouts', __name__)
 #     workouts = returnWorkouts.to_dict()
 #     return {'route': route, 'apiKey': apiKey}
 
-****************** WORKOUT ADD *********************
+# ****************** WORKOUT ADD *********************
 
 @workouts_routes.route('/',methods = ['POST'])
 @login_required
 def workoutPost():
     data = request.json
-    workout = Route(
+    workout = Workout(
         time=data['time'],
         startLong=data['startLong'],
         startLat=data['startLat'],

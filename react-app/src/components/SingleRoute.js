@@ -193,8 +193,8 @@ useEffect(() => {
     e.preventDefault();
       const startLat = beginning.lat
       const startLong = beginning.lng
-      const endLat = ending.lat
-    const endLong = ending.lng
+      const endLat = currentLocation.lat
+      const endLong = currentLocation.lng
     let isCompleted = false;
     if (endLat === route.endLat && endLong === route.endLong) {
         isCompleted = true
