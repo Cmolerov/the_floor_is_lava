@@ -29,6 +29,8 @@ function SingleRoute() {
   const [isLoaded2, setIsLoaded2] = useState(false);
   const [response, setResponse] = useState(null);
   const [lavas, setLavas] = useState([]);
+  const [beginning, setBeginning] = useState(null);
+  const [ending, setEnding] = useState(null)
   const [redirect, setRedirect] = useState(false)
   const increment = useRef(null);
   
@@ -114,6 +116,20 @@ function SingleRoute() {
   }
 
   const runRoute = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+          setBeginning(pos)
+        }, (err) => {
+          showError(err)
+        })
+    } else {
+      alert("Try another browser for geolocation services")
+    }
     setRunning(true)
     lavaFlowing();
   };
@@ -122,7 +138,40 @@ function SingleRoute() {
     setRunning(false)
     clearInterval(increment.current)
     setLavas([])
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+          setEnding(pos)
+        }, (err) => {
+          showError(err)
+        })
+    } else {
+      alert("Try another browser for geolocation services")
+    }
   };
+
+  function showError(error) {
+    switch(error.code) {
+      case error.PERMISSION_DENIED:
+        alert("You must allow location services to use this app")
+        break;
+      case error.POSITION_UNAVAILABLE:
+        alert("Location information is unavailable.")
+        break;
+      case error.TIMEOUT:
+        alert("The request to get user location timed out.")
+        break;
+      case error.UNKNOWN_ERROR:
+        alert("An unknown error occurred.")
+        break;
+      default:
+        break;
+    }
+  }
 
   const deleteRoute = async (e) => {
     e.preventDefault();
