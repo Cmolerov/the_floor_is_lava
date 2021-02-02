@@ -13,14 +13,16 @@ export default function HomePage(props) {
     const apiKey = useSelector(state => state.routes.apiKey);
 
     const containerStyle = {
-        width: '220px',
+        width: '250px',
         height: '220px'
     };
+
+    // console.log("long-lat", routes)
     
-    const center = {
-         lat: 25.96150673256875 ,
-         lng: -80.39468729802157 
-      };
+    // const center = {
+    //      lat: 25.96150673256875 ,
+    //      lng: -80.39468729802157 
+    //   };
 
     // let username = props.username
 
@@ -141,7 +143,7 @@ export default function HomePage(props) {
                         </div>
                     </div>
                     <div className="homePage_container-right">
-                        <div className="homePage_container-left_top animate__animated animate__slideInRight">
+                        <div className="homePage_container-right_top animate__animated animate__slideInRight">
                             <NavLink
                                 style={{
                                     textDecoration: "none",
@@ -155,12 +157,18 @@ export default function HomePage(props) {
                                     <p> Distance: {routes[9].distance}</p>
                                     <p>Avg. Time: 57 min</p>
                                     <div className='google__map-container'>
+                                        {/* {console.log("++++++++++++++++++", routes[9].startLong)} */}
                                         <LoadScript
                                             googleMapsApiKey={apiKey}
                                         >
                                         <GoogleMap
-                                            mapContainerStyle={containerStyle}
-                                            center={center}
+                                                mapContainerStyle={containerStyle}
+                                                center={
+                                                    {
+                                                        lat: routes[9].startLat,
+                                                        lng: routes[9].startLong
+                                                    }
+                                            }
                                             zoom={10}
                                         >
                                         </GoogleMap>
@@ -176,11 +184,28 @@ export default function HomePage(props) {
                             }}
                             to={`/routes/${routes[6].id}`}
                         >
-                            <div className="homePage_container-left_bottom animate__animated animate__slideInRight">
+                            <div className="homePage_container-right_bottom animate__animated animate__slideInRight">
                                 <div className="homePage_routeOfDay">
                                     <h2>Route of the Day</h2>
                                     <p>{routes[6].name}</p>
                                     <p>Distance: {routes[6].distance}</p>
+                                    <div className='google__map-container'>
+                                        <LoadScript
+                                                googleMapsApiKey={apiKey}
+                                            >
+                                            <GoogleMap
+                                                    mapContainerStyle={containerStyle}
+                                                    center={
+                                                        {
+                                                            lat: routes[6].startLat,
+                                                            lng: routes[6].startLong
+                                                        }
+                                                }
+                                                zoom={10}
+                                            >
+                                            </GoogleMap>
+                                            </LoadScript>
+                                    </div>
                                 </div>
                             </div>
                         </NavLink>
