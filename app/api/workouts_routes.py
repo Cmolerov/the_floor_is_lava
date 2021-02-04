@@ -15,27 +15,27 @@ workouts_routes = Blueprint('workouts', __name__)
 #     workouts = returnWorkouts.to_dict()
 #     return {'route': route, 'apiKey': apiKey}
 
-# ****************** ROUTE ADD *********************
+# ****************** WORKOUT ADD *********************
 
-# @routes_routes.route('/new',methods = ['POST'])
-# @login_required
-# def routePost():
-#     data = request.json
-#     route = Route(
-#         name=data['name'],
-#         startLong=data['startLong'],
-#         startLat=data['startLat'],
-#         endLat=data['endLat'],
-#         endLong=data['endLong'],
-#         distance=data['distance'],
-#         description=data['description'],
-#         userId=data['userId'],
-#         createdAt=datetime.now(),
-#         updatedAt=datetime.now()
-#     )
-#     db.session.add(route)
-#     db.session.commit()
-#     return route.to_dict()
+@workouts_routes.route('/',methods = ['POST'])
+@login_required
+def workoutPost():
+    data = request.json
+    workout = Workout(
+        time=data['time'],
+        startLong=data['startLong'],
+        startLat=data['startLat'],
+        endLat=data['endLat'],
+        endLong=data['endLong'],
+        distance=data['distance'],
+        isCompleted=data['isCompleted'],
+        routeId=data['routeId'],
+        createdAt=datetime.now(),
+        updatedAt=datetime.now()
+    )
+    db.session.add(workout)
+    db.session.commit()
+    return workout.to_dict()
 
 # ****************** ROUTE DELETE *********************
 

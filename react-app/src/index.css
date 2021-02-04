@@ -841,6 +841,11 @@ button {
 
 /* --------------------------SINGLE ROUTE CSS SECTION-------------------------------- */
 
+
+.single-route-holder{
+    display: flex;
+
+}
 .single__route__container {
     display: flex;
     flex-direction: column;
@@ -849,12 +854,13 @@ button {
 }
 
 .main__div__map-container {
-    max-width: 600px;
-    max-height: 400px;
+    max-width: 400px;
+    max-height: 200px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
         rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     border-radius: 5px;
 }
+
 
 .single__route__run__button {
     margin: 0 8px;
