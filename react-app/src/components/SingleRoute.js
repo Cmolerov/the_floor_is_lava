@@ -43,13 +43,6 @@ function SingleRoute() {
   const workouts = useSelector(state => state.workouts.workouts)
   const completed = useSelector(state => state.workouts.completed)
   const fastestTime = useSelector(state => state.workouts.fastestTime)
-  // const center = useSelector( state =>
-  // {
-  //   return {
-  //     lat: state.routes.route.startLat,
-  //     lng: state.routes.route.startLong,
-  //   }
-  // })
 
   useEffect(() => {
     dispatch(workoutsAction.workoutsSearch(routeId))
@@ -93,7 +86,7 @@ function SingleRoute() {
 
   const containerStyle = {
     width: '400px',
-    height: '300px'
+    height: '250px'
   };
 
   const mapOptions = {
@@ -169,14 +162,7 @@ useEffect(() => {
     setRunning(false)
     clearInterval(increment.current)
     setLavas([])
-    // console.log("THE KNIGHTS WATCH", watch)
-    // let hours = Math.floor(watch / 3600)
-    // let minutes = Math.floor((watch % 3600) / 60)
-    // let seconds = Math.floor((watch % 3600) % 60)
     console.log("The final time is:", `${totalHours}:${totalMinutes}:${totalSeconds}`)
-    // console.log("THIS IS THE END!!?!?", currentLocation)
-    // stopTimer()
-
     workoutSubmit(e)
   };
 
@@ -214,6 +200,10 @@ useEffect(() => {
   }, [])
 
   return isLoaded2 && currentLocation && isLoaded && (
+    <div className='single-route'>
+      <div className='single-route-header'>
+        <h1 className="route__p__name">{route.name}</h1>
+      </div>
   <div className='single-route-holder'>
     {homeRoutes()}
     <div className='single-route-workout-container'>
@@ -226,7 +216,6 @@ useEffect(() => {
         </div>
     </div>
     <div className='single__route__container'>
-      <h1 className="route__p__name">{route.name}</h1>
         <div className="main__div__map-container">
         <LoadScript
             // libraries={["visualization"]}
@@ -323,7 +312,8 @@ useEffect(() => {
           <button onClick={deleteRoute} className="single__route__run__button">Delete Route</button>
         </div>
       </div>
-    </div>
+      </div>
+      </div>
     )
 }
 
