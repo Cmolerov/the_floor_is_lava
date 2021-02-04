@@ -9,6 +9,10 @@ const containerStyle = {
   height: '200px'
 };
 
+const mapOptions = {
+  disableDefaultUI: true
+}
+
 function Routes(props) {
   const id = props.user.id;
   const dispatch = useDispatch();
@@ -59,6 +63,7 @@ function Routes(props) {
                             mapContainerStyle={containerStyle}
                             center={center}
                             zoom={10}
+                            options={mapOptions}
                           >
                           </GoogleMap>
                           </LoadScript>

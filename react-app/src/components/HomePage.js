@@ -16,6 +16,10 @@ export default function HomePage(props) {
         width: '250px',
         height: '220px'
     };
+    
+    const mapOptions = {
+        disableDefaultUI: true
+      }
 
     // console.log("long-lat", routes)
     
@@ -161,7 +165,8 @@ export default function HomePage(props) {
                                         <LoadScript
                                             googleMapsApiKey={apiKey}
                                         >
-                                        <GoogleMap
+                                            <GoogleMap
+                                                options={mapOptions}
                                                 mapContainerStyle={containerStyle}
                                                 center={
                                                     {
@@ -194,6 +199,7 @@ export default function HomePage(props) {
                                                 googleMapsApiKey={apiKey}
                                             >
                                             <GoogleMap
+                                                    options={mapOptions}
                                                     mapContainerStyle={containerStyle}
                                                     center={
                                                         {

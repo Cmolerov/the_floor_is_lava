@@ -92,9 +92,13 @@ function SingleRoute() {
   let travelMode = 'WALKING'
 
   const containerStyle = {
-    width: '600px',
-    height: '400px'
+    width: '400px',
+    height: '300px'
   };
+
+  const mapOptions = {
+    disableDefaultUI: true
+  }
   
   function directionsCallback(response) {
     if (response !== null) {
@@ -149,19 +153,6 @@ useEffect(() => {
     return () => clearInterval(setIntervalReturn);
   }, [isActive, counter])
 
-  // let watch = 0;
-  // const[time, setTime] = useState(0)
-  // const [watchReturn, setWatchReturn] = useState(null)
-  // let timer = () => {
-  //   watch = watch + 1
-  //   setTime(watch)
-  //   setWatchReturn(setTimeout(timer, 1000))
-  //   console.log(watch)
-  // }
-
-  // let stopTimer = () => {
-  //   clearTimeout(watchReturn)
-  // }
 
   const runRoute = () => {
     setBeginning(currentLocation)
@@ -243,7 +234,7 @@ useEffect(() => {
           >
             <GoogleMap
               mapContainerStyle={containerStyle}
-              // center={center}
+              options={mapOptions}
               zoom={10}
           >
               {
@@ -256,7 +247,7 @@ useEffect(() => {
                     options={{ 
                       destination: destination,
                       origin: origin,
-                      travelMode: travelMode
+                      travelMode: travelMode,
                     }}
                     // required
                     callback={directionsCallback}
@@ -269,6 +260,7 @@ useEffect(() => {
                   <DirectionsRenderer
                     // required
                     options={{
+                      // disableDefaultUI: true,
                       directions: response,
                       suppressMarkers: running ? true : false
                     }}
