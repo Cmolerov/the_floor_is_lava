@@ -49,13 +49,54 @@ function SingleRoute() {
     .then(() => setIsLoaded(true))
   }, [dispatch])
   
+  useEffect(() => {
+    console.log("FINDING LOCATION")
+    getLocation()
+  }, [])
+
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+          setCurrentLocation(pos)
+        }, (err) => {
+          showError(err)
+        })
+    } else {
+      alert("Try another browser for geolocation services")
+    }
+  }
+  
+  function showError(error) {
+    switch(error.code) {
+      case error.PERMISSION_DENIED:
+        alert("You must allow location services to use this app")
+        break;
+      case error.POSITION_UNAVAILABLE:
+        alert("Location information is unavailable.")
+        break;
+      case error.TIMEOUT:
+        alert("The request to get user location timed out.")
+        break;
+      case error.UNKNOWN_ERROR:
+        alert("An unknown error occurred.")
+        break;
+      default:
+        break;
+    }
+  }
+
     //TEST FOR CURRENT MOVEMENT
 
-    let movementId, target, options;
+  let movementId, target, options;
 
     function success(pos) {
       var crd = pos.coords;
-      // console.log(crd)
+      console.log("THESE ARE CRDS!", crd)
       setCurrentLocation({'lat': crd.latitude, 'lng': crd.longitude})
     
       if (target.lat === crd.latitude && target.lng === crd.longitude) {
@@ -75,10 +116,10 @@ function SingleRoute() {
       timeout: 5000,
       maximumAge: 0
     };
-    
-  movementId = navigator.geolocation.watchPosition(success, error, options);
-  // console.log("THIS IS THE MOVEMENT!?!?!?", movementId)
-  // console.log("THIS IS WHERE I AM!", ending)
+  
+    // movementId = navigator.geolocation.watchPosition(success, error, options)
+    // console.log("THIS IS THE MOVEMENT!?!?!?", movementId)
+    // console.log("THIS IS WHERE I AM!", currentLocation)
       
       //END TEST FOR CURRENT MOVEMENT
 
@@ -149,6 +190,7 @@ useEffect(() => {
 
   const runRoute = () => {
     setBeginning(currentLocation)
+    movementId = navigator.geolocation.watchPosition(success, error, options)
     setIsActive(true)
     // timer()
     setRunning(true)
@@ -157,6 +199,7 @@ useEffect(() => {
   };
 
   const stopRoute = (e) => {
+    navigator.geolocation.clearWatch(movementId)
     setIsActive(false)
     setEnding(currentLocation)
     setRunning(false)
@@ -208,15 +251,42 @@ useEffect(() => {
     {homeRoutes()}
         <div className='single-route-workout-container'>
           <div className='single-route-workout-info-header'>
-            <h1>Workout info:</h1>
+            <h1>Workouts</h1>
           </div>
-        <div className='workout-info'>
-          <p>Attempted Route <b>{ Object.keys(workouts).length }</b> time(s)</p>
-          <p>Completed Route <b>{ completed }</b> time(s)</p>
-          <p>Fastest time completed: <b>{ fastestTime }</b></p>
-
-        </div>
-    </div>
+          <div className='workout-info'>
+            <h2>Overview</h2>
+            <p>Attempted Route <b>{ Object.keys(workouts).length }</b> time(s)</p>
+            <p>Completed Route <b>{ completed }</b> time(s)</p>
+            <p>Fastest time completed: <b>{ fastestTime }</b></p>
+          </div>
+          <div className='workouts-details'>
+            <h2>Log</h2>
+            <table id="workouts-log">
+              <tr>
+                <th>Date</th>
+                <th>Speed</th>
+                <th>Distance</th>
+              </tr>
+              {Object.values(workouts).map((workout, idx) => {
+                let dateArr = workout.createdAt.split(' ')
+                let time;
+                if (workout.time[0] === '0' && workout.time[1] === '0') {
+                  time = workout.time.slice(3)
+                } else {
+                  time = workout.time
+                }
+                return (
+                <tr key={idx}>
+                    <td>{`${dateArr[1]} ${dateArr[2]}, ${dateArr[3]}`}</td>
+                    <td>{time}</td>
+                    <td>{workout.distance}</td>
+                </tr>
+              )
+              })
+              }
+            </table>
+          </div>
+      </div>
     <div className='single__route__container'>
         <div className="main__div__map-container">
         <LoadScript

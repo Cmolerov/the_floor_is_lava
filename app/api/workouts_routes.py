@@ -21,6 +21,7 @@ workouts_routes = Blueprint('workouts', __name__)
 @login_required
 def workoutPost():
     data = request.json
+    print("WORKOUTS ARE WORKING AND HERE IS THE DATA", data)
     workout = Workout(
         time=data['time'],
         startLong=data['startLong'],

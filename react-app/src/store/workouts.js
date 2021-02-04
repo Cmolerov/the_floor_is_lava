@@ -74,10 +74,12 @@ export const workoutsSearch = (id) => async (dispatch) => {
 
 export const workoutAdd = (workout) => async (dispatch) => {
   const { startLong, endLong, startLat, endLat, isCompleted, routeId, time, apiKey } = workout;
+  console.log("HERE IS THE STORE INFO", workout)
   let proxyUrl = 'https://cors-anywhere-dale.herokuapp.com/'
   let data = await fetch(proxyUrl + `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&mode=walking&origins=${startLat},${startLong}&destinations=${endLat}%2C${endLong}&key=${apiKey}`)
   let resp = await data.json()
   const distance = (resp.rows[0].elements[0].distance.text)
+  console.log("HERE IS THE DISTANCE", distance)
   const res = await fetch(`/api/workouts/`, {
     method: 'POST',
     headers: {

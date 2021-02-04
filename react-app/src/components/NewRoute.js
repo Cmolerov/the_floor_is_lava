@@ -46,7 +46,6 @@ function NewRoute(props) {
 }, [markers])
 
   function getLocation() {
-    console.log("Found LOCATION")
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -54,7 +53,6 @@ function NewRoute(props) {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           };
-          console.log("FOUND LOCATION")
           setCurrentLocation(pos)
           setCenter(pos)
         }, (err) => {
