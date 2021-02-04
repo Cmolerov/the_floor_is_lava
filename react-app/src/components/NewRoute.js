@@ -37,11 +37,7 @@ function NewRoute(props) {
 };
 
   useEffect(() => {
-    dispatch(routesAction.routeSearch(8))
-    .then(() => setIsLoaded(true))
-  }, [dispatch])
-
-  useEffect(() => {
+    console.log("FINDING LOCATION")
     getLocation()
   }, [])
   
@@ -50,6 +46,7 @@ function NewRoute(props) {
 }, [markers])
 
   function getLocation() {
+    console.log("Found LOCATION")
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -57,6 +54,7 @@ function NewRoute(props) {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           };
+          console.log("FOUND LOCATION")
           setCurrentLocation(pos)
           setCenter(pos)
         }, (err) => {
@@ -108,7 +106,7 @@ function NewRoute(props) {
     }
   }
 
-  return isLoaded && (
+  return(
     <>
     <h1 className="new__route__header">New Route</h1>
     <div className='new__route__holder'>
@@ -121,8 +119,8 @@ function NewRoute(props) {
         >
           <GoogleMap
             mapContainerStyle={{
-              height: "50vh",
-              width: "50vw",
+              height: "500px",
+              width: "400px",
               margin: "20px",
             }}
             zoom={12}
