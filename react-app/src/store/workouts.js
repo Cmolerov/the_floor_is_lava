@@ -51,11 +51,13 @@ export const workoutsSearch = (id) => async (dispatch) => {
   let fastSeconds = Infinity;
   Object.values(response.workouts).forEach((workout) => {
     let t = workout.time
-    let currentTime = Number(t.split(':')[0]) * 60 * 60 + Number(t.split(':')[1]) * 60 + Number(t.split(':')[2])
+    let tArr = t.split(':')
+    let currentTime = Number(tArr[0]) * 60 * 60 + Number(tArr[1]) * 60 + Number(tArr[2])
     if (workout.isCompleted) {
       completed += 1
       if (currentTime < fastSeconds) {
         fastestTime = t;
+        fastSeconds = currentTime
       }
     }
   })
