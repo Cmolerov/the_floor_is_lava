@@ -85,8 +85,8 @@ function SingleRoute() {
   let travelMode = 'WALKING'
 
   const containerStyle = {
-    width: '400px',
-    height: '250px'
+    width: '510px',
+    height: '280px'
   };
 
   const mapOptions = {
@@ -206,8 +206,10 @@ useEffect(() => {
       </div>
   <div className='single-route-holder'>
     {homeRoutes()}
-    <div className='single-route-workout-container'>
-        <h1>Workout info:</h1>
+        <div className='single-route-workout-container'>
+          <div className='single-route-workout-info-header'>
+            <h1>Workout info:</h1>
+          </div>
         <div className='workout-info'>
           <p>Attempted Route <b>{ Object.keys(workouts).length }</b> time(s)</p>
           <p>Completed Route <b>{ completed }</b> time(s)</p>
