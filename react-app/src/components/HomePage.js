@@ -160,7 +160,7 @@ export default function HomePage(props) {
                                     <p>Path: {routes[9].name} </p>
                                     <p> Distance: {routes[9].distance}</p>
                                     <p>Avg. Time: 57 min</p>
-                                    <div className='google__map-container'>
+                                    <div className='google__map-container--home'>
                                         {/* {console.log("++++++++++++++++++", routes[9].startLong)} */}
                                         <LoadScript
                                             googleMapsApiKey={apiKey}
@@ -194,7 +194,7 @@ export default function HomePage(props) {
                                     <h2>Route of the Day</h2>
                                     <p>{routes[6].name}</p>
                                     <p>Distance: {routes[6].distance}</p>
-                                    <div className='google__map-container'>
+                                    <div className='google__map-container--home'>
                                         <LoadScript
                                                 googleMapsApiKey={apiKey}
                                             >
