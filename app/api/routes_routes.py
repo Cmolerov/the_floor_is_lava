@@ -53,6 +53,6 @@ def routeDelete(id):
 @routes_routes.route('/<int:id>/workouts')
 @login_required
 def routes(id):
-    returnWorkouts = Workout.query.filter_by(routeId=id).all()
+    returnWorkouts = Workout.query.filter_by(routeId=id).order_by(Workout.createdAt.desc()).all()
     workouts = {workout.id: workout.to_dict() for workout in returnWorkouts}
     return {'workouts': workouts}
