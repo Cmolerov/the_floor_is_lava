@@ -56,6 +56,7 @@ export const workoutsSearch = (id) => async (dispatch) => {
     if (workout.isCompleted) {
       completed += 1
       if (currentTime < fastSeconds) {
+        fastSeconds = currentTime
         fastestTime = t;
         fastSeconds = currentTime
       }
