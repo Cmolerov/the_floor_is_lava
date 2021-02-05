@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
+from sqlalchemy import desc
 from app.models import Route, Workout, db
 from datetime import datetime
 import os
@@ -14,6 +15,7 @@ apiKey = os.environ.get('GOOGLE_API')
 def route(id):
     returnRoute = Route.query.filter_by(id=id).one()
     route = returnRoute.to_dict()
+    print("SINGLE ROUTE IS:", route)
     return {'route': route, 'apiKey': apiKey}
 
 # ****************** ROUTE ADD *********************
@@ -54,5 +56,6 @@ def routeDelete(id):
 @login_required
 def routes(id):
     returnWorkouts = Workout.query.filter_by(routeId=id).order_by(Workout.createdAt.desc()).all()
+    print("THESE ARE THE WORKOUTS", returnWorkouts)
     workouts = {workout.id: workout.to_dict() for workout in returnWorkouts}
     return {'workouts': workouts}
