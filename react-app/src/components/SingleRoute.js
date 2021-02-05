@@ -48,56 +48,52 @@ function SingleRoute() {
     dispatch(workoutsAction.workoutsSearch(routeId))
     .then(() => setIsLoaded(true))
   }, [dispatch])
-  
-  useEffect(() => {
-    console.log("FINDING LOCATION")
-    getLocation()
-  }, [])
 
-  function getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-          setCurrentLocation(pos)
-        }, (err) => {
-          showError(err)
-        })
-    } else {
-      alert("Try another browser for geolocation services")
-    }
-  }
+  // function getLocation() {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(
+  //       (position) => {
+  //         const pos = {
+  //           lat: position.coords.latitude,
+  //           lng: position.coords.longitude,
+  //         };
+  //         setCurrentLocation(pos)
+  //       }, (err) => {
+  //         showError(err)
+  //       })
+  //   } else {
+  //     alert("Try another browser for geolocation services")
+  //   }
+  // }
   
-  function showError(error) {
-    switch(error.code) {
-      case error.PERMISSION_DENIED:
-        alert("You must allow location services to use this app")
-        break;
-      case error.POSITION_UNAVAILABLE:
-        alert("Location information is unavailable.")
-        break;
-      case error.TIMEOUT:
-        alert("The request to get user location timed out.")
-        break;
-      case error.UNKNOWN_ERROR:
-        alert("An unknown error occurred.")
-        break;
-      default:
-        break;
-    }
-  }
+  // function showError(error) {
+  //   switch(error.code) {
+  //     case error.PERMISSION_DENIED:
+  //       alert("You must allow location services to use this app")
+  //       break;
+  //     case error.POSITION_UNAVAILABLE:
+  //       alert("Location information is unavailable.")
+  //       break;
+  //     case error.TIMEOUT:
+  //       alert("The request to get user location timed out.")
+  //       break;
+  //     case error.UNKNOWN_ERROR:
+  //       alert("An unknown error occurred.")
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }
 
     //TEST FOR CURRENT MOVEMENT
 
   let movementId, target, options;
+  let timer;
 
     function success(pos) {
       var crd = pos.coords;
       console.log("THESE ARE CRDS!", crd)
-      setCurrentLocation({'lat': crd.latitude, 'lng': crd.longitude})
+      setCurrentLocation({ 'lat': crd.latitude, 'lng': crd.longitude })
     
       if (target.lat === crd.latitude && target.lng === crd.longitude) {
         alert('You beat the volcano!');
@@ -122,6 +118,12 @@ function SingleRoute() {
     // console.log("THIS IS WHERE I AM!", currentLocation)
       
       //END TEST FOR CURRENT MOVEMENT
+  
+  useEffect(() => {
+    timer = setTimeout(() => {
+      movementId = navigator.geolocation.watchPosition(success, error, options)
+    }, 5000)
+  }, [])
 
   let travelMode = 'WALKING'
 
@@ -190,7 +192,6 @@ useEffect(() => {
 
   const runRoute = () => {
     setBeginning(currentLocation)
-    movementId = navigator.geolocation.watchPosition(success, error, options)
     setIsActive(true)
     // timer()
     setRunning(true)
@@ -200,6 +201,7 @@ useEffect(() => {
 
   const stopRoute = (e) => {
     navigator.geolocation.clearWatch(movementId)
+    clearTimeout(timer)
     setIsActive(false)
     setEnding(currentLocation)
     setRunning(false)
