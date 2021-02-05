@@ -14,7 +14,15 @@ export default function HomePage(props) {
 
     const containerStyle = {
         width: '250px',
-        height: '220px'
+        height: '150px',
+        boxShadow: '0px 0px 2px 0.5px rgba(252, 82, 0, 0.7)'
+    };
+
+    const activityStyle = {
+        width: '200px',
+        height: '100px',
+        // border: '1px solid rgba(252, 82, 0, 1)'
+        boxShadow: '0px 0px 2px 0.5px rgba(252, 82, 0, 0.7)'
     };
     
     const mapOptions = {
@@ -50,7 +58,7 @@ export default function HomePage(props) {
                     <div className="homePage_container-left">
                         <div className="homePage_container-left_top animate__animated animate__slideInLeft">
                             <div className="homePage_profile">
-                                <h2> Profile</h2>
+                                <h2 className="card__header--profile"> Profile</h2>
                                 <p>{props.user.username}</p>
                                 <p>Member since 2020</p>
                                 <p>Routes Completed: 65</p>
@@ -59,11 +67,11 @@ export default function HomePage(props) {
                         </div>
                         <div className="homePage_container-left_bottom animate__animated animate__slideInLeft">
                             <div className="homePage_profile">
-                                <h2>Upcoming Events</h2>
-                                <p>The Boston Marathon</p>
-                                <p>The Spartan Race </p>
-                                <p>Pacifica Runners St.Pattys</p>
-                                <p>Canton Half Marathon</p>
+                                <h2 className="card__header">Upcoming Events</h2>
+                                <p><a href="https://www.baa.org/2021-boston-marathon-will-not-take-place-april" target="_blank" rel="noreferrer">The Boston Marathon</a></p>
+                                <p><a href="https://race.spartan.com/en/race/find-race?gclid=CjwKCAiA9vOABhBfEiwATCi7GEmfCuWs1DF7eo4YHQ2iigOjbh4ypmbDiV17qWyjSuLKql_NdquEIxoCxlQQAvD_BwE" target="_blank" rel="noreferrer">The Spartan Race </a></p>
+                                <p><a href="https://www.eventbrite.com/e/pacifica-runners-st-patricks-day-virtual-5k-2021-tickets-137686380671" target="_blank" rel="noreferrer">Pacifica Runners St.Pattys</a></p>
+                                <p><a href="https://www.cantonhalf.com/" target="_blank" rel="noreferrer">Canton Half Marathon</a></p>
                             </div>
                         </div>
                     </div>
@@ -88,6 +96,24 @@ export default function HomePage(props) {
                                     <p>
                                         <p>Avg. Pace: 17 min</p>
                                     </p>
+                                    <div className="homePage__routes--map-container">
+                                        <LoadScript
+                                            googleMapsApiKey={apiKey}
+                                        >
+                                            <GoogleMap
+                                                options={mapOptions}
+                                                mapContainerStyle={activityStyle}
+                                                center={
+                                                    {
+                                                        lat: routes[1].startLat,
+                                                        lng: routes[1].startLong
+                                                    }
+                                            }
+                                            zoom={10}
+                                            >
+                                        </GoogleMap>
+                                        </LoadScript>
+                                    </div>
                                 </div>
                             </NavLink>
                             <NavLink
@@ -105,7 +131,24 @@ export default function HomePage(props) {
                                     <p>
                                         <p>Avg. Pace: 21 min</p>
                                     </p>
-                                    {/* <p>Description: {routes[2].description}</p> */}
+                                    <div className="homePage__routes--map-container">
+                                        <LoadScript
+                                            googleMapsApiKey={apiKey}
+                                        >
+                                            <GoogleMap
+                                                options={mapOptions}
+                                                mapContainerStyle={activityStyle}
+                                                center={
+                                                    {
+                                                        lat: routes[2].startLat,
+                                                        lng: routes[2].startLong
+                                                    }
+                                            }
+                                            zoom={10}
+                                            >
+                                        </GoogleMap>
+                                        </LoadScript>
+                                    </div>
                                 </div>
                             </NavLink>
                             <NavLink
@@ -123,7 +166,24 @@ export default function HomePage(props) {
                                     <p>
                                         <p>Avg. Pace: 9 min</p>
                                     </p>
-                                    {/* <p>Description: {routes[3].description}</p> */}
+                                    {/* <p>Description: {routes[3].description}</p> */}    <div className="homePage__routes--map-container">
+                                        <LoadScript
+                                            googleMapsApiKey={apiKey}
+                                        >
+                                            <GoogleMap
+                                                options={mapOptions}
+                                                mapContainerStyle={activityStyle}
+                                                center={
+                                                    {
+                                                        lat: routes[3].startLat,
+                                                        lng: routes[3].startLong
+                                                    }
+                                            }
+                                            zoom={10}
+                                            >
+                                        </GoogleMap>
+                                        </LoadScript>
+                                    </div>
                                 </div>
                             </NavLink>
                             <NavLink
@@ -141,7 +201,24 @@ export default function HomePage(props) {
                                     <p>
                                         <p>Avg. Pace: 94 min</p>
                                     </p>
-                                    {/* <p>Description: {routes[4].description}</p> */}
+                                    <div className="homePage__routes--map-container">
+                                        <LoadScript
+                                            googleMapsApiKey={apiKey}
+                                        >
+                                            <GoogleMap
+                                                options={mapOptions}
+                                                mapContainerStyle={activityStyle}
+                                                center={
+                                                    {
+                                                        lat: routes[4].startLat,
+                                                        lng: routes[4].startLong
+                                                    }
+                                            }
+                                            zoom={10}
+                                            >
+                                        </GoogleMap>
+                                        </LoadScript>
+                                    </div>
                                 </div>
                             </NavLink>
                         </div>
@@ -156,7 +233,7 @@ export default function HomePage(props) {
                                 to={`/routes/${routes[9].id}`}
                             >
                                 <div className="homePage_newRoutes">
-                                    <h2>Explore New Routes</h2>
+                                    <h2 className="card__header">Explore New Routes</h2>
                                     <p>Path: {routes[9].name} </p>
                                     <p> Distance: {routes[9].distance}</p>
                                     <p>Avg. Time: 57 min</p>
@@ -191,7 +268,7 @@ export default function HomePage(props) {
                         >
                             <div className="homePage_container-right_bottom animate__animated animate__slideInRight">
                                 <div className="homePage_routeOfDay">
-                                    <h2>Route of the Day</h2>
+                                    <h2 className="card__header">Route of the Day</h2>
                                     <p>{routes[6].name}</p>
                                     <p>Distance: {routes[6].distance}</p>
                                     <div className='google__map-container--home'>
