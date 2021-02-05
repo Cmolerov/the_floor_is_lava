@@ -752,7 +752,7 @@ button {
     /* margin-top: 200px; */
 }
 
-.google__map-container {
+.google__map-container--home {
     position: relative;
     top: 0px;
     left: -15px;
@@ -799,8 +799,17 @@ button {
 }
 
 .routes__card__container:hover {
-    transform: translate(10px, -10px);
+    transform: translate(2px, -2px);
     box-shadow: -4px -4px 16px rgba(0, 0, 0, 0.7);
+}
+
+.routes__card__container:hover .routes__div__description{
+    background-color: rgba(252, 82, 0, 0.7);
+    font-style: normal;
+    color: white;
+    text-shadow: 1.5px 1.5px black;
+    padding: 10px;
+    align-items: center;
 }
 
 .routes__h2__name {
@@ -816,16 +825,6 @@ button {
     padding: 10px;
     align-items: center;
     box-shadow: 2px 2px 8px #fc5200;
-}
-
-.routes__div__description:hover {
-    transform: scale(1.5);
-    background-color: rgba(252, 82, 0, 0.7);
-    font-style: normal;
-    color: white;
-    text-shadow: 1.5px 1.5px black;
-    padding: 10px;
-    align-items: center;
 }
 
 .routes__div__distance {
