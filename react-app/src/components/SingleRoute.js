@@ -4,6 +4,9 @@ import { useParams, Redirect } from 'react-router-dom';
 import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer, Marker, Circle } from '@react-google-maps/api';
 // import './SingleRoute.css'
 
+import { Modal } from '../context/Modal';
+import SingleWorkoutStats from './SingleWorkoutStats/SingleWorkoutStats';
+
 import * as workoutsAction from '../store/workouts'
 import * as routesAction from '../store/routes';
 
@@ -20,6 +23,7 @@ function SingleRoute() {
     return Math.random() * (maxx - minn) + minn;
   }
 
+  const [showModal, setShowModal] = useState(false); 
   const [currentLocation, setCurrentLocation] = useState(null)
   const [running, setRunning] = useState(false)
   let [rad, setRad] = useState([])
@@ -31,8 +35,16 @@ function SingleRoute() {
   const [lavas, setLavas] = useState([]);
   const [beginning, setBeginning] = useState(null);
   const [ending, setEnding] = useState(null)
+  const [finished, setFinished] = useState(false)
   const [redirect, setRedirect] = useState(false)
   const increment = useRef(null);
+  const [totalSeconds, setTotalSeconds] = useState('00');
+  const [totalMinutes, setTotalMinutes] = useState('00');
+  const [totalHours, setTotalHours] = useState('00');
+  const [time, setTime] = useState('');
+  const [distance, setDistance] = useState('');
+  const [isActive, setIsActive] = useState(false);
+  const [counter, setCounter] = useState(0);
   
   const route = useSelector(state => state.routes.route);
   const origin = useSelector(state => `${state.routes.route.startLat},${state.routes.route.startLong}`);
@@ -97,6 +109,7 @@ function SingleRoute() {
     
       if (target.lat === crd.latitude && target.lng === crd.longitude) {
         alert('You beat the volcano!');
+        setFinished(true)
         navigator.geolocation.clearWatch(movementId);
       }
     };
@@ -156,13 +169,6 @@ function SingleRoute() {
       }]))
     }, 10000);
   }
-
-const [totalSeconds, setTotalSeconds] = useState('00');
-const [totalMinutes, setTotalMinutes] = useState('00');
-const [totalHours, setTotalHours] = useState('00');
-const [time, setTime] = useState('');
-const [isActive, setIsActive] = useState(false);
-const [counter, setCounter] = useState(0);
   
 useEffect(() => {
   let setIntervalReturn;
@@ -219,9 +225,14 @@ useEffect(() => {
     let isCompleted = false;
     if (endLat === route.endLat && endLong === route.endLong) {
         isCompleted = true
-      }
-      dispatch(workoutsAction.workoutAdd({ time, isCompleted, endLong, startLat, startLong, endLat, routeId, apiKey }))
-      // .then(() => setRedirect(true))
+    }
+    let proxyUrl = 'https://cors-anywhere-dale.herokuapp.com/'
+    let data = await fetch(proxyUrl + `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&mode=walking&origins=${startLat},${startLong}&destinations=${endLat}%2C${endLong}&key=${apiKey}`)
+    let resp = await data.json()
+    setDistance(resp.rows[0].elements[0].distance.text)
+    let dist = resp.rows[0].elements[0].distance.text
+    setShowModal(true)
+    dispatch(workoutsAction.workoutAdd({ time, isCompleted, endLong, startLat, startLong, endLat, routeId, dist }))
 };
 
   const deleteRoute = async (e) => {
@@ -390,6 +401,9 @@ useEffect(() => {
         }
       </div>
       </div>
+      <Modal open={showModal} onClose={() => setShowModal(false)} >
+        <SingleWorkoutStats open={showModal} onClose={() => setShowModal(false)} finished={finished} time={time} distance={distance}/>
+        </Modal>
       </div>
     )
 }
