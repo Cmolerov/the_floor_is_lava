@@ -42,7 +42,7 @@ function SingleRoute() {
   const [totalMinutes, setTotalMinutes] = useState('00');
   const [totalHours, setTotalHours] = useState('00');
   const [time, setTime] = useState('');
-  const [distance, setDistance] = useState('');
+  const [distance, setDistance] = useState(null);
   const [isActive, setIsActive] = useState(false);
   const [counter, setCounter] = useState(0);
   
@@ -233,6 +233,7 @@ useEffect(() => {
     let dist = resp.rows[0].elements[0].distance.text
     setShowModal(true)
     dispatch(workoutsAction.workoutAdd({ time, isCompleted, endLong, startLat, startLong, endLat, routeId, dist }))
+    // .then(() => setDistance(null))
 };
 
   const deleteRoute = async (e) => {
@@ -402,7 +403,7 @@ useEffect(() => {
       </div>
       </div>
       <Modal open={showModal} onClose={() => setShowModal(false)} >
-        <SingleWorkoutStats open={showModal} onClose={() => setShowModal(false)} finished={finished} time={time} distance={distance}/>
+        <SingleWorkoutStats open={showModal} onClose={() => setShowModal(false)} finished={finished} time={time} distance={distance} routeDistance={route.distance}/>
         </Modal>
       </div>
     )
