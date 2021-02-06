@@ -4,6 +4,9 @@ import { useParams, Redirect } from 'react-router-dom';
 import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer, Marker, Circle } from '@react-google-maps/api';
 // import './SingleRoute.css'
 
+import { Modal } from '../context/Modal';
+import SingleWorkoutStats from './SingleWorkoutStats/SingleWorkoutStats';
+
 import * as workoutsAction from '../store/workouts'
 import * as routesAction from '../store/routes';
 
@@ -20,6 +23,7 @@ function SingleRoute() {
     return Math.random() * (maxx - minn) + minn;
   }
 
+  const [showModal, setShowModal] = useState(false); 
   const [currentLocation, setCurrentLocation] = useState(null)
   const [running, setRunning] = useState(false)
   let [rad, setRad] = useState([])
@@ -31,8 +35,16 @@ function SingleRoute() {
   const [lavas, setLavas] = useState([]);
   const [beginning, setBeginning] = useState(null);
   const [ending, setEnding] = useState(null)
+  const [finished, setFinished] = useState(false)
   const [redirect, setRedirect] = useState(false)
   const increment = useRef(null);
+  const [totalSeconds, setTotalSeconds] = useState('00');
+  const [totalMinutes, setTotalMinutes] = useState('00');
+  const [totalHours, setTotalHours] = useState('00');
+  const [time, setTime] = useState('');
+  const [distance, setDistance] = useState('');
+  const [isActive, setIsActive] = useState(false);
+  const [counter, setCounter] = useState(0);
   
   const route = useSelector(state => state.routes.route);
   const origin = useSelector(state => `${state.routes.route.startLat},${state.routes.route.startLong}`);
@@ -48,59 +60,56 @@ function SingleRoute() {
     dispatch(workoutsAction.workoutsSearch(routeId))
     .then(() => setIsLoaded(true))
   }, [dispatch])
-  
-  useEffect(() => {
-    console.log("FINDING LOCATION")
-    getLocation()
-  }, [])
 
-  function getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-          setCurrentLocation(pos)
-        }, (err) => {
-          showError(err)
-        })
-    } else {
-      alert("Try another browser for geolocation services")
-    }
-  }
+  // function getLocation() {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(
+  //       (position) => {
+  //         const pos = {
+  //           lat: position.coords.latitude,
+  //           lng: position.coords.longitude,
+  //         };
+  //         setCurrentLocation(pos)
+  //       }, (err) => {
+  //         showError(err)
+  //       })
+  //   } else {
+  //     alert("Try another browser for geolocation services")
+  //   }
+  // }
   
-  function showError(error) {
-    switch(error.code) {
-      case error.PERMISSION_DENIED:
-        alert("You must allow location services to use this app")
-        break;
-      case error.POSITION_UNAVAILABLE:
-        alert("Location information is unavailable.")
-        break;
-      case error.TIMEOUT:
-        alert("The request to get user location timed out.")
-        break;
-      case error.UNKNOWN_ERROR:
-        alert("An unknown error occurred.")
-        break;
-      default:
-        break;
-    }
-  }
+  // function showError(error) {
+  //   switch(error.code) {
+  //     case error.PERMISSION_DENIED:
+  //       alert("You must allow location services to use this app")
+  //       break;
+  //     case error.POSITION_UNAVAILABLE:
+  //       alert("Location information is unavailable.")
+  //       break;
+  //     case error.TIMEOUT:
+  //       alert("The request to get user location timed out.")
+  //       break;
+  //     case error.UNKNOWN_ERROR:
+  //       alert("An unknown error occurred.")
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }
 
     //TEST FOR CURRENT MOVEMENT
 
   let movementId, target, options;
+  let timer;
 
     function success(pos) {
       var crd = pos.coords;
       console.log("THESE ARE CRDS!", crd)
-      setCurrentLocation({'lat': crd.latitude, 'lng': crd.longitude})
+      setCurrentLocation({ 'lat': crd.latitude, 'lng': crd.longitude })
     
       if (target.lat === crd.latitude && target.lng === crd.longitude) {
         alert('You beat the volcano!');
+        setFinished(true)
         navigator.geolocation.clearWatch(movementId);
       }
     };
@@ -122,6 +131,12 @@ function SingleRoute() {
     // console.log("THIS IS WHERE I AM!", currentLocation)
       
       //END TEST FOR CURRENT MOVEMENT
+  
+  useEffect(() => {
+    timer = setTimeout(() => {
+      movementId = navigator.geolocation.watchPosition(success, error, options)
+    }, 5000)
+  }, [])
 
   let travelMode = 'WALKING'
 
@@ -154,13 +169,6 @@ function SingleRoute() {
       }]))
     }, 10000);
   }
-
-const [totalSeconds, setTotalSeconds] = useState('00');
-const [totalMinutes, setTotalMinutes] = useState('00');
-const [totalHours, setTotalHours] = useState('00');
-const [time, setTime] = useState('');
-const [isActive, setIsActive] = useState(false);
-const [counter, setCounter] = useState(0);
   
 useEffect(() => {
   let setIntervalReturn;
@@ -190,7 +198,6 @@ useEffect(() => {
 
   const runRoute = () => {
     setBeginning(currentLocation)
-    movementId = navigator.geolocation.watchPosition(success, error, options)
     setIsActive(true)
     // timer()
     setRunning(true)
@@ -200,12 +207,12 @@ useEffect(() => {
 
   const stopRoute = (e) => {
     navigator.geolocation.clearWatch(movementId)
+    clearTimeout(timer)
     setIsActive(false)
     setEnding(currentLocation)
     setRunning(false)
     clearInterval(increment.current)
     setLavas([])
-    console.log("The final time is:", `${totalHours}:${totalMinutes}:${totalSeconds}`)
     workoutSubmit(e)
   };
 
@@ -218,9 +225,14 @@ useEffect(() => {
     let isCompleted = false;
     if (endLat === route.endLat && endLong === route.endLong) {
         isCompleted = true
-      }
-      dispatch(workoutsAction.workoutAdd({ time, isCompleted, endLong, startLat, startLong, endLat, routeId, apiKey }))
-      .then(() => setRedirect(true))
+    }
+    let proxyUrl = 'https://cors-anywhere-dale.herokuapp.com/'
+    let data = await fetch(proxyUrl + `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&mode=walking&origins=${startLat},${startLong}&destinations=${endLat}%2C${endLong}&key=${apiKey}`)
+    let resp = await data.json()
+    setDistance(resp.rows[0].elements[0].distance.text)
+    let dist = resp.rows[0].elements[0].distance.text
+    setShowModal(true)
+    dispatch(workoutsAction.workoutAdd({ time, isCompleted, endLong, startLat, startLong, endLat, routeId, dist }))
 };
 
   const deleteRoute = async (e) => {
@@ -242,7 +254,7 @@ useEffect(() => {
       .then(() => setIsLoaded2(true))
   }, [])
 
-  return isLoaded2 && currentLocation && isLoaded && (
+  return isLoaded2 && isLoaded && (
     <div className='single-route'>
       <div className='single-route-header'>
         <h1 className="route__p__name">{route.name}</h1>
@@ -377,14 +389,21 @@ useEffect(() => {
               null}
             </GoogleMap>
           </LoadScript>
-      </div>
+          </div>
+          {currentLocation.lat ? 
       <div className='button-holders'>
           <button onClick={runRoute} className="single__route__run__button">Run Route</button>
           <button onClick={stopRoute} className="single__route__run__button">Stop Run</button>
           <button onClick={deleteRoute} className="single__route__run__button">Delete Route</button>
         </div>
+            :
+            null
+        }
       </div>
       </div>
+      <Modal open={showModal} onClose={() => setShowModal(false)} >
+        <SingleWorkoutStats open={showModal} onClose={() => setShowModal(false)} finished={finished} time={time} distance={distance}/>
+        </Modal>
       </div>
     )
 }
