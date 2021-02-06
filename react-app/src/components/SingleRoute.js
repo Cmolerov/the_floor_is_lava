@@ -207,7 +207,6 @@ useEffect(() => {
     setRunning(false)
     clearInterval(increment.current)
     setLavas([])
-    console.log("The final time is:", `${totalHours}:${totalMinutes}:${totalSeconds}`)
     workoutSubmit(e)
   };
 
@@ -222,7 +221,7 @@ useEffect(() => {
         isCompleted = true
       }
       dispatch(workoutsAction.workoutAdd({ time, isCompleted, endLong, startLat, startLong, endLat, routeId, apiKey }))
-      .then(() => setRedirect(true))
+      // .then(() => setRedirect(true))
 };
 
   const deleteRoute = async (e) => {
@@ -244,7 +243,7 @@ useEffect(() => {
       .then(() => setIsLoaded2(true))
   }, [])
 
-  return isLoaded2 && currentLocation && isLoaded && (
+  return isLoaded2 && isLoaded && (
     <div className='single-route'>
       <div className='single-route-header'>
         <h1 className="route__p__name">{route.name}</h1>
@@ -379,12 +378,16 @@ useEffect(() => {
               null}
             </GoogleMap>
           </LoadScript>
-      </div>
+          </div>
+          {currentLocation.lat ? 
       <div className='button-holders'>
           <button onClick={runRoute} className="single__route__run__button">Run Route</button>
           <button onClick={stopRoute} className="single__route__run__button">Stop Run</button>
           <button onClick={deleteRoute} className="single__route__run__button">Delete Route</button>
         </div>
+            :
+            null
+        }
       </div>
       </div>
       </div>

@@ -75,12 +75,10 @@ export const workoutsSearch = (id) => async (dispatch) => {
 
 export const workoutAdd = (workout) => async (dispatch) => {
   const { startLong, endLong, startLat, endLat, isCompleted, routeId, time, apiKey } = workout;
-  console.log("HERE IS THE STORE INFO", workout)
   let proxyUrl = 'https://cors-anywhere-dale.herokuapp.com/'
   let data = await fetch(proxyUrl + `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&mode=walking&origins=${startLat},${startLong}&destinations=${endLat}%2C${endLong}&key=${apiKey}`)
   let resp = await data.json()
   const distance = (resp.rows[0].elements[0].distance.text)
-  console.log("HERE IS THE DISTANCE", distance)
   const res = await fetch(`/api/workouts/`, {
     method: 'POST',
     headers: {
@@ -98,8 +96,7 @@ export const workoutAdd = (workout) => async (dispatch) => {
     }),
   })
   let response = await res.json()
-  console.log(response.workout)
-  dispatch(addWorkout(response.workout));
+  dispatch(addWorkout(response));
   return response
 }
 
@@ -138,14 +135,11 @@ const workoutsReducer = (state = initialState, action) => {
       newState.completed = action.completed;
       newState.fastestTime = action.fastestTime;
       return newState;
-    // case FIND_ROUTE:
-    //   newState = Object.assign({}, state)
-    //   newState.route = action.route;
-    //   newState.apiKey = action.apiKey;
-    //   return newState;
-    // case ADD_ROUTE:
-    //   newState = Object.assign({}, state)
-    //   return newState;
+    case ADD_WORKOUT:
+      newState = Object.assign({}, state)
+      console.log("THIS IS THE STORE WORKOUT", action.workout)
+      newState.workouts[action.workout.id] = action.workout
+      return newState;
     // case UPDATE_TESTIMONY:
     //   newState = Object.assign({}, state)
     //   for (let i = 0; i < newState.testimony.length; i++){

@@ -21,7 +21,6 @@ workouts_routes = Blueprint('workouts', __name__)
 @login_required
 def workoutPost():
     data = request.json
-    print("WORKOUTS ARE WORKING AND HERE IS THE DATA", data)
     workout = Workout(
         time=data['time'],
         startLong=data['startLong'],
@@ -36,6 +35,7 @@ def workoutPost():
     )
     db.session.add(workout)
     db.session.commit()
+    print("WORKOUTS ARE WORKING AND HERE IS THE DATA", workout.to_dict())
     return workout.to_dict()
 
 # ****************** ROUTE DELETE *********************
