@@ -8,19 +8,36 @@ function SingleWorkoutStats({open, onClose, finished, time, distance, routeDista
   const [hidden, setHidden] = useState(true)
   const [isLoaded, setIsLoaded] = useState(false)
   const [distanceArr, setDistanceArr] = useState([])
+  const [finPercent, setFinPercent] = useState(0)
   const [routeDistanceArr, setRouteDistanceArr] = useState([])
 
 
   useEffect(() => {
     if (distance) {
       setDistanceArr(distance.split(' '))
+      let dArr = distance.split(' ')
       setRouteDistanceArr(routeDistance.split(' '))
+      let rdArr = routeDistance.split(' ')
+      getPercent(dArr, rdArr)
       setIsLoaded(true)
     }
   }, [distance])
 
-  const getPercent = () => {
-    
+  const getPercent = (dArr, rdArr) => {
+    let d;
+    if (dArr[1] !== 'ft') {
+      d = parseFloat(dArr[0]) * 5280
+    } else {
+      d = parseFloat(dArr[0])
+    }
+    let routeD;
+    if (rdArr[1] !== 'ft') {
+      routeD = parseFloat(rdArr[0]) * 5280
+    } else {
+      routeD = parseFloat(rdArr[0])
+    }
+    setFinPercent(d / routeD)
+    return
   }
 
   return isLoaded &&(
@@ -45,7 +62,7 @@ function SingleWorkoutStats({open, onClose, finished, time, distance, routeDista
               <div>Completed: <span className="odometer">
               <CountUp
                 start={0}
-                end={527.012}
+                end={finPercent}
                 duration={3.75}
                 separator=" "
                 decimals={4}
