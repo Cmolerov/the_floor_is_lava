@@ -42,7 +42,7 @@ function SingleRoute() {
   const [totalMinutes, setTotalMinutes] = useState('00');
   const [totalHours, setTotalHours] = useState('00');
   const [time, setTime] = useState('');
-  const [distance, setDistance] = useState('');
+  const [distance, setDistance] = useState(null);
   const [isActive, setIsActive] = useState(false);
   const [counter, setCounter] = useState(0);
   
@@ -60,6 +60,12 @@ function SingleRoute() {
     dispatch(workoutsAction.workoutsSearch(routeId))
     .then(() => setIsLoaded(true))
   }, [dispatch])
+
+  // useEffect(() => {
+  //   if (!showModal) {
+  //     setDistance(null)
+  //   }
+  // },[showModal])
 
   // function getLocation() {
   //   if (navigator.geolocation) {
@@ -104,7 +110,6 @@ function SingleRoute() {
 
     function success(pos) {
       var crd = pos.coords;
-      console.log("THESE ARE CRDS!", crd)
       setCurrentLocation({ 'lat': crd.latitude, 'lng': crd.longitude })
     
       if (target.lat === crd.latitude && target.lng === crd.longitude) {
@@ -202,7 +207,6 @@ useEffect(() => {
     // timer()
     setRunning(true)
     lavaFlowing();
-    // console.log("THIS IS THE BEGINNING!!?!?", currentLocation)
   };
 
   const stopRoute = (e) => {
@@ -233,12 +237,13 @@ useEffect(() => {
     let dist = resp.rows[0].elements[0].distance.text
     setShowModal(true)
     dispatch(workoutsAction.workoutAdd({ time, isCompleted, endLong, startLat, startLong, endLat, routeId, dist }))
+    // .then(() => setDistance(null))
 };
 
   const deleteRoute = async (e) => {
     e.preventDefault();
     let id = route.id;
-      dispatch(routesAction.routeDelete({ id }))
+      dispatch(routesAction.routeDelete(id))
       .then(() => setRedirect(true))
   };
   
@@ -401,8 +406,8 @@ useEffect(() => {
         }
       </div>
       </div>
-      <Modal open={showModal} onClose={() => setShowModal(false)} >
-        <SingleWorkoutStats open={showModal} onClose={() => setShowModal(false)} finished={finished} time={time} distance={distance}/>
+      <Modal routeId={routeId} open={showModal} onClose={() => setShowModal(false)} >
+        <SingleWorkoutStats open={showModal} onClose={() => setShowModal(false)} finished={finished} time={time} distance={distance} routeDistance={route.distance}/>
         </Modal>
       </div>
     )

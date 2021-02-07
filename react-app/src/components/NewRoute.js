@@ -37,12 +37,10 @@ function NewRoute(props) {
 };
 
   useEffect(() => {
-    console.log("FINDING LOCATION")
     getLocation()
   }, [])
   
   useEffect(() => {
-    console.log(markers)
 }, [markers])
 
   function getLocation() {

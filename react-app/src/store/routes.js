@@ -100,14 +100,13 @@ export const routeAdd = (route) => async (dispatch) => {
 //   return res
 // }
 
-export const routeDelete = (sentId) => async (dispatch) => {
-  let { id } = sentId
+export const routeDelete = (id) => async (dispatch) => {
   const res = await fetch(`/api/routes/${id}`, {
     method: 'DELETE',
   })
-  let response = await res.json();
-  console.log("FRONTEND RESPONSE!!!!!!", response)
-  dispatch(deleteRoute(response.primaryKey));
+  // let response = await res.json();
+  // console.log("FRONTEND RESPONSE!!!!!!", response)
+  // dispatch(deleteRoute(response.primaryKey));
   return res
 }
 

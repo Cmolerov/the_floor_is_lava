@@ -932,8 +932,13 @@ height: 40px;
     height: 360px;
     width: 300px;
     overflow-y: scroll;
+    scrollbar-width: none;
     margin-top: 10px;
     border: 1px solid grey;
+}
+
+.single-route-workout-container::-webkit-scrollbar{
+    display: none;
 }
 
 .single-route-workout-info-header{
