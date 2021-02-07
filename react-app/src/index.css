@@ -712,6 +712,15 @@ button {
     border-radius: 5px;
 }
 
+.homePage__events {
+    color: black;
+    text-decoration: none;
+}
+
+.homePage__events:hover {
+    text-decoration: underline;
+}
+
 .homePage_container-middle {
     /* background-color: blue; */
     grid-column: 2/3;

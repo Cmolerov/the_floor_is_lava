@@ -68,10 +68,10 @@ export default function HomePage(props) {
                         <div className="homePage_container-left_bottom animate__animated animate__slideInLeft">
                             <div className="homePage_profile">
                                 <h2 className="card__header">Upcoming Events</h2>
-                                <p><a href="https://www.baa.org/2021-boston-marathon-will-not-take-place-april" target="_blank" rel="noreferrer">The Boston Marathon</a></p>
-                                <p><a href="https://race.spartan.com/en/race/find-race?gclid=CjwKCAiA9vOABhBfEiwATCi7GEmfCuWs1DF7eo4YHQ2iigOjbh4ypmbDiV17qWyjSuLKql_NdquEIxoCxlQQAvD_BwE" target="_blank" rel="noreferrer">The Spartan Race </a></p>
-                                <p><a href="https://www.eventbrite.com/e/pacifica-runners-st-patricks-day-virtual-5k-2021-tickets-137686380671" target="_blank" rel="noreferrer">Pacifica Runners St.Pattys</a></p>
-                                <p><a href="https://www.cantonhalf.com/" target="_blank" rel="noreferrer">Canton Half Marathon</a></p>
+                                <p><a className="homePage__events" href="https://www.baa.org/2021-boston-marathon-will-not-take-place-april" target="_blank" rel="noreferrer">The Boston Marathon</a></p>
+                                <p><a className="homePage__events" href="https://race.spartan.com/en/race/find-race?gclid=CjwKCAiA9vOABhBfEiwATCi7GEmfCuWs1DF7eo4YHQ2iigOjbh4ypmbDiV17qWyjSuLKql_NdquEIxoCxlQQAvD_BwE" target="_blank" rel="noreferrer">The Spartan Race </a></p>
+                                <p><a className="homePage__events" href="https://www.eventbrite.com/e/pacifica-runners-st-patricks-day-virtual-5k-2021-tickets-137686380671" target="_blank" rel="noreferrer">Pacifica Runners St.Pattys</a></p>
+                                <p><a className="homePage__events" href="https://www.cantonhalf.com/" target="_blank" rel="noreferrer">Canton Half Marathon</a></p>
                             </div>
                         </div>
                     </div>
