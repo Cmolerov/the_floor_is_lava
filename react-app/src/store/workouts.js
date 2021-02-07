@@ -134,7 +134,6 @@ const workoutsReducer = (state = initialState, action) => {
       return newState;
     case ADD_WORKOUT:
       newState = Object.assign({}, state)
-      console.log("THIS IS THE STORE WORKOUT", action.workout)
       newState.workouts[action.workout.id] = action.workout
       return newState;
     // case UPDATE_TESTIMONY:

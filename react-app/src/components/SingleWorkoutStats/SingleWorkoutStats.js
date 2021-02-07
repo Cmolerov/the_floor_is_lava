@@ -21,7 +21,6 @@ function SingleWorkoutStats({open, onClose, finished, time, distance, routeDista
       setRouteDistanceArr(routeDistance.split(' '))
       let rdArr = routeDistance.split(' ')
       setTimeArr(time.split(':'))
-      console.log("THIS IS THE TIME!", time)
       getPercent(dArr, rdArr)
       setIsLoaded(true)
     }

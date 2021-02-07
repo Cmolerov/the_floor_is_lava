@@ -43,6 +43,7 @@ def routePost():
 @routes_routes.route('/<int:id>', methods = ['DELETE'])
 @login_required
 def routeDelete(id):
+    workouts = Workout.query.filter_by(routeId=id).delete()
     route = Route.query.get(id)
     db.session.delete(route)
     db.session.commit()

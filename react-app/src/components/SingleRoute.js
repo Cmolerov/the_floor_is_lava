@@ -110,7 +110,6 @@ function SingleRoute() {
 
     function success(pos) {
       var crd = pos.coords;
-      console.log("THESE ARE CRDS!", crd)
       setCurrentLocation({ 'lat': crd.latitude, 'lng': crd.longitude })
     
       if (target.lat === crd.latitude && target.lng === crd.longitude) {
@@ -208,7 +207,6 @@ useEffect(() => {
     // timer()
     setRunning(true)
     lavaFlowing();
-    // console.log("THIS IS THE BEGINNING!!?!?", currentLocation)
   };
 
   const stopRoute = (e) => {
@@ -245,7 +243,7 @@ useEffect(() => {
   const deleteRoute = async (e) => {
     e.preventDefault();
     let id = route.id;
-      dispatch(routesAction.routeDelete({ id }))
+      dispatch(routesAction.routeDelete(id))
       .then(() => setRedirect(true))
   };
   

@@ -35,7 +35,6 @@ def workoutPost():
     )
     db.session.add(workout)
     db.session.commit()
-    print("WORKOUTS ARE WORKING AND HERE IS THE DATA", workout.to_dict())
     return workout.to_dict()
 
 # ****************** ROUTE DELETE *********************
