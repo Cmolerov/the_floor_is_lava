@@ -1,14 +1,22 @@
 import React from 'react';
+import { useHistory } from "react-router-dom"
 import './Modal.css'; 
 
 export function Modal({ open, children, onClose }) {
-    // if (!open) return null; 
+    let history = useHistory();
+    const handleClick = () => {
+        history.push(`/routes/`);
+    }
 
     return (
         <div>
             {open ? 
             <>
-                <div className='modal-overlay' onClick={onClose} />
+                    <div className='modal-overlay' onClick={() => {
+                        onClose()
+                        handleClick()
+                    }
+                    } />
             </>
                 :
                 null

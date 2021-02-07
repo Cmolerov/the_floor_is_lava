@@ -8,8 +8,10 @@ function SingleWorkoutStats({open, onClose, finished, time, distance, routeDista
   const [hidden, setHidden] = useState(true)
   const [isLoaded, setIsLoaded] = useState(false)
   const [distanceArr, setDistanceArr] = useState([])
+  const [timeArr, setTimeArr] = useState([])
   const [finPercent, setFinPercent] = useState(0)
   const [routeDistanceArr, setRouteDistanceArr] = useState([])
+
 
 
   useEffect(() => {
@@ -18,6 +20,8 @@ function SingleWorkoutStats({open, onClose, finished, time, distance, routeDista
       let dArr = distance.split(' ')
       setRouteDistanceArr(routeDistance.split(' '))
       let rdArr = routeDistance.split(' ')
+      setTimeArr(time.split(':'))
+      console.log("THIS IS THE TIME!", time)
       getPercent(dArr, rdArr)
       setIsLoaded(true)
     }
@@ -55,49 +59,70 @@ function SingleWorkoutStats({open, onClose, finished, time, distance, routeDista
       </div>
       <div className='new-rating-form-container-background'>
           <div className='new-rating-main-form-container'>
-            {finished ? 
+            {/* {finished ? 
               <div className='single-workout-stats'> You made it past the deadly volcanoes! </div>
               :
-              <div className='single-workout-stats'> You may have drowned in hot lava this time, but you'll get it next time
-              <div>Completed: <span className="odometer">
-              <CountUp
-                start={0}
-                end={finPercent}
-                duration={3.75}
-                separator=" "
-                decimals={4}
-                decimal="."
-              />
-                </span>% of route
+              <div className='single-workout-stats'> You may have drowned in hot lava this time, but you'll get it next time */}
+              <div className='single-workout-stats-container'>
+                <div className='single-workout-stats-route-completed'>% of Route Completed:  </div>
+                <div className="single-workout-stats-route-completed-percentage">
+                <CountUp
+                  start={0}
+                  end={finPercent}
+                  duration={5.5}
+                  separator=" "
+                  decimals={4}
+                  decimal="."
+                />%
+              </div>
                   </div>
-          </div>
-            }
-            <div className='single-workout-stats'>
-              You really broke a sweat running from all that heat!
-              <div> Time:
-              {/* <CountUp
-                start={0}
-                end={527.012}
-                duration={2.75}
-                separator=" "
-                decimals={4}
-                decimal="."
-                suffix=" left"
-                /> */}
-                {time} </div>
-            </div>
-            <div className='single-workout-stats'> Phew, you really made a lot of progress!
-              <div>Distance:
+          {/* </div>
+            } */}
+            <div className='single-workout-stats-container'>
+            {/* <div className='single-workout-stats'> */}
+              {/* You really broke a sweat running from all that heat! */}
+              <div className='single-workout-stats-route-completed'> Time:  
+              </div> 
+              <div className="single-workout-stats-route-completed-percentage">
               <CountUp
                 start={0}
-                end={parseFloat(distanceArr[0])}
-                duration={3.75}
+                end={parseInt(timeArr[0])}
+                duration={3}
                 separator=" "
-                decimals={1}
-                decimal="."
+                decimals={0}
+                />{timeArr[0] < 10 ? 0 : null}: 
+              <CountUp
+                start={0}
+                end={parseInt(timeArr[1])}
+                duration={4}
+                separator=" "
+                decimals={0}
+                />{timeArr[1] < 10 ? 0 : null}:{timeArr[2] < 10 ? 0 : null}
+              <CountUp
+                start={0}
+                end={parseInt(timeArr[2])}
+                duration={5}
+                separator=" "
+                decimals={0}
               />
-                {distanceArr[1]}</div>
+               </div>
+              {/* </div> */}
             </div>
+            <div className='single-workout-stats-container'>
+            {/* <div className='single-workout-stats'> Phew, you really made a lot of progress! */}
+              <div className='single-workout-stats-route-completed'>Distance:  </div>
+                <div className="single-workout-stats-route-completed-percentage">
+                  <CountUp
+                    start={0}
+                    end={parseFloat(distanceArr[0])}
+                    duration={6}
+                    separator=" "
+                    decimals={1}
+                    decimal="."
+                  />
+                <span> </span> {distanceArr[1]}</div>
+              {/* </div> */}
+              </div>
           </div>
       </div>
       </div>

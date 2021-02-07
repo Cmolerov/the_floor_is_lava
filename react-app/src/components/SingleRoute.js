@@ -61,6 +61,12 @@ function SingleRoute() {
     .then(() => setIsLoaded(true))
   }, [dispatch])
 
+  // useEffect(() => {
+  //   if (!showModal) {
+  //     setDistance(null)
+  //   }
+  // },[showModal])
+
   // function getLocation() {
   //   if (navigator.geolocation) {
   //     navigator.geolocation.getCurrentPosition(
@@ -402,7 +408,7 @@ useEffect(() => {
         }
       </div>
       </div>
-      <Modal open={showModal} onClose={() => setShowModal(false)} >
+      <Modal routeId={routeId} open={showModal} onClose={() => setShowModal(false)} >
         <SingleWorkoutStats open={showModal} onClose={() => setShowModal(false)} finished={finished} time={time} distance={distance} routeDistance={route.distance}/>
         </Modal>
       </div>
