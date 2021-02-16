@@ -975,6 +975,27 @@ button {
 
 /* --------------------------NEW ROUTE CSS SECTION-------------------------------- */
 
+.new-route{
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    height: 500px;
+    width: 800px;
+}
+
+.new-route-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 50px;
+    background-color: rgba(252, 82, 0, 0.7);
+}
+
+.new-route__p__name{
+    padding-left: 10px;
+    font-size: 30px;
+}
+
 .new__route__holder {
     height: 800px;
     max-width: 1200px;

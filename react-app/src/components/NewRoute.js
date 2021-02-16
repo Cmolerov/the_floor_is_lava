@@ -103,7 +103,10 @@ function NewRoute(props) {
   }
 
   return(
-    <>
+    <div className='new-route'>
+      <div className='new-route-header'>
+        <h1 className="new-route__p__name">New Route</h1>
+      </div>
     <h1 className="new__route__header">New Route</h1>
     <div className='new__route__holder'>
       <div className='new__route__container'>
@@ -176,7 +179,7 @@ function NewRoute(props) {
         </form>
       </div>
       </div>
-      </>
+      </div>
   )   
 }
 
