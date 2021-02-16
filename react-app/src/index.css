@@ -1002,7 +1002,6 @@ button {
     /* margin: 0 auto; */
     display: flex;
     flex-direction: row;
-    align-items: center;
 }
 
 .new__route__header {
@@ -1025,9 +1024,22 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-top: 10px;
     width: 200px;
-    height: 350px;
+    height: 200px;
     box-sizing: border-box;
+    border: 1px solid grey;
+}
+
+.new-route-create-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(252, 82, 0, 0.7);
+    padding-left: 10px;
+    height: 40px;
+    font-size: 11px;
 }
 
 .form__new__route {
@@ -1040,10 +1052,11 @@ button {
 }
 
 .form__new__route > div > input {
+    box-sizing: border-box;
     width: 160px;
     height: 14px;
-    padding: 8px 0;
-    font-size: 16px;
+    padding: 12px;
+    font-size: 14px;
     color: black;
     letter-spacing: 1px;
     border: none;
@@ -1054,7 +1067,7 @@ button {
     border-top: none;
     border-right: none;
     border-bottom: 3px solid black;
-    margin: 6px;
+    margin: 10px 5px;
 }
 
 .form__new__route > div > input:hover {
@@ -1062,7 +1075,7 @@ button {
 }
 
 .new-route__button__create {
-    margin-top: 14px;
+    margin-top: 12px;
     align-self: center;
     box-shadow: rgb(50 50 93 / 25%) 0px 6px 12px -2px, rgb(0 0 0 / 30%) 0px 3px 7px -3px;
     border-radius: 5px;

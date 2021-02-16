@@ -108,7 +108,10 @@ function NewRoute(props) {
         <h1 className="new-route__p__name">New Route</h1>
       </div>
       <div className='new__route__holder'>
-      <div className="new-route__div__form-container">
+        <div className="new-route__div__form-container">
+        <div className='new-route-create-header'>
+            <h1>Create Route</h1>
+          </div>
           <form className="form__new__route" onSubmit={routeSubmit}> 
           <div>
           <label htmlFor="name"></label>
