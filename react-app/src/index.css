@@ -999,7 +999,7 @@ button {
 .new__route__holder {
     height: 800px;
     max-width: 1200px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1011,56 +1011,32 @@ button {
 }
 
 .new__route__container {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
 }
 
 .new__route__map{
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
         rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-    border-radius: 5px;
+    border-radius: 5px; */
 }
 
 .new-route__div__form-container {
-    margin-top: 20px;
     display: flex;
-    flex-direction: column;
-    width: 560px;
-    height: 110px;
-    background: linear-gradient(
-        to right,
-        rgba(140, 178, 214, 0.8) 0%,
-        rgba(199, 197, 197, 0.8) 12%,
-        rgba(239, 240, 241, 0.8) 30%,
-        rgba(239, 240, 241, 0.8) 50%,
-        rgba(239, 240, 241, 0.8) 70%,
-        rgba(199, 197, 197, 0.8) 88%,
-        rgba(140, 178, 214, 0.8) 100%
-    );
+    flex-direction: row;
+    align-items: center;
+    width: 800px;
+    height: 90px;
     box-sizing: border-box;
-    border-radius: 5px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-    border-radius: 5px;
 }
 
 .form__new__route {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
     height: 100%;
     width: 100%;
     box-sizing: border-box;
-    border-radius: 5px;
-}
-
-.new-route__div__form-container > h2 {
-    height: 10px;
-    margin-bottom: 5px;
-    font-size: 16px;
-    color: black;
-    text-align: center;
 }
 
 .form__new__route > div > input {

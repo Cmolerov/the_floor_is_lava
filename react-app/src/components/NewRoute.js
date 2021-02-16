@@ -107,7 +107,6 @@ function NewRoute(props) {
       <div className='new-route-header'>
         <h1 className="new-route__p__name">New Route</h1>
       </div>
-    <h1 className="new__route__header">New Route</h1>
     <div className='new__route__holder'>
       <div className='new__route__container'>
         {homeRoutes()}
@@ -118,9 +117,10 @@ function NewRoute(props) {
         >
           <GoogleMap
             mapContainerStyle={{
-              height: "500px",
-              width: "400px",
-              margin: "20px",
+              height: "350px",
+              width: "800px",
+              margin: "10px",
+              border: "1px solid grey"
             }}
             zoom={12}
             center={center}
@@ -152,7 +152,6 @@ function NewRoute(props) {
         }
         </div>
         <div className="new-route__div__form-container">
-            <h2>Create Route</h2>
           <form className="form__new__route" onSubmit={routeSubmit}> 
           <div>
           <label htmlFor="name"></label>
