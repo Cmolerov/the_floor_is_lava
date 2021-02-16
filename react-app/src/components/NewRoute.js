@@ -107,7 +107,33 @@ function NewRoute(props) {
       <div className='new-route-header'>
         <h1 className="new-route__p__name">New Route</h1>
       </div>
-    <div className='new__route__holder'>
+      <div className='new__route__holder'>
+      <div className="new-route__div__form-container">
+          <form className="form__new__route" onSubmit={routeSubmit}> 
+          <div>
+          <label htmlFor="name"></label>
+          <input
+              name="name"
+              type="text"
+              placeholder="Name"
+              value={name}
+              required={true}
+              onChange={updateName}
+          />
+          </div>
+          <div>
+            <label htmlFor="description"></label>
+            <input
+                name="description"
+                type="textarea"
+                placeholder="Description"
+                value={description}
+                onChange={updateDescription}
+            />
+            </div>
+            <button className="new-route__button__create" type="submit">Create Route</button>
+        </form>
+      </div>
       <div className='new__route__container'>
         {homeRoutes()}
         {center ? 
@@ -118,7 +144,7 @@ function NewRoute(props) {
           <GoogleMap
             mapContainerStyle={{
               height: "350px",
-              width: "800px",
+              width: "616px",
               margin: "10px",
               border: "1px solid grey"
             }}
@@ -151,32 +177,6 @@ function NewRoute(props) {
       null
         }
         </div>
-        <div className="new-route__div__form-container">
-          <form className="form__new__route" onSubmit={routeSubmit}> 
-          <div>
-          <label htmlFor="name"></label>
-          <input
-              name="name"
-              type="text"
-              placeholder="Name"
-              value={name}
-              required={true}
-              onChange={updateName}
-          />
-          </div>
-          <div>
-            <label htmlFor="description"></label>
-            <input
-                name="description"
-                type="textarea"
-                placeholder="Description"
-                value={description}
-                onChange={updateDescription}
-            />
-            </div>
-            <button className="new-route__button__create" type="submit">Create Route</button>
-        </form>
-      </div>
       </div>
       </div>
   )   
