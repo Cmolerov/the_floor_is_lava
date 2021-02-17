@@ -150,8 +150,8 @@ function NewRoute(props) {
           <GoogleMap
             mapContainerStyle={{
               margin: "10px 0 0 10px",            
-              height: "350px",
-              width: "560px",
+              height: "348px",
+              width: "550px",
               border: "1px solid grey"
             }}
             zoom={12}
