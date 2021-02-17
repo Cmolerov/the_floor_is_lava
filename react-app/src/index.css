@@ -1024,9 +1024,10 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin-top: 10px;
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 350px;
     box-sizing: border-box;
     border: 1px solid grey;
 }
@@ -1036,16 +1037,32 @@ button {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    width: 96%;
     background-color: rgba(252, 82, 0, 0.7);
     padding-left: 10px;
     height: 40px;
     font-size: 11px;
 }
 
+.new-route-header-image-container{
+    margin: 15px 0;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+}
+
+.new-route-header-image-container > img{
+    height: 100%;
+    width: 100%;
+}
+
 .form__new__route {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
     height: 100%;
     width: 100%;
     box-sizing: border-box;
@@ -1075,12 +1092,12 @@ button {
 }
 
 .new-route__button__create {
-    margin-top: 12px;
+    margin-top: 15px;
     align-self: center;
     box-shadow: rgb(50 50 93 / 25%) 0px 6px 12px -2px, rgb(0 0 0 / 30%) 0px 3px 7px -3px;
     border-radius: 5px;
     height: 35px;
-    width: 90px;
+    width: 110px;
     font-size: 12px;
     border: none;
     color: black;

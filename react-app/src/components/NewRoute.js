@@ -112,6 +112,9 @@ function NewRoute(props) {
         <div className='new-route-create-header'>
             <h1>Create Route</h1>
           </div>
+          <div className="new-route-header-image-container">
+            <img className="new-route-header-image" src= "/images/favicon.png" />
+          </div>
           <form className="form__new__route" onSubmit={routeSubmit}> 
           <div>
           <label htmlFor="name"></label>
@@ -146,9 +149,9 @@ function NewRoute(props) {
         >
           <GoogleMap
             mapContainerStyle={{
+              margin: "10px 0 0 10px",            
               height: "350px",
-              width: "616px",
-              margin: "10px",
+              width: "560px",
               border: "1px solid grey"
             }}
             zoom={12}
