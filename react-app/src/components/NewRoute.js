@@ -103,9 +103,43 @@ function NewRoute(props) {
   }
 
   return(
-    <>
-    <h1 className="new__route__header">New Route</h1>
-    <div className='new__route__holder'>
+    <div className='new-route'>
+      <div className='new-route-header'>
+        <h1 className="new-route__p__name">New Route</h1>
+      </div>
+      <div className='new__route__holder'>
+        <div className="new-route__div__form-container">
+        <div className='new-route-create-header'>
+            <h1>Create Route</h1>
+          </div>
+          <div className="new-route-header-image-container">
+            <img className="new-route-header-image" src= "/images/favicon.png" />
+          </div>
+          <form className="form__new__route" onSubmit={routeSubmit}> 
+          <div>
+          <label htmlFor="name"></label>
+          <input
+              name="name"
+              type="text"
+              placeholder="Name"
+              value={name}
+              required={true}
+              onChange={updateName}
+          />
+          </div>
+          <div>
+            <label htmlFor="description"></label>
+            <input
+                name="description"
+                type="textarea"
+                placeholder="Description"
+                value={description}
+                onChange={updateDescription}
+            />
+            </div>
+            <button className="new-route__button__create" type="submit">Create Route</button>
+        </form>
+      </div>
       <div className='new__route__container'>
         {homeRoutes()}
         {center ? 
@@ -115,9 +149,10 @@ function NewRoute(props) {
         >
           <GoogleMap
             mapContainerStyle={{
-              height: "500px",
-              width: "400px",
-              margin: "20px",
+              margin: "10px 0 0 10px",            
+              height: "348px",
+              width: "550px",
+              border: "1px solid grey"
             }}
             zoom={12}
             center={center}
@@ -148,35 +183,8 @@ function NewRoute(props) {
       null
         }
         </div>
-        <div className="new-route__div__form-container">
-            <h2>Create Route</h2>
-          <form className="form__new__route" onSubmit={routeSubmit}> 
-          <div>
-          <label htmlFor="name"></label>
-          <input
-              name="name"
-              type="text"
-              placeholder="Name"
-              value={name}
-              required={true}
-              onChange={updateName}
-          />
-          </div>
-          <div>
-            <label htmlFor="description"></label>
-            <input
-                name="description"
-                type="textarea"
-                placeholder="Description"
-                value={description}
-                onChange={updateDescription}
-            />
-            </div>
-            <button className="new-route__button__create" type="submit">Create Route</button>
-        </form>
       </div>
       </div>
-      </>
   )   
 }
 
