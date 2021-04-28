@@ -130,10 +130,6 @@ function SingleRoute() {
       timeout: 5000,
       maximumAge: 0
     };
-  
-    // movementId = navigator.geolocation.watchPosition(success, error, options)
-    // console.log("THIS IS THE MOVEMENT!?!?!?", movementId)
-    // console.log("THIS IS WHERE I AM!", currentLocation)
       
       //END TEST FOR CURRENT MOVEMENT
   
@@ -204,7 +200,6 @@ useEffect(() => {
   const runRoute = () => {
     setBeginning(currentLocation)
     setIsActive(true)
-    // timer()
     setRunning(true)
     lavaFlowing();
   };
@@ -222,10 +217,10 @@ useEffect(() => {
 
   const workoutSubmit = async (e) => {
     e.preventDefault();
-      const startLat = beginning.lat
-      const startLong = beginning.lng
-      const endLat = currentLocation.lat
-      const endLong = currentLocation.lng
+    const startLat = beginning.lat
+    const startLong = beginning.lng
+    const endLat = currentLocation.lat
+    const endLong = currentLocation.lng
     let isCompleted = false;
     if (endLat === route.endLat && endLong === route.endLong) {
         isCompleted = true
@@ -237,7 +232,6 @@ useEffect(() => {
     let dist = resp.rows[0].elements[0].distance.text
     setShowModal(true)
     dispatch(workoutsAction.workoutAdd({ time, isCompleted, endLong, startLat, startLong, endLat, routeId, dist }))
-    // .then(() => setDistance(null))
 };
 
   const deleteRoute = async (e) => {
